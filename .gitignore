@@ -1,0 +1,17 @@
+# Godot 4
+.godot/
+
+# Godot Mono / C#
+.mono/
+.data/
+mono_crash.*.json
+
+# IDEs
+.vscode/
+.idea/
+.vs/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
