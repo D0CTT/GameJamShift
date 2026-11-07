@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://bbcekvos1qdx2"]
+
+[ext_resource type="FontFile" uid="uid://6g0qirnhmvlc" path="res://assets/fonts/JetBrainsMono-Regular.ttf" id="1_ekxnf"]
+[ext_resource type="Script" uid="uid://dlvxfbc0e1pnu" path="res://scenes/ui/main_menu.gd" id="1_l6cm7"]
+
+[sub_resource type="Theme" id="Theme_lfayh"]
+default_font = ExtResource("1_ekxnf")
+
+[node name="MainMenu" type="Control" unique_id=1103074025]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_lfayh")
+script = ExtResource("1_l6cm7")
+
+[node name="Background" type="ColorRect" parent="." unique_id=159894557]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.02745098, 0.06666667, 0.050980393, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1911125145]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer" unique_id=2031845589]
+custom_minimum_size = Vector2(520, 530)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer" unique_id=871293342]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer" unique_id=1383521265]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Header" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=395217782]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SystemLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Header" unique_id=529653836]
+layout_mode = 2
+text = "GOVERNMENT SECURITY SYSTEM"
+
+[node name="Spacer" type="Control" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Header/SystemLabel" unique_id=1471903299]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="StatusLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Header" unique_id=132695341]
+layout_mode = 2
+text = "● ONLINE"
+
+[node name="Title" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=194243356]
+layout_mode = 2
+text = "THE SHAPESHIFTER"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1158473869]
+layout_mode = 2
+text = "CLASSIFIED // LEVEL 05 ACCESS"
+horizontal_alignment = 1
+
+[node name="Separator" type="HSeparator" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=200640794]
+layout_mode = 2
+
+[node name="Prompt" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=381861321]
+layout_mode = 2
+text = "SELECT OPERATION:"
+
+[node name="NewGameButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1351751013]
+layout_mode = 2
+
+[node name="ContinueButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1694373535]
+layout_mode = 2
+
+[node name="OptionsButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=604483653]
+layout_mode = 2
+
+[node name="ExitButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=439728029]
+layout_mode = 2
+
+[node name="FooterSeparator" type="HSeparator" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1984716322]
+layout_mode = 2
+
+[node name="Footer" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1036187566]
+layout_mode = 2
+text = "AUTHORIZED PERSONNEL ONLY // SYS.V.01.06"
