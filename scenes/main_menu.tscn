@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bbcekvos1qdx2"]
 
 [ext_resource type="FontFile" uid="uid://6g0qirnhmvlc" path="res://assets/fonts/JetBrainsMono-Regular.ttf" id="1_ekxnf"]
-[ext_resource type="Script" uid="uid://dlvxfbc0e1pnu" path="res://scenes/ui/main_menu.gd" id="1_l6cm7"]
+[ext_resource type="Script" uid="uid://dlvxfbc0e1pnu" path="res://scripts/ui/main_menu.gd" id="1_l6cm7"]
 
 [sub_resource type="Theme" id="Theme_lfayh"]
 default_font = ExtResource("1_ekxnf")
