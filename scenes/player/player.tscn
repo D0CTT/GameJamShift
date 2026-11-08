@@ -6,21 +6,75 @@
 radius = 0.35
 height = 1.8
 
-[node name="Node3D" type="Node3D" unique_id=2083410379]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8afob"]
+albedo_color = Color(0.19215687, 0.25882354, 0.28627452, 1)
 
-[node name="Player" type="CharacterBody3D" parent="." unique_id=482663557]
+[sub_resource type="BoxMesh" id="BoxMesh_kvip8"]
+material = SubResource("StandardMaterial3D_8afob")
+size = Vector3(0.2, 0.18, 0.38)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dovo2"]
+albedo_color = Color(0.44313726, 0.53333336, 0.54901963, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6j2nl"]
+material = SubResource("StandardMaterial3D_dovo2")
+size = Vector3(0.12, 0.12, 0.28)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gmlin"]
+albedo_color = Color(0.8901961, 0.6039216, 0.2509804, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wbpxr"]
+material = SubResource("StandardMaterial3D_gmlin")
+size = Vector3(0.22, 0.2, 0.08)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lvxji"]
+albedo_color = Color(0.13333334, 0.16862746, 0.19607843, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3wxni"]
+material = SubResource("StandardMaterial3D_lvxji")
+size = Vector3(0.1, 0.22, 0.12)
+
+[node name="Player" type="CharacterBody3D" unique_id=218560856]
 script = ExtResource("1_8afob")
-speed = null
-mouse_sensitivity = null
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=370767153]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=370767153]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 shape = SubResource("CapsuleShape3D_x7p2l")
 
-[node name="Head" type="Node3D" parent="Player" unique_id=1896019436]
+[node name="Head" type="Node3D" parent="." unique_id=1896019436]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
 
-[node name="Camera3D" type="Camera3D" parent="Player/Head" unique_id=1202098196]
+[node name="Camera3D" type="Camera3D" parent="Head" unique_id=1202098196]
+current = true
 
-[node name="InteractionRay" type="RayCast3D" parent="Player/Head/Camera3D" unique_id=674360430]
+[node name="InteractionRay" type="RayCast3D" parent="Head/Camera3D" unique_id=674360430]
 target_position = Vector3(0, 0, -3)
+
+[node name="Node3D" type="Node3D" parent="Head/Camera3D" unique_id=392218394]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, -0.34, -0.7)
+
+[node name="Body" type="MeshInstance3D" parent="Head/Camera3D/Node3D" unique_id=1911655372]
+mesh = SubResource("BoxMesh_kvip8")
+
+[node name="Tube" type="MeshInstance3D" parent="Head/Camera3D/Node3D" unique_id=694103857]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.3)
+mesh = SubResource("BoxMesh_6j2nl")
+
+[node name="Nozzle" type="MeshInstance3D" parent="Head/Camera3D/Node3D" unique_id=503261532]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.46)
+mesh = SubResource("BoxMesh_wbpxr")
+
+[node name="Handle" type="MeshInstance3D" parent="Head/Camera3D/Node3D" unique_id=1565920656]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.16, 0.1)
+mesh = SubResource("BoxMesh_3wxni")
+
+[node name="VacuumHUD" type="CanvasLayer" parent="." unique_id=413597567]
+
+[node name="StatusLabel" type="Label" parent="VacuumHUD" unique_id=1947267158]
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 64.0
+offset_bottom = 47.0
+theme_override_colors/font_color = Color(0.5294118, 0.8980392, 0.64705884, 1)
+theme_override_font_sizes/font_size = 22
+metadata/_edit_use_anchors_ = true
