@@ -9,6 +9,7 @@ extends CharacterBody3D
 @export var suction_duration: float = 2.0
 @export var recharge_duration: float = 2.5
 @export var mistake_extra_recharge: float = 3.0
+@onready var vacuum_bar: ProgressBar = $VacuumHUD/SuctionBar
 
 # REFERENCIAS
 @onready var head: Node3D = $Head
@@ -29,6 +30,8 @@ var recharge_remaining: float = 0.0
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	interaction_ray.add_exception(self)
+	vacuum_bar.value = 0.0
+	vacuum_bar.hide()
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -98,27 +101,37 @@ func try_interact() -> void:
 			target.call("interact")
 
 
+
 func reset_suction() -> void:
 	suction_target = null
 	suction_progress = 0.0
 
+	vacuum_bar.value = 0.0
+	vacuum_bar.hide()
+
+
+
 
 
 func update_vacuum(delta: float) -> void:
-	# Recarga
+	# RECARGA
 	if recharge_remaining > 0.0:
 		recharge_remaining = maxf(
 			recharge_remaining - delta,
 			0.0
 		)
 
-		vacuum_label.text = "RECARGANDO: %.1f s" % recharge_remaining
 		reset_suction()
+		vacuum_label.text = "RECARGANDO: %.1f s" % recharge_remaining
 		return
 
-	# Comprobar si estamos aspirando
-	if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED \
-	or not Input.is_action_pressed("use_vacuum"):
+	# COMPROBAR SI ESTAMOS ASPIRANDO
+	if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
+		reset_suction()
+		vacuum_label.text = ""
+		return
+
+	if not Input.is_action_pressed("use_vacuum"):
 		reset_suction()
 		vacuum_label.text = ""
 		return
@@ -127,7 +140,7 @@ func update_vacuum(delta: float) -> void:
 
 	if not interaction_ray.is_colliding():
 		reset_suction()
-		vacuum_label.text = "SIN OBJETIVO"
+		vacuum_label.text = ""
 		return
 
 	var target: Object = interaction_ray.get_collider()
@@ -137,43 +150,37 @@ func update_vacuum(delta: float) -> void:
 		vacuum_label.text = ""
 		return
 
-	# Todos los objetos con vacuum_up son absorbibles
 	if not target.has_method("vacuum_up"):
 		reset_suction()
 		vacuum_label.text = "NO ABSORBIBLE"
 		return
 
-	# Cambiar de objetivo reinicia la succion
+	# CAMBIO DE OBJETIVO
 	if target != suction_target:
 		suction_target = target
 		suction_progress = 0.0
 
-	# Aspirar sin revelar el tipo de objeto
+	# PROGRESO DE ABSORCION
 	suction_progress += delta
 
 	var required_time: float = maxf(suction_duration, 0.1)
-	var percentage: int = int(
-		minf(suction_progress / required_time, 1.0) * 100.0
+
+	var percentage: float = clampf(
+		suction_progress / required_time * 100.0,
+		0.0,
+		100.0
 	)
 
-	vacuum_label.text = "ABSORBIENDO: %d%%" % percentage
+	vacuum_bar.value = percentage
+	vacuum_bar.show()
 
-	# Finalizar absorcion
+	vacuum_label.text = "ABSORBIENDO"
+
+	# ABSORCION COMPLETADA
 	if suction_progress >= required_time:
-		var was_shapeshifter: bool = bool(
-			target.call("vacuum_up")
-		)
+		target.call("vacuum_up")
 
 		reset_suction()
-
-		# Recarga habitual
 		recharge_remaining = recharge_duration
 
-		if was_shapeshifter:
-			print("Enemigo capturado correctamente")
-			vacuum_label.text = "CAMBIAFORMAS ELIMINADO"
-		else:
-			# Penalizacion por absorber un objeto normal
-			recharge_remaining += mistake_extra_recharge
-			print("Objeto normal absorbido")
-			vacuum_label.text = "OBJETO ABSORBIDO"
+		vacuum_label.text = "RECARGANDO: %.1f s" % recharge_remaining

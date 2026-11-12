@@ -10,10 +10,16 @@ extends Node3D
 @onready var result_label: Label = $MissionHUD/ResultLabel
 @onready var player: CharacterBody3D = $Player
 
+# DAÑOS COLATERALES
+@export var max_innocent_absorptions: int = 2
+var innocent_absorptions: int = 0
+
 var mission_finished: bool = false
 
 
 func _ready() -> void:
+	
+	add_to_group("mission_controller")
 	# Preparar el temporizador
 	mission_timer.one_shot = true
 	mission_timer.wait_time = mission_duration
@@ -71,10 +77,24 @@ func _on_time_up() -> void:
 				enemies_remaining = true
 				break
 
+
 	if enemies_remaining:
-		result_label.text = "MISIÓN FALLIDA\nEl presidente está en peligro."
+		result_label.text = (
+	        "MISIÓN FALLIDA\n"
+			+ "No se eliminaron todas las amenazas."
+		)
+
+	elif innocent_absorptions > max_innocent_absorptions:
+		result_label.text = (
+	        "MISIÓN FALLIDA\n"
+			+ "Daños colaterales excesivos."
+		)
+
 	else:
-		result_label.text = "MISIÓN COMPLETADA\nInstalación asegurada."
+		result_label.text = (
+	        "MISIÓN COMPLETADA\n"
+			+ "Instalación asegurada."
+		)
 
 	result_label.show()
 
@@ -85,3 +105,9 @@ func _on_time_up() -> void:
 	# Mostrar el cursor
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	
+
+func register_innocent_absorption() -> void:
+	if mission_finished:
+		return
+
+	innocent_absorptions += 1

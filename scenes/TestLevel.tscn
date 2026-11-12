@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://o4i8647lr7b0" path="res://scenes/player/player.tscn" id="1_1fpmp"]
 [ext_resource type="Script" uid="uid://bbovoff5wq7ui" path="res://scripts/test_level.gd" id="1_df0lk"]
 [ext_resource type="Script" uid="uid://bvsfwdfrfudeo" path="res://scripts/shapeshifters/suspicious_object.gd" id="2_df0lk"]
+[ext_resource type="Script" uid="uid://hik13gpskjrl" path="res://scripts/shapeshifters/shapeshifter_mover.gd" id="4_i6x8u"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_kvip8"]
 size = Vector3(14, 0.5, 14)
@@ -73,7 +74,7 @@ size = Vector3(0.7, 0.7, 0.7)
 
 [node name="Node3D" type="Node3D" unique_id=1718374034]
 script = ExtResource("1_df0lk")
-mission_duration = 10.0
+mission_duration = 20.0
 
 [node name="Player" parent="." unique_id=2083410379 instance=ExtResource("1_1fpmp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
@@ -179,10 +180,14 @@ mesh = SubResource("BoxMesh_xlsm3")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cabinet" unique_id=1293080714]
 shape = SubResource("BoxShape3D_4nl3v")
 
-[node name="ArchiveBox" type="StaticBody3D" parent="." unique_id=783100778]
+[node name="ArchiveBox" type="StaticBody3D" parent="." unique_id=783100778 node_paths=PackedStringArray("visual_node", "clue_sound")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.35, -3)
 script = ExtResource("2_df0lk")
-is_shapeshifter = true
+visual_node = NodePath("MeshInstance3D")
+clue_sound = NodePath("ClueSound")
+false_clue_probability = 0.0
+min_clue_interval = 2.0
+max_clue_interval = 4.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="ArchiveBox" unique_id=952649908]
 mesh = SubResource("BoxMesh_4nl3v")
@@ -190,9 +195,16 @@ mesh = SubResource("BoxMesh_4nl3v")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ArchiveBox" unique_id=856199823]
 shape = SubResource("BoxShape3D_waekl")
 
-[node name="ArchiveBox2" type="StaticBody3D" parent="." unique_id=930846731]
+[node name="ClueSound" type="AudioStreamPlayer3D" parent="ArchiveBox" unique_id=1759881860]
+
+[node name="ArchiveBox2" type="AnimatableBody3D" parent="." unique_id=479412726 node_paths=PackedStringArray("visual_node")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.35, -3)
 script = ExtResource("2_df0lk")
+is_shapeshifter = true
+visual_node = NodePath("MeshInstance3D")
+false_clue_probability = 0.0
+min_clue_interval = 2.0
+max_clue_interval = 4.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="ArchiveBox2" unique_id=1491260663]
 mesh = SubResource("BoxMesh_4nl3v")
@@ -200,12 +212,34 @@ mesh = SubResource("BoxMesh_4nl3v")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ArchiveBox2" unique_id=1510573277]
 shape = SubResource("BoxShape3D_waekl")
 
-[node name="ArchiveBox3" type="StaticBody3D" parent="." unique_id=1448813383]
+[node name="SneakMover" type="Node" parent="ArchiveBox2" unique_id=887799418 node_paths=PackedStringArray("hiding_spots")]
+script = ExtResource("4_i6x8u")
+hiding_spots = [NodePath("../../HidingSpots/Spot_A"), NodePath("../../HidingSpots/Spot_B"), NodePath("../../HidingSpots/Spot_C")]
+min_wait = 1.0
+max_wait = 3.0
+
+[node name="ArchiveBox3" type="StaticBody3D" parent="." unique_id=1448813383 node_paths=PackedStringArray("visual_node")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.35, 2)
 script = ExtResource("2_df0lk")
+visual_node = NodePath("MeshInstance3D")
+false_clue_probability = 1.0
+min_clue_interval = 2.0
+max_clue_interval = 4.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="ArchiveBox3" unique_id=1295420563]
 mesh = SubResource("BoxMesh_4nl3v")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ArchiveBox3" unique_id=1564222851]
 shape = SubResource("BoxShape3D_waekl")
+
+[node name="HidingSpots" type="Node3D" parent="." unique_id=233669486]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.35, -3)
+
+[node name="Spot_A" type="Marker3D" parent="HidingSpots" unique_id=76291102]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 2.5)
+
+[node name="Spot_B" type="Marker3D" parent="HidingSpots" unique_id=1964877333]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.624, 0, 2.5)
+
+[node name="Spot_C" type="Marker3D" parent="HidingSpots" unique_id=869919412]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.939, 0, -1.035)
