@@ -80,20 +80,20 @@ func _on_time_up() -> void:
 
 	if enemies_remaining:
 		result_label.text = (
-	        "MISIÓN FALLIDA\n"
-			+ "No se eliminaron todas las amenazas."
+	        "MISSION FAILED\n"
+			+ "Shapeshifters still alive."
 		)
 
 	elif innocent_absorptions > max_innocent_absorptions:
 		result_label.text = (
-	        "MISIÓN FALLIDA\n"
-			+ "Daños colaterales excesivos."
+	        "MISSION FAILED\n"
+			+ "Excessive Collateral Damage."
 		)
 
 	else:
 		result_label.text = (
-	        "MISIÓN COMPLETADA\n"
-			+ "Instalación asegurada."
+	        "MISSION ACOMPLISHED\n"
+			+ "Building Secured"
 		)
 
 	result_label.show()
@@ -111,3 +111,37 @@ func register_innocent_absorption() -> void:
 		return
 
 	innocent_absorptions += 1
+
+# El jugador autoriza la llegada del presidente
+func on_president_called_by_player() -> void:
+	if mission_finished:
+		return
+
+	# Congelar el tiempo restante
+	mission_timer.paused = true
+
+	# Utilizar las condiciones de victoria existentes
+	_on_time_up()
+
+
+# Un cambiaformas autoriza la llegada del presidente
+func on_president_called_by_shapeshifter() -> void:
+	if mission_finished:
+		return
+
+	mission_finished = true
+	mission_timer.paused = true
+
+	result_label.text = (
+        "MISSION FAILED\n"
+		+ "A Shapeshifter called the president."
+	)
+
+	result_label.show()
+
+	# Bloquear al jugador
+	if is_instance_valid(player):
+		player.set_physics_process(false)
+		player.set_process_unhandled_input(false)
+
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
