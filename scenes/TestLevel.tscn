@@ -4,7 +4,9 @@
 [ext_resource type="Script" uid="uid://bbovoff5wq7ui" path="res://scripts/test_level.gd" id="1_df0lk"]
 [ext_resource type="Script" uid="uid://bvsfwdfrfudeo" path="res://scripts/shapeshifters/suspicious_object.gd" id="2_df0lk"]
 [ext_resource type="Script" uid="uid://hik13gpskjrl" path="res://scripts/shapeshifters/shapeshifter_mover.gd" id="4_i6x8u"]
+[ext_resource type="Script" uid="uid://coqovxa5ugtdi" path="res://scripts/objects/chair_natural_motion.gd" id="5_5n3yh"]
 [ext_resource type="Script" uid="uid://d4couidxfdiwl" path="res://scripts/button/president_button.gd" id="5_8xg12"]
+[ext_resource type="Script" uid="uid://djtwk0ljadjb6" path="res://scripts/objects/natural_pencil.gd" id="6_0n17k"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_kvip8"]
 size = Vector3(14, 0.5, 14)
@@ -73,6 +75,19 @@ size = Vector3(0.7, 0.7, 0.7)
 [sub_resource type="BoxShape3D" id="BoxShape3D_waekl"]
 size = Vector3(0.7, 0.7, 0.7)
 
+[sub_resource type="BoxMesh" id="BoxMesh_8xg12"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5n3yh"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0n17k"]
+radius = 0.85
+
+[sub_resource type="BoxMesh" id="BoxMesh_5n3yh"]
+size = Vector3(0.025, 0.025, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0n17k"]
+size = Vector3(0.025, 0.025, 0.25)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i6x8u"]
 albedo_color = Color(0.4334819, 8.7838623e-07, 2.6471912e-07, 1)
 
@@ -83,9 +98,19 @@ size = Vector3(0.8, 0.8, 0.15)
 [sub_resource type="BoxShape3D" id="BoxShape3D_i6x8u"]
 size = Vector3(0.8, 0.8, 0.15)
 
+[sub_resource type="NavigationMesh" id="NavigationMesh_8xg12"]
+vertices = PackedVector3Array(-1.9000001, 0.75, -2.65, -1.6500001, 0.75, -2.65, -1.4000001, 0.75, -3.15, -2.15, 0.75, -3.9, -6.15, 0.75, -1.6500001, -3.65, 0.75, -1.9000001, -3.65, 0.75, -3.9, -6.15, 0.75, -6.15, 1.5999999, 0.75, -2.9, 2.1, 0.75, -3.15, 1.8499999, 0.75, -4.65, 3.1, 0.75, -4.9, 3.1, 0.75, -6.15, 4.1, 0.75, -4.65, 6.35, 0.75, -6.15, 1.5999999, 0.75, -1.1500001, 2.35, 0.75, 1.0999999, 4.1, 0.75, 1.3499999, 4.1, 0.75, -3.4, 1.0999999, 0.75, -0.9000001, 2.1, 0.75, 1.5999999, 6.35, 0.75, 6.35, 3.6, 0.75, 3.1, 2.35, 0.75, 3.1, 1.8499999, 0.75, 6.35, 2.1, 0.75, 2.6, 4.1, 0.75, 2.6, -2.4, 0.75, -1.9000001, -1.4000001, 0.75, -0.9000001, -6.15, 0.75, 6.35)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(9, 8, 10), PackedInt32Array(10, 8, 2), PackedInt32Array(10, 2, 3), PackedInt32Array(11, 10, 12), PackedInt32Array(12, 10, 3), PackedInt32Array(12, 3, 6), PackedInt32Array(12, 6, 7), PackedInt32Array(11, 12, 13), PackedInt32Array(13, 12, 14), PackedInt32Array(8, 9, 15), PackedInt32Array(15, 9, 18), PackedInt32Array(15, 18, 16), PackedInt32Array(16, 18, 17), PackedInt32Array(15, 16, 19), PackedInt32Array(19, 16, 20), PackedInt32Array(18, 14, 17), PackedInt32Array(17, 14, 21), PackedInt32Array(24, 23, 22), PackedInt32Array(23, 24, 25), PackedInt32Array(22, 26, 24), PackedInt32Array(24, 26, 21), PackedInt32Array(21, 26, 17), PackedInt32Array(18, 13, 14), PackedInt32Array(0, 1, 27), PackedInt32Array(27, 1, 28), PackedInt32Array(5, 28, 4), PackedInt32Array(4, 28, 25), PackedInt32Array(4, 25, 24), PackedInt32Array(4, 24, 29), PackedInt32Array(5, 27, 28), PackedInt32Array(20, 25, 19), PackedInt32Array(19, 25, 28)]
+geometry_parsed_geometry_type = 1
+geometry_source_geometry_mode = 1
+geometry_source_group_name = &"navigation_static"
+agent_height = 1.0
+agent_radius = 0.4
+agent_max_climb = 0.2
+
 [node name="Node3D" type="Node3D" unique_id=1718374034]
 script = ExtResource("1_df0lk")
-mission_duration = 20.0
+mission_duration = 1000.0
 
 [node name="Player" parent="." unique_id=2083410379 instance=ExtResource("1_1fpmp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
@@ -118,7 +143,7 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 36
 text = "MISSION ACOMPLISHED"
 
-[node name="Floor" type="StaticBody3D" parent="." unique_id=801153207]
+[node name="Floor" type="StaticBody3D" parent="." unique_id=801153207 groups=["navigation_static"]]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=1209497401]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
@@ -128,7 +153,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_ssp3w")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=491013620]
 shape = SubResource("BoxShape3D_6j2nl")
 
-[node name="WallNorth" type="StaticBody3D" parent="." unique_id=1341103520]
+[node name="WallNorth" type="StaticBody3D" parent="." unique_id=1341103520 groups=["navigation_static"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -7)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="WallNorth" unique_id=1135438629]
@@ -138,7 +163,7 @@ mesh = SubResource("BoxMesh_y1jsw")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WallNorth" unique_id=1081377237]
 shape = SubResource("BoxShape3D_1kog2")
 
-[node name="WallSouth" type="StaticBody3D" parent="." unique_id=673772172]
+[node name="WallSouth" type="StaticBody3D" parent="." unique_id=673772172 groups=["navigation_static"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 7)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="WallSouth" unique_id=123987294]
@@ -148,7 +173,7 @@ mesh = SubResource("BoxMesh_1kog2")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WallSouth" unique_id=2127645159]
 shape = SubResource("BoxShape3D_2xot7")
 
-[node name="WallEast" type="StaticBody3D" parent="." unique_id=2050901654]
+[node name="WallEast" type="StaticBody3D" parent="." unique_id=2050901654 groups=["navigation_static"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1.5, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="WallEast" unique_id=1743025371]
@@ -158,7 +183,7 @@ mesh = SubResource("BoxMesh_2xot7")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WallEast" unique_id=717786374]
 shape = SubResource("BoxShape3D_y1jsw")
 
-[node name="WallEast2" type="StaticBody3D" parent="." unique_id=92417594]
+[node name="WallEast2" type="StaticBody3D" parent="." unique_id=92417594 groups=["navigation_static"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1.5, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="WallEast2" unique_id=664039599]
@@ -171,7 +196,7 @@ shape = SubResource("BoxShape3D_mvtj7")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1877688740]
 transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, -0.25, 0)
 
-[node name="Desk" type="StaticBody3D" parent="." unique_id=1932327819]
+[node name="Desk" type="StaticBody3D" parent="." unique_id=1932327819 groups=["navigation_static"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -2)
 script = ExtResource("2_df0lk")
 
@@ -181,7 +206,7 @@ mesh = SubResource("BoxMesh_mvtj7")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Desk" unique_id=1522841285]
 shape = SubResource("BoxShape3D_xlsm3")
 
-[node name="Cabinet" type="StaticBody3D" parent="." unique_id=54030945]
+[node name="Cabinet" type="StaticBody3D" parent="." unique_id=54030945 groups=["disguise_candidate", "navigation_static"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, -4)
 script = ExtResource("2_df0lk")
 
@@ -191,7 +216,7 @@ mesh = SubResource("BoxMesh_xlsm3")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cabinet" unique_id=1293080714]
 shape = SubResource("BoxShape3D_4nl3v")
 
-[node name="ArchiveBox" type="StaticBody3D" parent="." unique_id=783100778 node_paths=PackedStringArray("visual_node", "clue_sound")]
+[node name="ArchiveBox" type="StaticBody3D" parent="." unique_id=783100778 node_paths=PackedStringArray("visual_node", "clue_sound") groups=["disguise_candidate", "navigation_static"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.35, -3)
 script = ExtResource("2_df0lk")
 visual_node = NodePath("MeshInstance3D")
@@ -208,8 +233,8 @@ shape = SubResource("BoxShape3D_waekl")
 
 [node name="ClueSound" type="AudioStreamPlayer3D" parent="ArchiveBox" unique_id=1759881860]
 
-[node name="ArchiveBox2" type="AnimatableBody3D" parent="." unique_id=479412726 node_paths=PackedStringArray("visual_node")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.35, -3)
+[node name="ArchiveBox2" type="AnimatableBody3D" parent="." unique_id=479412726 node_paths=PackedStringArray("visual_node") groups=["disguise_candidate"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.33250165, 0.35, 2.7318716)
 script = ExtResource("2_df0lk")
 is_shapeshifter = true
 visual_node = NodePath("MeshInstance3D")
@@ -229,7 +254,79 @@ call_point = NodePath("../../PresidentButton/PressPoint")
 min_wait = 1.0
 max_wait = 3.0
 
-[node name="ArchiveBox3" type="StaticBody3D" parent="." unique_id=1448813383 node_paths=PackedStringArray("visual_node")]
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="ArchiveBox2" unique_id=1437692459]
+
+[node name="ArchiveBox4" type="AnimatableBody3D" parent="." unique_id=1363185380 node_paths=PackedStringArray("visual_node") groups=["disguise_candidate"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9579952, 0.35, 2.7318716)
+script = ExtResource("2_df0lk")
+is_shapeshifter = true
+visual_node = NodePath("MeshInstance3D")
+false_clue_probability = 0.0
+min_clue_interval = 2.0
+max_clue_interval = 4.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ArchiveBox4" unique_id=1338473832]
+mesh = SubResource("BoxMesh_4nl3v")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ArchiveBox4" unique_id=1444484328]
+shape = SubResource("BoxShape3D_waekl")
+
+[node name="SneakMover" type="Node" parent="ArchiveBox4" unique_id=492087171 node_paths=PackedStringArray("call_point", "roam_points") groups=["disguise_candidate"]]
+script = ExtResource("4_i6x8u")
+behavior = 1
+call_point = NodePath("../../PresidentButton/PressPoint")
+roam_points = [NodePath("../../RoamPoints/Office_A"), NodePath("../../RoamPoints/Office_B"), NodePath("../../RoamPoints/Hallway_A"), NodePath("../../RoamPoints/Hallway_B")]
+min_wait = 1.0
+max_wait = 3.0
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="ArchiveBox4" unique_id=1528054248]
+
+[node name="RoamPoints" type="Node3D" parent="." unique_id=1119041871]
+
+[node name="Office_A" type="Marker3D" parent="RoamPoints" unique_id=2102338859]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.681407, 0, 0)
+
+[node name="Office_B" type="Marker3D" parent="RoamPoints" unique_id=1195706129]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.109798, 0, 4.5068617)
+
+[node name="Hallway_A" type="Marker3D" parent="RoamPoints" unique_id=952054845]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9194264, 0, 0)
+
+[node name="Hallway_B" type="Marker3D" parent="RoamPoints" unique_id=958217376]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5369415, 0, -5.8345375)
+
+[node name="OfficeChair" type="AnimatableBody3D" parent="." unique_id=1868835802 node_paths=PackedStringArray("visual_node") groups=["disguise_candidate"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.46222186, 0.8580859, 4.833054)
+script = ExtResource("2_df0lk")
+visual_node = NodePath("MeshInstance3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="OfficeChair" unique_id=1091279213]
+mesh = SubResource("BoxMesh_8xg12")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OfficeChair" unique_id=29211876]
+shape = SubResource("BoxShape3D_5n3yh")
+
+[node name="ProximityArea" type="Area3D" parent="OfficeChair" unique_id=1715729388]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OfficeChair/ProximityArea" unique_id=1089273877]
+shape = SubResource("SphereShape3D_0n17k")
+
+[node name="NaturalMotion" type="Node" parent="OfficeChair" unique_id=19789602 node_paths=PackedStringArray("detection_area")]
+script = ExtResource("5_5n3yh")
+detection_area = NodePath("../ProximityArea")
+movement_chance = 1.0
+
+[node name="Pencil" type="RigidBody3D" parent="." unique_id=1135431559]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9536588, 1.0202088, -1.8175703)
+script = ExtResource("6_0n17k")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pencil" unique_id=567588391]
+mesh = SubResource("BoxMesh_5n3yh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pencil" unique_id=945142246]
+shape = SubResource("BoxShape3D_0n17k")
+
+[node name="ArchiveBox3" type="StaticBody3D" parent="." unique_id=1448813383 node_paths=PackedStringArray("visual_node") groups=["disguise_candidate", "navigation_static"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.35, 2)
 script = ExtResource("2_df0lk")
 visual_node = NodePath("MeshInstance3D")
@@ -255,7 +352,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.624, 0, 2.5)
 [node name="Spot_C" type="Marker3D" parent="HidingSpots" unique_id=869919412]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.939, 0, -1.035)
 
-[node name="PresidentButton" type="StaticBody3D" parent="." unique_id=1694977631]
+[node name="PresidentButton" type="StaticBody3D" parent="." unique_id=1694977631 groups=["navigation_static"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.6)
 script = ExtResource("5_8xg12")
 
@@ -269,3 +366,7 @@ shape = SubResource("BoxShape3D_i6x8u")
 
 [node name="PressPoint" type="Marker3D" parent="PresidentButton" unique_id=1845084160]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 1.2)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=152749715 groups=["navigation_static"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7234435, 0)
+navigation_mesh = SubResource("NavigationMesh_8xg12")
