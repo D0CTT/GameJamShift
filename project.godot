@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 LanguageManager="*uid://dr50co8uyoomx"
 GameState="*uid://ct3wf1l4pai2g"
+LevelManager="*uid://bm8bbbi5fb7b6"
 
 [display]
 

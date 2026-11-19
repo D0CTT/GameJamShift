@@ -1,0 +1,1483 @@
+[gd_scene load_steps=116 format=3]
+
+[sub_resource type="StandardMaterial3D" id="Blood"]
+albedo_color = Color(0.34, 0.013, 0.022, 1)
+roughness = 0.8
+metallic = 0
+emission_enabled = true
+emission = Color(0.16, 0.0, 0.004, 1)
+emission_energy_multiplier = 0.20
+
+[sub_resource type="StandardMaterial3D" id="Edge"]
+albedo_color = Color(0.2, 0.012, 0.027, 1)
+roughness = 0.8
+metallic = 0
+emission_enabled = true
+emission = Color(0.1, 0, 0.002, 1)
+emission_energy_multiplier = 0.20
+
+[sub_resource type="StandardMaterial3D" id="Fresh"]
+albedo_color = Color(0.43, 0.022, 0.028, 1)
+roughness = 0.8
+metallic = 0
+emission_enabled = true
+emission = Color(0.18, 0.005, 0.005, 1)
+emission_energy_multiplier = 0.20
+
+[sub_resource type="SphereMesh" id="M1"]
+material = SubResource("Edge")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M2"]
+material = SubResource("Fresh")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M3"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M4"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M5"]
+material = SubResource("Fresh")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M6"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M7"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M8"]
+material = SubResource("Fresh")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M9"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M10"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M11"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M12"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M13"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M14"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M15"]
+material = SubResource("Edge")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M16"]
+material = SubResource("Fresh")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M17"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M18"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M19"]
+material = SubResource("Fresh")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M20"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M21"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M22"]
+material = SubResource("Fresh")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M23"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M24"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M25"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M26"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M27"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M28"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M29"]
+material = SubResource("Edge")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M30"]
+material = SubResource("Fresh")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M31"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M32"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M33"]
+material = SubResource("Fresh")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M34"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M35"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M36"]
+material = SubResource("Fresh")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M37"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M38"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M39"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M40"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M41"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M42"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M43"]
+material = SubResource("Edge")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M44"]
+material = SubResource("Fresh")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M45"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M46"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M47"]
+material = SubResource("Fresh")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M48"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M49"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M50"]
+material = SubResource("Fresh")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M51"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M52"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M53"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M54"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M55"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M56"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M57"]
+material = SubResource("Edge")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M58"]
+material = SubResource("Fresh")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M59"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M60"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M61"]
+material = SubResource("Fresh")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M62"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M63"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M64"]
+material = SubResource("Fresh")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M65"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M66"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M67"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M68"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M69"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M70"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M71"]
+material = SubResource("Edge")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M72"]
+material = SubResource("Fresh")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M73"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M74"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M75"]
+material = SubResource("Fresh")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M76"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M77"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M78"]
+material = SubResource("Fresh")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M79"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M80"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M81"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M82"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M83"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M84"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M85"]
+material = SubResource("Edge")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M86"]
+material = SubResource("Fresh")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M87"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M88"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M89"]
+material = SubResource("Fresh")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M90"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M91"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M92"]
+material = SubResource("Fresh")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M93"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M94"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M95"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M96"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M97"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M98"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M99"]
+material = SubResource("Edge")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M100"]
+material = SubResource("Fresh")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M101"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M102"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M103"]
+material = SubResource("Fresh")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M104"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M105"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M106"]
+material = SubResource("Fresh")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M107"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M108"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M109"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M110"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M111"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M112"]
+material = SubResource("Blood")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[node name="BloodOnSnow" type="Node3D"]
+
+[node name="Pool0" type="MeshInstance3D" parent="."]
+position = Vector3(-2.42000, 0.01200, 0.17000)
+rotation_degrees = Vector3(0.00000, 8.24045, 0.00000)
+scale = Vector3(0.84000, 0.01800, 1.30000)
+mesh = SubResource("M1")
+
+[node name="Patch0_0" type="MeshInstance3D" parent="."]
+position = Vector3(-2.54616, 0.01700, 0.40143)
+rotation_degrees = Vector3(0.00000, 59.77275, 0.00000)
+scale = Vector3(0.24225, 0.01200, 0.54432)
+mesh = SubResource("M2")
+
+[node name="Patch0_1" type="MeshInstance3D" parent="."]
+position = Vector3(-2.28513, 0.01770, 0.43625)
+rotation_degrees = Vector3(0.00000, -58.90339, 0.00000)
+scale = Vector3(0.35973, 0.01200, 0.56329)
+mesh = SubResource("M3")
+
+[node name="Patch0_2" type="MeshInstance3D" parent="."]
+position = Vector3(-2.60808, 0.01840, 0.10545)
+rotation_degrees = Vector3(0.00000, -75.28936, 0.00000)
+scale = Vector3(0.43125, 0.01200, 0.42019)
+mesh = SubResource("M4")
+
+[node name="Patch0_3" type="MeshInstance3D" parent="."]
+position = Vector3(-2.52740, 0.01910, -0.11278)
+rotation_degrees = Vector3(0.00000, 28.85020, 0.00000)
+scale = Vector3(0.32627, 0.01200, 0.37128)
+mesh = SubResource("M5")
+
+[node name="Patch0_4" type="MeshInstance3D" parent="."]
+position = Vector3(-2.32949, 0.01980, -0.05125)
+rotation_degrees = Vector3(0.00000, -42.59730, 0.00000)
+scale = Vector3(0.42027, 0.01200, 0.29723)
+mesh = SubResource("M6")
+
+[node name="Patch0_5" type="MeshInstance3D" parent="."]
+position = Vector3(-2.65893, 0.02050, -0.08864)
+rotation_degrees = Vector3(0.00000, -29.44005, 0.00000)
+scale = Vector3(0.31068, 0.01200, 0.40965)
+mesh = SubResource("M7")
+
+[node name="Patch0_6" type="MeshInstance3D" parent="."]
+position = Vector3(-2.46380, 0.02120, -0.12776)
+rotation_degrees = Vector3(0.00000, 74.02152, 0.00000)
+scale = Vector3(0.29816, 0.01200, 0.47102)
+mesh = SubResource("M8")
+
+[node name="Drop0_0" type="MeshInstance3D" parent="."]
+position = Vector3(-2.17377, 0.01200, -0.56017)
+rotation_degrees = Vector3(0.00000, -38.24796, 0.00000)
+scale = Vector3(0.04791, 0.00900, 0.05060)
+mesh = SubResource("M9")
+
+[node name="Drop0_1" type="MeshInstance3D" parent="."]
+position = Vector3(-2.19191, 0.01200, -0.68996)
+rotation_degrees = Vector3(0.00000, -56.17084, 0.00000)
+scale = Vector3(0.09904, 0.00900, 0.09623)
+mesh = SubResource("M10")
+
+[node name="Drop0_2" type="MeshInstance3D" parent="."]
+position = Vector3(-2.04544, 0.01200, 0.75662)
+rotation_degrees = Vector3(0.00000, 2.37958, 0.00000)
+scale = Vector3(0.08608, 0.00900, 0.05414)
+mesh = SubResource("M11")
+
+[node name="Drop0_3" type="MeshInstance3D" parent="."]
+position = Vector3(-2.05751, 0.01200, -0.69932)
+rotation_degrees = Vector3(0.00000, -88.75182, 0.00000)
+scale = Vector3(0.08241, 0.00900, 0.05352)
+mesh = SubResource("M12")
+
+[node name="Drop0_4" type="MeshInstance3D" parent="."]
+position = Vector3(-2.49118, 0.01200, 1.07983)
+rotation_degrees = Vector3(0.00000, -41.32300, 0.00000)
+scale = Vector3(0.08193, 0.00900, 0.10567)
+mesh = SubResource("M13")
+
+[node name="Drop0_5" type="MeshInstance3D" parent="."]
+position = Vector3(-2.43287, 0.01200, 0.96636)
+rotation_degrees = Vector3(0.00000, -8.30116, 0.00000)
+scale = Vector3(0.04976, 0.00900, 0.02989)
+mesh = SubResource("M14")
+
+[node name="Pool1" type="MeshInstance3D" parent="."]
+position = Vector3(-2.35000, 0.01200, 1.05000)
+rotation_degrees = Vector3(0.00000, 14.67259, 0.00000)
+scale = Vector3(0.64000, 0.01800, 1.02000)
+mesh = SubResource("M15")
+
+[node name="Patch1_0" type="MeshInstance3D" parent="."]
+position = Vector3(-2.14561, 0.01700, 1.13813)
+rotation_degrees = Vector3(0.00000, -43.58412, 0.00000)
+scale = Vector3(0.21601, 0.01200, 0.41541)
+mesh = SubResource("M16")
+
+[node name="Patch1_1" type="MeshInstance3D" parent="."]
+position = Vector3(-2.29816, 0.01770, 1.23270)
+rotation_degrees = Vector3(0.00000, -6.16120, 0.00000)
+scale = Vector3(0.21748, 0.01200, 0.44523)
+mesh = SubResource("M17")
+
+[node name="Patch1_2" type="MeshInstance3D" parent="."]
+position = Vector3(-2.37005, 0.01840, 0.79721)
+rotation_degrees = Vector3(0.00000, 7.28366, 0.00000)
+scale = Vector3(0.21087, 0.01200, 0.27463)
+mesh = SubResource("M18")
+
+[node name="Patch1_3" type="MeshInstance3D" parent="."]
+position = Vector3(-2.22530, 0.01910, 1.08044)
+rotation_degrees = Vector3(0.00000, -37.36517, 0.00000)
+scale = Vector3(0.32277, 0.01200, 0.24274)
+mesh = SubResource("M19")
+
+[node name="Patch1_4" type="MeshInstance3D" parent="."]
+position = Vector3(-2.42393, 0.01980, 1.26348)
+rotation_degrees = Vector3(0.00000, -36.34169, 0.00000)
+scale = Vector3(0.32502, 0.01200, 0.41238)
+mesh = SubResource("M20")
+
+[node name="Patch1_5" type="MeshInstance3D" parent="."]
+position = Vector3(-2.16961, 0.02050, 1.04207)
+rotation_degrees = Vector3(0.00000, -27.14392, 0.00000)
+scale = Vector3(0.24955, 0.01200, 0.28380)
+mesh = SubResource("M21")
+
+[node name="Patch1_6" type="MeshInstance3D" parent="."]
+position = Vector3(-2.44723, 0.02120, 1.29812)
+rotation_degrees = Vector3(0.00000, 55.14662, 0.00000)
+scale = Vector3(0.27109, 0.01200, 0.43815)
+mesh = SubResource("M22")
+
+[node name="Drop1_0" type="MeshInstance3D" parent="."]
+position = Vector3(-2.26705, 0.01200, 0.32400)
+rotation_degrees = Vector3(0.00000, -75.96071, 0.00000)
+scale = Vector3(0.09489, 0.00900, 0.08737)
+mesh = SubResource("M23")
+
+[node name="Drop1_1" type="MeshInstance3D" parent="."]
+position = Vector3(-2.77414, 0.01200, 0.85040)
+rotation_degrees = Vector3(0.00000, 37.10503, 0.00000)
+scale = Vector3(0.09252, 0.00900, 0.07608)
+mesh = SubResource("M24")
+
+[node name="Drop1_2" type="MeshInstance3D" parent="."]
+position = Vector3(-2.58079, 0.01200, 1.74015)
+rotation_degrees = Vector3(0.00000, 11.38086, 0.00000)
+scale = Vector3(0.08918, 0.00900, 0.06998)
+mesh = SubResource("M25")
+
+[node name="Drop1_3" type="MeshInstance3D" parent="."]
+position = Vector3(-1.96340, 0.01200, 1.56246)
+rotation_degrees = Vector3(0.00000, 52.72109, 0.00000)
+scale = Vector3(0.06497, 0.00900, 0.06391)
+mesh = SubResource("M26")
+
+[node name="Drop1_4" type="MeshInstance3D" parent="."]
+position = Vector3(-2.22841, 0.01200, 1.59745)
+rotation_degrees = Vector3(0.00000, -40.12842, 0.00000)
+scale = Vector3(0.06292, 0.00900, 0.05931)
+mesh = SubResource("M27")
+
+[node name="Drop1_5" type="MeshInstance3D" parent="."]
+position = Vector3(-1.96508, 0.01200, 1.40878)
+rotation_degrees = Vector3(0.00000, -61.23887, 0.00000)
+scale = Vector3(0.07456, 0.00900, 0.04824)
+mesh = SubResource("M28")
+
+[node name="Pool2" type="MeshInstance3D" parent="."]
+position = Vector3(-3.12000, 0.01200, 2.06000)
+rotation_degrees = Vector3(0.00000, 18.08419, 0.00000)
+scale = Vector3(1.36000, 0.01800, 0.66000)
+mesh = SubResource("M29")
+
+[node name="Patch2_0" type="MeshInstance3D" parent="."]
+position = Vector3(-3.24105, 0.01700, 1.85394)
+rotation_degrees = Vector3(0.00000, -72.88931, 0.00000)
+scale = Vector3(0.69881, 0.01200, 0.21465)
+mesh = SubResource("M30")
+
+[node name="Patch2_1" type="MeshInstance3D" parent="."]
+position = Vector3(-2.84325, 0.01770, 2.16806)
+rotation_degrees = Vector3(0.00000, -57.20465, 0.00000)
+scale = Vector3(0.41533, 0.01200, 0.19268)
+mesh = SubResource("M31")
+
+[node name="Patch2_2" type="MeshInstance3D" parent="."]
+position = Vector3(-2.73835, 0.01840, 1.87530)
+rotation_degrees = Vector3(0.00000, -20.48504, 0.00000)
+scale = Vector3(0.61010, 0.01200, 0.20941)
+mesh = SubResource("M32")
+
+[node name="Patch2_3" type="MeshInstance3D" parent="."]
+position = Vector3(-3.13069, 0.01910, 2.20929)
+rotation_degrees = Vector3(0.00000, 30.12167, 0.00000)
+scale = Vector3(0.70989, 0.01200, 0.26563)
+mesh = SubResource("M33")
+
+[node name="Patch2_4" type="MeshInstance3D" parent="."]
+position = Vector3(-3.00788, 0.01980, 1.93007)
+rotation_degrees = Vector3(0.00000, 30.48042, 0.00000)
+scale = Vector3(0.64888, 0.01200, 0.17962)
+mesh = SubResource("M34")
+
+[node name="Patch2_5" type="MeshInstance3D" parent="."]
+position = Vector3(-2.66802, 0.02050, 2.05181)
+rotation_degrees = Vector3(0.00000, -53.08512, 0.00000)
+scale = Vector3(0.58252, 0.01200, 0.24265)
+mesh = SubResource("M35")
+
+[node name="Patch2_6" type="MeshInstance3D" parent="."]
+position = Vector3(-3.44852, 0.02120, 2.10078)
+rotation_degrees = Vector3(0.00000, -80.70500, 0.00000)
+scale = Vector3(0.50341, 0.01200, 0.22490)
+mesh = SubResource("M36")
+
+[node name="Drop2_0" type="MeshInstance3D" parent="."]
+position = Vector3(-3.41241, 0.01200, 2.38901)
+rotation_degrees = Vector3(0.00000, -37.25235, 0.00000)
+scale = Vector3(0.07647, 0.00900, 0.05007)
+mesh = SubResource("M37")
+
+[node name="Drop2_1" type="MeshInstance3D" parent="."]
+position = Vector3(-3.93168, 0.01200, 2.03839)
+rotation_degrees = Vector3(0.00000, 11.41933, 0.00000)
+scale = Vector3(0.05175, 0.00900, 0.04468)
+mesh = SubResource("M38")
+
+[node name="Drop2_2" type="MeshInstance3D" parent="."]
+position = Vector3(-2.34275, 0.01200, 2.41110)
+rotation_degrees = Vector3(0.00000, 35.55456, 0.00000)
+scale = Vector3(0.09501, 0.00900, 0.07278)
+mesh = SubResource("M39")
+
+[node name="Drop2_3" type="MeshInstance3D" parent="."]
+position = Vector3(-2.46440, 0.01200, 1.62332)
+rotation_degrees = Vector3(0.00000, -8.34095, 0.00000)
+scale = Vector3(0.07252, 0.00900, 0.06094)
+mesh = SubResource("M40")
+
+[node name="Drop2_4" type="MeshInstance3D" parent="."]
+position = Vector3(-2.58846, 0.01200, 1.69935)
+rotation_degrees = Vector3(0.00000, 6.39571, 0.00000)
+scale = Vector3(0.03992, 0.00900, 0.02948)
+mesh = SubResource("M41")
+
+[node name="Drop2_5" type="MeshInstance3D" parent="."]
+position = Vector3(-3.21105, 0.01200, 1.61098)
+rotation_degrees = Vector3(0.00000, 33.79007, 0.00000)
+scale = Vector3(0.07688, 0.00900, 0.05034)
+mesh = SubResource("M42")
+
+[node name="Pool3" type="MeshInstance3D" parent="."]
+position = Vector3(-4.30000, 0.01200, -0.53000)
+rotation_degrees = Vector3(0.00000, 19.32529, 0.00000)
+scale = Vector3(0.56000, 0.01800, 0.96000)
+mesh = SubResource("M43")
+
+[node name="Patch3_0" type="MeshInstance3D" parent="."]
+position = Vector3(-4.23470, 0.01700, -0.76404)
+rotation_degrees = Vector3(0.00000, -9.98574, 0.00000)
+scale = Vector3(0.17400, 0.01200, 0.32743)
+mesh = SubResource("M44")
+
+[node name="Patch3_1" type="MeshInstance3D" parent="."]
+position = Vector3(-4.41941, 0.01770, -0.70939)
+rotation_degrees = Vector3(0.00000, 40.20582, 0.00000)
+scale = Vector3(0.15480, 0.01200, 0.38637)
+mesh = SubResource("M45")
+
+[node name="Patch3_2" type="MeshInstance3D" parent="."]
+position = Vector3(-4.50390, 0.01840, -0.40700)
+rotation_degrees = Vector3(0.00000, 70.47885, 0.00000)
+scale = Vector3(0.25328, 0.01200, 0.32513)
+mesh = SubResource("M46")
+
+[node name="Patch3_3" type="MeshInstance3D" parent="."]
+position = Vector3(-4.14921, 0.01910, -0.40803)
+rotation_degrees = Vector3(0.00000, 28.00366, 0.00000)
+scale = Vector3(0.27572, 0.01200, 0.23348)
+mesh = SubResource("M47")
+
+[node name="Patch3_4" type="MeshInstance3D" parent="."]
+position = Vector3(-4.23110, 0.01980, -0.38345)
+rotation_degrees = Vector3(0.00000, -45.76614, 0.00000)
+scale = Vector3(0.17133, 0.01200, 0.37675)
+mesh = SubResource("M48")
+
+[node name="Patch3_5" type="MeshInstance3D" parent="."]
+position = Vector3(-4.26309, 0.02050, -0.32065)
+rotation_degrees = Vector3(0.00000, 71.70021, 0.00000)
+scale = Vector3(0.26886, 0.01200, 0.33517)
+mesh = SubResource("M49")
+
+[node name="Patch3_6" type="MeshInstance3D" parent="."]
+position = Vector3(-4.19223, 0.02120, -0.35274)
+rotation_degrees = Vector3(0.00000, -66.98990, 0.00000)
+scale = Vector3(0.22018, 0.01200, 0.37454)
+mesh = SubResource("M50")
+
+[node name="Drop3_0" type="MeshInstance3D" parent="."]
+position = Vector3(-4.30812, 0.01200, 0.16984)
+rotation_degrees = Vector3(0.00000, 10.72364, 0.00000)
+scale = Vector3(0.08671, 0.00900, 0.06135)
+mesh = SubResource("M51")
+
+[node name="Drop3_1" type="MeshInstance3D" parent="."]
+position = Vector3(-4.55044, 0.01200, -1.00210)
+rotation_degrees = Vector3(0.00000, 53.06856, 0.00000)
+scale = Vector3(0.06422, 0.00900, 0.05902)
+mesh = SubResource("M52")
+
+[node name="Drop3_2" type="MeshInstance3D" parent="."]
+position = Vector3(-3.97887, 0.01200, -0.01821)
+rotation_degrees = Vector3(0.00000, -71.14207, 0.00000)
+scale = Vector3(0.07906, 0.00900, 0.07280)
+mesh = SubResource("M53")
+
+[node name="Drop3_3" type="MeshInstance3D" parent="."]
+position = Vector3(-4.49421, 0.01200, -1.15850)
+rotation_degrees = Vector3(0.00000, -64.41543, 0.00000)
+scale = Vector3(0.09791, 0.00900, 0.09730)
+mesh = SubResource("M54")
+
+[node name="Drop3_4" type="MeshInstance3D" parent="."]
+position = Vector3(-4.12851, 0.01200, 0.11768)
+rotation_degrees = Vector3(0.00000, -6.57459, 0.00000)
+scale = Vector3(0.04885, 0.00900, 0.06024)
+mesh = SubResource("M55")
+
+[node name="Drop3_5" type="MeshInstance3D" parent="."]
+position = Vector3(-4.34334, 0.01200, -1.27702)
+rotation_degrees = Vector3(0.00000, -71.27667, 0.00000)
+scale = Vector3(0.09638, 0.00900, 0.10380)
+mesh = SubResource("M56")
+
+[node name="Pool4" type="MeshInstance3D" parent="."]
+position = Vector3(-1.70000, 0.01200, 1.10000)
+rotation_degrees = Vector3(0.00000, 11.75272, 0.00000)
+scale = Vector3(0.62000, 0.01800, 0.48000)
+mesh = SubResource("M57")
+
+[node name="Patch4_0" type="MeshInstance3D" parent="."]
+position = Vector3(-1.46489, 0.01700, 1.04318)
+rotation_degrees = Vector3(0.00000, 46.51314, 0.00000)
+scale = Vector3(0.21690, 0.01200, 0.20755)
+mesh = SubResource("M58")
+
+[node name="Patch4_1" type="MeshInstance3D" parent="."]
+position = Vector3(-1.59107, 0.01770, 0.98060)
+rotation_degrees = Vector3(0.00000, 26.61419, 0.00000)
+scale = Vector3(0.27264, 0.01200, 0.15296)
+mesh = SubResource("M59")
+
+[node name="Patch4_2" type="MeshInstance3D" parent="."]
+position = Vector3(-1.60565, 0.01840, 0.94420)
+rotation_degrees = Vector3(0.00000, 86.52274, 0.00000)
+scale = Vector3(0.22750, 0.01200, 0.17895)
+mesh = SubResource("M60")
+
+[node name="Patch4_3" type="MeshInstance3D" parent="."]
+position = Vector3(-1.60498, 0.01910, 1.16016)
+rotation_degrees = Vector3(0.00000, -62.29412, 0.00000)
+scale = Vector3(0.19960, 0.01200, 0.20702)
+mesh = SubResource("M61")
+
+[node name="Patch4_4" type="MeshInstance3D" parent="."]
+position = Vector3(-1.56752, 0.01980, 1.10128)
+rotation_degrees = Vector3(0.00000, -11.80986, 0.00000)
+scale = Vector3(0.26285, 0.01200, 0.14519)
+mesh = SubResource("M62")
+
+[node name="Patch4_5" type="MeshInstance3D" parent="."]
+position = Vector3(-1.62196, 0.02050, 0.99770)
+rotation_degrees = Vector3(0.00000, 86.61813, 0.00000)
+scale = Vector3(0.24160, 0.01200, 0.14593)
+mesh = SubResource("M63")
+
+[node name="Patch4_6" type="MeshInstance3D" parent="."]
+position = Vector3(-1.85225, 0.02120, 1.11617)
+rotation_degrees = Vector3(0.00000, 39.56650, 0.00000)
+scale = Vector3(0.19686, 0.01200, 0.13591)
+mesh = SubResource("M64")
+
+[node name="Drop4_0" type="MeshInstance3D" parent="."]
+position = Vector3(-1.99372, 0.01200, 1.31563)
+rotation_degrees = Vector3(0.00000, 62.89715, 0.00000)
+scale = Vector3(0.06605, 0.00900, 0.07306)
+mesh = SubResource("M65")
+
+[node name="Drop4_1" type="MeshInstance3D" parent="."]
+position = Vector3(-1.58770, 0.01200, 0.85704)
+rotation_degrees = Vector3(0.00000, -82.68366, 0.00000)
+scale = Vector3(0.05718, 0.00900, 0.04133)
+mesh = SubResource("M66")
+
+[node name="Drop4_2" type="MeshInstance3D" parent="."]
+position = Vector3(-1.64016, 0.01200, 0.78640)
+rotation_degrees = Vector3(0.00000, -64.42015, 0.00000)
+scale = Vector3(0.06313, 0.00900, 0.05133)
+mesh = SubResource("M67")
+
+[node name="Drop4_3" type="MeshInstance3D" parent="."]
+position = Vector3(-2.01467, 0.01200, 1.27189)
+rotation_degrees = Vector3(0.00000, 66.80386, 0.00000)
+scale = Vector3(0.06201, 0.00900, 0.04349)
+mesh = SubResource("M68")
+
+[node name="Drop4_4" type="MeshInstance3D" parent="."]
+position = Vector3(-1.65190, 0.01200, 0.70857)
+rotation_degrees = Vector3(0.00000, -89.72259, 0.00000)
+scale = Vector3(0.04950, 0.00900, 0.04932)
+mesh = SubResource("M69")
+
+[node name="Drop4_5" type="MeshInstance3D" parent="."]
+position = Vector3(-1.38361, 0.01200, 0.79102)
+rotation_degrees = Vector3(0.00000, 56.39762, 0.00000)
+scale = Vector3(0.07058, 0.00900, 0.08966)
+mesh = SubResource("M70")
+
+[node name="Pool5" type="MeshInstance3D" parent="."]
+position = Vector3(1.45000, 0.01200, -2.35000)
+rotation_degrees = Vector3(0.00000, 19.51870, 0.00000)
+scale = Vector3(0.54000, 0.01800, 0.64000)
+mesh = SubResource("M71")
+
+[node name="Patch5_0" type="MeshInstance3D" parent="."]
+position = Vector3(1.49730, 0.01700, -2.58077)
+rotation_degrees = Vector3(0.00000, -55.64837, 0.00000)
+scale = Vector3(0.18568, 0.01200, 0.15742)
+mesh = SubResource("M72")
+
+[node name="Patch5_1" type="MeshInstance3D" parent="."]
+position = Vector3(1.32530, 0.01770, -2.20891)
+rotation_degrees = Vector3(0.00000, -29.09902, 0.00000)
+scale = Vector3(0.16783, 0.01200, 0.21740)
+mesh = SubResource("M73")
+
+[node name="Patch5_2" type="MeshInstance3D" parent="."]
+position = Vector3(1.27577, 0.01840, -2.19241)
+rotation_degrees = Vector3(0.00000, 82.75454, 0.00000)
+scale = Vector3(0.24988, 0.01200, 0.23933)
+mesh = SubResource("M74")
+
+[node name="Patch5_3" type="MeshInstance3D" parent="."]
+position = Vector3(1.34786, 0.01910, -2.47450)
+rotation_degrees = Vector3(0.00000, 15.46117, 0.00000)
+scale = Vector3(0.14917, 0.01200, 0.23439)
+mesh = SubResource("M75")
+
+[node name="Patch5_4" type="MeshInstance3D" parent="."]
+position = Vector3(1.27400, 0.01980, -2.44571)
+rotation_degrees = Vector3(0.00000, 71.53747, 0.00000)
+scale = Vector3(0.24363, 0.01200, 0.23221)
+mesh = SubResource("M76")
+
+[node name="Patch5_5" type="MeshInstance3D" parent="."]
+position = Vector3(1.30304, 0.02050, -2.46014)
+rotation_degrees = Vector3(0.00000, -35.27065, 0.00000)
+scale = Vector3(0.23126, 0.01200, 0.14793)
+mesh = SubResource("M77")
+
+[node name="Patch5_6" type="MeshInstance3D" parent="."]
+position = Vector3(1.29707, 0.02120, -2.37369)
+rotation_degrees = Vector3(0.00000, -56.86413, 0.00000)
+scale = Vector3(0.21755, 0.01200, 0.26342)
+mesh = SubResource("M78")
+
+[node name="Drop5_0" type="MeshInstance3D" parent="."]
+position = Vector3(1.38033, 0.01200, -1.90928)
+rotation_degrees = Vector3(0.00000, -67.68083, 0.00000)
+scale = Vector3(0.08158, 0.00900, 0.05961)
+mesh = SubResource("M79")
+
+[node name="Drop5_1" type="MeshInstance3D" parent="."]
+position = Vector3(1.45278, 0.01200, -1.89779)
+rotation_degrees = Vector3(0.00000, -15.18394, 0.00000)
+scale = Vector3(0.09898, 0.00900, 0.11792)
+mesh = SubResource("M80")
+
+[node name="Drop5_2" type="MeshInstance3D" parent="."]
+position = Vector3(1.43668, 0.01200, -2.70540)
+rotation_degrees = Vector3(0.00000, 62.51142, 0.00000)
+scale = Vector3(0.08946, 0.00900, 0.06541)
+mesh = SubResource("M81")
+
+[node name="Drop5_3" type="MeshInstance3D" parent="."]
+position = Vector3(1.86265, 0.01200, -2.54563)
+rotation_degrees = Vector3(0.00000, -23.75937, 0.00000)
+scale = Vector3(0.07527, 0.00900, 0.06090)
+mesh = SubResource("M82")
+
+[node name="Drop5_4" type="MeshInstance3D" parent="."]
+position = Vector3(1.83080, 0.01200, -2.17840)
+rotation_degrees = Vector3(0.00000, -86.22016, 0.00000)
+scale = Vector3(0.09633, 0.00900, 0.06587)
+mesh = SubResource("M83")
+
+[node name="Drop5_5" type="MeshInstance3D" parent="."]
+position = Vector3(1.21313, 0.01200, -2.11951)
+rotation_degrees = Vector3(0.00000, -7.68647, 0.00000)
+scale = Vector3(0.08392, 0.00900, 0.10520)
+mesh = SubResource("M84")
+
+[node name="Pool6" type="MeshInstance3D" parent="."]
+position = Vector3(-3.85000, 0.01200, -1.95000)
+rotation_degrees = Vector3(0.00000, 0.85944, 0.00000)
+scale = Vector3(0.72000, 0.01800, 0.50000)
+mesh = SubResource("M85")
+
+[node name="Patch6_0" type="MeshInstance3D" parent="."]
+position = Vector3(-3.74026, 0.01700, -2.12104)
+rotation_degrees = Vector3(0.00000, -40.75867, 0.00000)
+scale = Vector3(0.36202, 0.01200, 0.19671)
+mesh = SubResource("M86")
+
+[node name="Patch6_1" type="MeshInstance3D" parent="."]
+position = Vector3(-3.68731, 0.01770, -1.78238)
+rotation_degrees = Vector3(0.00000, -22.52159, 0.00000)
+scale = Vector3(0.36194, 0.01200, 0.20411)
+mesh = SubResource("M87")
+
+[node name="Patch6_2" type="MeshInstance3D" parent="."]
+position = Vector3(-3.85357, 0.01840, -2.10066)
+rotation_degrees = Vector3(0.00000, -19.01621, 0.00000)
+scale = Vector3(0.37619, 0.01200, 0.14422)
+mesh = SubResource("M88")
+
+[node name="Patch6_3" type="MeshInstance3D" parent="."]
+position = Vector3(-3.86078, 0.01910, -2.08136)
+rotation_degrees = Vector3(0.00000, -27.59935, 0.00000)
+scale = Vector3(0.35289, 0.01200, 0.15476)
+mesh = SubResource("M89")
+
+[node name="Patch6_4" type="MeshInstance3D" parent="."]
+position = Vector3(-3.68922, 0.01980, -1.99720)
+rotation_degrees = Vector3(0.00000, 57.82265, 0.00000)
+scale = Vector3(0.33186, 0.01200, 0.13195)
+mesh = SubResource("M90")
+
+[node name="Patch6_5" type="MeshInstance3D" parent="."]
+position = Vector3(-3.78723, 0.02050, -2.12330)
+rotation_degrees = Vector3(0.00000, -23.19872, 0.00000)
+scale = Vector3(0.24007, 0.01200, 0.22104)
+mesh = SubResource("M91")
+
+[node name="Patch6_6" type="MeshInstance3D" parent="."]
+position = Vector3(-3.63090, 0.02120, -2.06188)
+rotation_degrees = Vector3(0.00000, 38.00905, 0.00000)
+scale = Vector3(0.33312, 0.01200, 0.17864)
+mesh = SubResource("M92")
+
+[node name="Drop6_0" type="MeshInstance3D" parent="."]
+position = Vector3(-3.29956, 0.01200, -1.98933)
+rotation_degrees = Vector3(0.00000, 57.87133, 0.00000)
+scale = Vector3(0.05075, 0.00900, 0.05956)
+mesh = SubResource("M93")
+
+[node name="Drop6_1" type="MeshInstance3D" parent="."]
+position = Vector3(-3.52840, 0.01200, -2.09569)
+rotation_degrees = Vector3(0.00000, -0.86271, 0.00000)
+scale = Vector3(0.08684, 0.00900, 0.09752)
+mesh = SubResource("M94")
+
+[node name="Drop6_2" type="MeshInstance3D" parent="."]
+position = Vector3(-3.79362, 0.01200, -1.56074)
+rotation_degrees = Vector3(0.00000, -65.75898, 0.00000)
+scale = Vector3(0.03851, 0.00900, 0.04762)
+mesh = SubResource("M95")
+
+[node name="Drop6_3" type="MeshInstance3D" parent="."]
+position = Vector3(-3.43489, 0.01200, -1.91498)
+rotation_degrees = Vector3(0.00000, -64.84997, 0.00000)
+scale = Vector3(0.07846, 0.00900, 0.08476)
+mesh = SubResource("M96")
+
+[node name="Drop6_4" type="MeshInstance3D" parent="."]
+position = Vector3(-3.86465, 0.01200, -2.29123)
+rotation_degrees = Vector3(0.00000, 32.73268, 0.00000)
+scale = Vector3(0.05730, 0.00900, 0.03889)
+mesh = SubResource("M97")
+
+[node name="Drop6_5" type="MeshInstance3D" parent="."]
+position = Vector3(-4.15928, 0.01200, -2.24390)
+rotation_degrees = Vector3(0.00000, -83.61159, 0.00000)
+scale = Vector3(0.08441, 0.00900, 0.10375)
+mesh = SubResource("M98")
+
+[node name="Pool7" type="MeshInstance3D" parent="."]
+position = Vector3(2.65000, 0.01200, -0.90000)
+rotation_degrees = Vector3(0.00000, -17.03354, 0.00000)
+scale = Vector3(0.58000, 0.01800, 0.76000)
+mesh = SubResource("M99")
+
+[node name="Patch7_0" type="MeshInstance3D" parent="."]
+position = Vector3(2.51039, 0.01700, -0.81214)
+rotation_degrees = Vector3(0.00000, 37.93209, 0.00000)
+scale = Vector3(0.24595, 0.01200, 0.23764)
+mesh = SubResource("M100")
+
+[node name="Patch7_1" type="MeshInstance3D" parent="."]
+position = Vector3(2.78091, 0.01770, -0.77135)
+rotation_degrees = Vector3(0.00000, 11.29877, 0.00000)
+scale = Vector3(0.24529, 0.01200, 0.22626)
+mesh = SubResource("M101")
+
+[node name="Patch7_2" type="MeshInstance3D" parent="."]
+position = Vector3(2.63640, 0.01840, -0.61167)
+rotation_degrees = Vector3(0.00000, 61.20606, 0.00000)
+scale = Vector3(0.16920, 0.01200, 0.21606)
+mesh = SubResource("M102")
+
+[node name="Patch7_3" type="MeshInstance3D" parent="."]
+position = Vector3(2.52038, 0.01910, -0.83679)
+rotation_degrees = Vector3(0.00000, 35.73321, 0.00000)
+scale = Vector3(0.17005, 0.01200, 0.26692)
+mesh = SubResource("M103")
+
+[node name="Patch7_4" type="MeshInstance3D" parent="."]
+position = Vector3(2.41663, 0.01980, -0.95370)
+rotation_degrees = Vector3(0.00000, -85.80434, 0.00000)
+scale = Vector3(0.18724, 0.01200, 0.26484)
+mesh = SubResource("M104")
+
+[node name="Patch7_5" type="MeshInstance3D" parent="."]
+position = Vector3(2.76372, 0.02050, -1.03563)
+rotation_degrees = Vector3(0.00000, 88.53164, 0.00000)
+scale = Vector3(0.22048, 0.01200, 0.22518)
+mesh = SubResource("M105")
+
+[node name="Patch7_6" type="MeshInstance3D" parent="."]
+position = Vector3(2.57465, 0.02120, -0.66390)
+rotation_degrees = Vector3(0.00000, -70.23150, 0.00000)
+scale = Vector3(0.22685, 0.01200, 0.19561)
+mesh = SubResource("M106")
+
+[node name="Drop7_0" type="MeshInstance3D" parent="."]
+position = Vector3(2.22712, 0.01200, -1.12434)
+rotation_degrees = Vector3(0.00000, 3.72329, 0.00000)
+scale = Vector3(0.04902, 0.00900, 0.03390)
+mesh = SubResource("M107")
+
+[node name="Drop7_1" type="MeshInstance3D" parent="."]
+position = Vector3(2.92405, 0.01200, -1.17239)
+rotation_degrees = Vector3(0.00000, -53.42491, 0.00000)
+scale = Vector3(0.09192, 0.00900, 0.08939)
+mesh = SubResource("M108")
+
+[node name="Drop7_2" type="MeshInstance3D" parent="."]
+position = Vector3(2.96327, 0.01200, -0.93410)
+rotation_degrees = Vector3(0.00000, -57.01293, 0.00000)
+scale = Vector3(0.06986, 0.00900, 0.07686)
+mesh = SubResource("M109")
+
+[node name="Drop7_3" type="MeshInstance3D" parent="."]
+position = Vector3(2.88821, 0.01200, -0.54696)
+rotation_degrees = Vector3(0.00000, 2.34749, 0.00000)
+scale = Vector3(0.08010, 0.00900, 0.05420)
+mesh = SubResource("M110")
+
+[node name="Drop7_4" type="MeshInstance3D" parent="."]
+position = Vector3(2.38548, 0.01200, -1.26915)
+rotation_degrees = Vector3(0.00000, 43.13510, 0.00000)
+scale = Vector3(0.05208, 0.00900, 0.03589)
+mesh = SubResource("M111")
+
+[node name="Drop7_5" type="MeshInstance3D" parent="."]
+position = Vector3(3.02907, 0.01200, -0.85008)
+rotation_degrees = Vector3(0.00000, 27.33829, 0.00000)
+scale = Vector3(0.05955, 0.00900, 0.03638)
+mesh = SubResource("M112")

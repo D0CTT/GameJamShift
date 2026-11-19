@@ -1,0 +1,588 @@
+[gd_scene load_steps=11 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/art/level_01/snow_pine.tscn" id="1"]
+
+[ext_resource type="PackedScene" path="res://scenes/art/level_01/snow_rock.tscn" id="2"]
+
+[ext_resource type="PackedScene" path="res://scenes/art/level_01/snow_terrain.tscn" id="3"]
+
+[sub_resource type="StandardMaterial3D" id="ExteriorSnow"]
+albedo_color = Color(0.59, 0.7, 0.8, 1)
+roughness = 1.0
+
+[sub_resource type="StandardMaterial3D" id="Hill"]
+albedo_color = Color(0.32, 0.43, 0.53, 1)
+roughness = 1.0
+
+[sub_resource type="StandardMaterial3D" id="Ridge"]
+albedo_color = Color(0.22, 0.31, 0.4, 1)
+roughness = 1.0
+
+[sub_resource type="StandardMaterial3D" id="Track"]
+albedo_color = Color(0.52, 0.65, 0.76, 1)
+roughness = 1.0
+
+[sub_resource type="BoxMesh" id="Snowfield"]
+material = SubResource("ExteriorSnow")
+size = Vector3(56, 0.3, 78)
+
+[sub_resource type="CylinderMesh" id="RidgeShape"]
+material = SubResource("Ridge")
+top_radius = 0.0
+bottom_radius = 1.0
+height = 2.0
+radial_segments = 5
+rings = 1
+
+[sub_resource type="BoxMesh" id="Print"]
+material = SubResource("Track")
+size = Vector3(0.12, 0.006, 0.2)
+
+[node name="Level01Art" type="Node3D"]
+
+[node name="SnowTerrain" parent="." instance=ExtResource("3")]
+
+[node name="Pines" type="Node3D" parent="."]
+
+[node name="Rocks" type="Node3D" parent="."]
+
+[node name="Ridges" type="Node3D" parent="."]
+
+[node name="SnowTracks" type="Node3D" parent="."]
+
+[node name="Pine01" parent="Pines" instance=ExtResource("1")]
+position = Vector3(-7.6316, -0.15, 5.0294)
+rotation_degrees = Vector3(0, 153.95, 0)
+scale = Vector3(1.5263, 1.5263, 1.5263)
+
+[node name="Pine02" parent="Pines" instance=ExtResource("1")]
+position = Vector3(-7.1124, -0.15, 1.2404)
+rotation_degrees = Vector3(0, 304.1, 0)
+scale = Vector3(1.3351, 1.3351, 1.3351)
+
+[node name="Pine03" parent="Pines" instance=ExtResource("1")]
+position = Vector3(-7.273, -0.15, -1.5777)
+rotation_degrees = Vector3(0, 77.97, 0)
+scale = Vector3(1.4257, 1.4257, 1.4257)
+
+[node name="Pine04" parent="Pines" instance=ExtResource("1")]
+position = Vector3(-8.3363, -0.15, -4.7589)
+rotation_degrees = Vector3(0, 136.28, 0)
+scale = Vector3(1.5501, 1.5501, 1.5501)
+
+[node name="Pine05" parent="Pines" instance=ExtResource("1")]
+position = Vector3(-7.2425, -0.15, -8.7937)
+rotation_degrees = Vector3(0, 198.83, 0)
+scale = Vector3(1.4612, 1.4612, 1.4612)
+
+[node name="Pine06" parent="Pines" instance=ExtResource("1")]
+position = Vector3(-7.3764, -0.15, -12.709)
+rotation_degrees = Vector3(0, 142.94, 0)
+scale = Vector3(1.1936, 1.1936, 1.1936)
+
+[node name="Pine07" parent="Pines" instance=ExtResource("1")]
+position = Vector3(-7.2928, -0.15, -15.971)
+rotation_degrees = Vector3(0, 252.2, 0)
+scale = Vector3(1.0854, 1.0854, 1.0854)
+
+[node name="Pine08" parent="Pines" instance=ExtResource("1")]
+position = Vector3(-7.4239, -0.15, -19.823)
+rotation_degrees = Vector3(0, 19.271, 0)
+scale = Vector3(1.2925, 1.2925, 1.2925)
+
+[node name="Pine09" parent="Pines" instance=ExtResource("1")]
+position = Vector3(-7.0033, -0.15, -24.171)
+rotation_degrees = Vector3(0, 209.45, 0)
+scale = Vector3(1.3158, 1.3158, 1.3158)
+
+[node name="Pine10" parent="Pines" instance=ExtResource("1")]
+position = Vector3(-7.1387, -0.15, -27.752)
+rotation_degrees = Vector3(0, 357.98, 0)
+scale = Vector3(1.2369, 1.2369, 1.2369)
+
+[node name="Pine11" parent="Pines" instance=ExtResource("1")]
+position = Vector3(-7.6714, -0.15, -32.943)
+rotation_degrees = Vector3(0, 240.55, 0)
+scale = Vector3(1.198, 1.198, 1.198)
+
+[node name="Pine12" parent="Pines" instance=ExtResource("1")]
+position = Vector3(-8.2509, -0.15, -37.271)
+rotation_degrees = Vector3(0, 21.794, 0)
+scale = Vector3(1.243, 1.243, 1.243)
+
+[node name="Pine13" parent="Pines" instance=ExtResource("1")]
+position = Vector3(-11.051, -0.15, 4)
+rotation_degrees = Vector3(0, 12.118, 0)
+scale = Vector3(1.1567, 1.1567, 1.1567)
+
+[node name="Pine14" parent="Pines" instance=ExtResource("1")]
+position = Vector3(-12.649, -0.15, -0.4)
+rotation_degrees = Vector3(0, 72.854, 0)
+scale = Vector3(1.5199, 1.5199, 1.5199)
+
+[node name="Pine15" parent="Pines" instance=ExtResource("1")]
+position = Vector3(-14.847, -0.15, -4.8)
+rotation_degrees = Vector3(0, 283.11, 0)
+scale = Vector3(1.474, 1.474, 1.474)
+
+[node name="Pine16" parent="Pines" instance=ExtResource("1")]
+position = Vector3(-10.968, -0.15, -9.2)
+rotation_degrees = Vector3(0, 182.74, 0)
+scale = Vector3(1.2684, 1.2684, 1.2684)
+
+[node name="Pine17" parent="Pines" instance=ExtResource("1")]
+position = Vector3(-11.002, -0.15, -13.6)
+rotation_degrees = Vector3(0, 65.425, 0)
+scale = Vector3(1.701, 1.701, 1.701)
+
+[node name="Pine18" parent="Pines" instance=ExtResource("1")]
+position = Vector3(-14.5, -0.15, -18)
+rotation_degrees = Vector3(0, 111.87, 0)
+scale = Vector3(0.96422, 0.96422, 0.96422)
+
+[node name="Pine19" parent="Pines" instance=ExtResource("1")]
+position = Vector3(-12.053, -0.15, -22.4)
+rotation_degrees = Vector3(0, 165.98, 0)
+scale = Vector3(1.3474, 1.3474, 1.3474)
+
+[node name="Pine20" parent="Pines" instance=ExtResource("1")]
+position = Vector3(-13.606, -0.15, -26.8)
+rotation_degrees = Vector3(0, 292.99, 0)
+scale = Vector3(1.2415, 1.2415, 1.2415)
+
+[node name="Pine21" parent="Pines" instance=ExtResource("1")]
+position = Vector3(-13.764, -0.15, -31.2)
+rotation_degrees = Vector3(0, 122.38, 0)
+scale = Vector3(1.6387, 1.6387, 1.6387)
+
+[node name="Pine22" parent="Pines" instance=ExtResource("1")]
+position = Vector3(-10.126, -0.15, -35.6)
+rotation_degrees = Vector3(0, 246.73, 0)
+scale = Vector3(1.6044, 1.6044, 1.6044)
+
+[node name="Pine23" parent="Pines" instance=ExtResource("1")]
+position = Vector3(8.4537, -0.15, 4.8994)
+rotation_degrees = Vector3(0, 279.77, 0)
+scale = Vector3(1.3502, 1.3502, 1.3502)
+
+[node name="Pine24" parent="Pines" instance=ExtResource("1")]
+position = Vector3(7.7026, -0.15, 1.4357)
+rotation_degrees = Vector3(0, 133.24, 0)
+scale = Vector3(1.0721, 1.0721, 1.0721)
+
+[node name="Pine25" parent="Pines" instance=ExtResource("1")]
+position = Vector3(7.4669, -0.15, -2.0575)
+rotation_degrees = Vector3(0, 234.24, 0)
+scale = Vector3(1.4372, 1.4372, 1.4372)
+
+[node name="Pine26" parent="Pines" instance=ExtResource("1")]
+position = Vector3(7.9414, -0.15, -5.1886)
+rotation_degrees = Vector3(0, 183.39, 0)
+scale = Vector3(1.0997, 1.0997, 1.0997)
+
+[node name="Pine27" parent="Pines" instance=ExtResource("1")]
+position = Vector3(7.4471, -0.15, -8.2812)
+rotation_degrees = Vector3(0, 268.67, 0)
+scale = Vector3(1.4927, 1.4927, 1.4927)
+
+[node name="Pine28" parent="Pines" instance=ExtResource("1")]
+position = Vector3(7.7524, -0.15, -12.038)
+rotation_degrees = Vector3(0, 236.51, 0)
+scale = Vector3(1.1221, 1.1221, 1.1221)
+
+[node name="Pine29" parent="Pines" instance=ExtResource("1")]
+position = Vector3(8.0272, -0.15, -16.157)
+rotation_degrees = Vector3(0, 22.863, 0)
+scale = Vector3(1.382, 1.382, 1.382)
+
+[node name="Pine30" parent="Pines" instance=ExtResource("1")]
+position = Vector3(8.0282, -0.15, -19.784)
+rotation_degrees = Vector3(0, 306.85, 0)
+scale = Vector3(1.5092, 1.5092, 1.5092)
+
+[node name="Pine31" parent="Pines" instance=ExtResource("1")]
+position = Vector3(7.3782, -0.15, -24.295)
+rotation_degrees = Vector3(0, 216.9, 0)
+scale = Vector3(1.2958, 1.2958, 1.2958)
+
+[node name="Pine32" parent="Pines" instance=ExtResource("1")]
+position = Vector3(7.9084, -0.15, -27.651)
+rotation_degrees = Vector3(0, 297.29, 0)
+scale = Vector3(1.2526, 1.2526, 1.2526)
+
+[node name="Pine33" parent="Pines" instance=ExtResource("1")]
+position = Vector3(7.3899, -0.15, -33.337)
+rotation_degrees = Vector3(0, 307.92, 0)
+scale = Vector3(1.196, 1.196, 1.196)
+
+[node name="Pine34" parent="Pines" instance=ExtResource("1")]
+position = Vector3(7.9979, -0.15, -37.178)
+rotation_degrees = Vector3(0, 280.6, 0)
+scale = Vector3(1.2121, 1.2121, 1.2121)
+
+[node name="Pine35" parent="Pines" instance=ExtResource("1")]
+position = Vector3(14.937, -0.15, 4)
+rotation_degrees = Vector3(0, 6.5409, 0)
+scale = Vector3(1.2307, 1.2307, 1.2307)
+
+[node name="Pine36" parent="Pines" instance=ExtResource("1")]
+position = Vector3(13.521, -0.15, -0.4)
+rotation_degrees = Vector3(0, 189.49, 0)
+scale = Vector3(1.2023, 1.2023, 1.2023)
+
+[node name="Pine37" parent="Pines" instance=ExtResource("1")]
+position = Vector3(12.873, -0.15, -4.8)
+rotation_degrees = Vector3(0, 177.19, 0)
+scale = Vector3(1.2824, 1.2824, 1.2824)
+
+[node name="Pine38" parent="Pines" instance=ExtResource("1")]
+position = Vector3(11.586, -0.15, -9.2)
+rotation_degrees = Vector3(0, 257.97, 0)
+scale = Vector3(1.4451, 1.4451, 1.4451)
+
+[node name="Pine39" parent="Pines" instance=ExtResource("1")]
+position = Vector3(11.654, -0.15, -13.6)
+rotation_degrees = Vector3(0, 342.72, 0)
+scale = Vector3(1.1437, 1.1437, 1.1437)
+
+[node name="Pine40" parent="Pines" instance=ExtResource("1")]
+position = Vector3(11.128, -0.15, -18)
+rotation_degrees = Vector3(0, 275.33, 0)
+scale = Vector3(1.3037, 1.3037, 1.3037)
+
+[node name="Pine41" parent="Pines" instance=ExtResource("1")]
+position = Vector3(14.896, -0.15, -22.4)
+rotation_degrees = Vector3(0, 134.3, 0)
+scale = Vector3(1.3593, 1.3593, 1.3593)
+
+[node name="Pine42" parent="Pines" instance=ExtResource("1")]
+position = Vector3(14.403, -0.15, -26.8)
+rotation_degrees = Vector3(0, 128.78, 0)
+scale = Vector3(1.2433, 1.2433, 1.2433)
+
+[node name="Pine43" parent="Pines" instance=ExtResource("1")]
+position = Vector3(11.865, -0.15, -31.2)
+rotation_degrees = Vector3(0, 53.033, 0)
+scale = Vector3(1.0178, 1.0178, 1.0178)
+
+[node name="Pine44" parent="Pines" instance=ExtResource("1")]
+position = Vector3(13.596, -0.15, -35.6)
+rotation_degrees = Vector3(0, 216.14, 0)
+scale = Vector3(1.0921, 1.0921, 1.0921)
+
+[node name="Pine45" parent="Pines" instance=ExtResource("1")]
+position = Vector3(-5, -0.15, 14.7008)
+rotation_degrees = Vector3(0, 197.82, 0)
+scale = Vector3(1.3138, 1.3138, 1.3138)
+
+[node name="Pine46" parent="Pines" instance=ExtResource("1")]
+position = Vector3(-2.5, -0.15, 13.9142)
+rotation_degrees = Vector3(0, 70.4, 0)
+scale = Vector3(1.2142, 1.2142, 1.2142)
+
+[node name="Pine47" parent="Pines" instance=ExtResource("1")]
+position = Vector3(0, -0.15, 14.9567)
+rotation_degrees = Vector3(0, 181.27, 0)
+scale = Vector3(1.0912, 1.0912, 1.0912)
+
+[node name="Pine48" parent="Pines" instance=ExtResource("1")]
+position = Vector3(2.6, -0.15, 13.8841)
+rotation_degrees = Vector3(0, 348.82, 0)
+scale = Vector3(1.2295, 1.2295, 1.2295)
+
+[node name="Pine49" parent="Pines" instance=ExtResource("1")]
+position = Vector3(5, -0.15, 14.5433)
+rotation_degrees = Vector3(0, 265.81, 0)
+scale = Vector3(1.0838, 1.0838, 1.0838)
+
+[node name="Rock01" parent="Rocks" instance=ExtResource("2")]
+position = Vector3(-7.5541, -0.17, 4)
+rotation_degrees = Vector3(0, 26.845, 0)
+scale = Vector3(1.2848, 1.2848, 1.2848)
+
+[node name="Rock02" parent="Rocks" instance=ExtResource("2")]
+position = Vector3(9.4018, -0.17, 1.7)
+rotation_degrees = Vector3(0, 253.34, 0)
+scale = Vector3(2.664, 2.664, 2.664)
+
+[node name="Rock03" parent="Rocks" instance=ExtResource("2")]
+position = Vector3(-7.8634, -0.17, -0.6)
+rotation_degrees = Vector3(0, 310.54, 0)
+scale = Vector3(1.6306, 1.6306, 1.6306)
+
+[node name="Rock04" parent="Rocks" instance=ExtResource("2")]
+position = Vector3(9.2675, -0.17, -2.9)
+rotation_degrees = Vector3(0, 276.42, 0)
+scale = Vector3(2.4327, 2.4327, 2.4327)
+
+[node name="Rock05" parent="Rocks" instance=ExtResource("2")]
+position = Vector3(-7.3273, -0.17, -5.2)
+rotation_degrees = Vector3(0, 63.351, 0)
+scale = Vector3(1.3847, 1.3847, 1.3847)
+
+[node name="Rock06" parent="Rocks" instance=ExtResource("2")]
+position = Vector3(9.0281, -0.17, -7.5)
+rotation_degrees = Vector3(0, 18.047, 0)
+scale = Vector3(1.3316, 1.3316, 1.3316)
+
+[node name="Rock07" parent="Rocks" instance=ExtResource("2")]
+position = Vector3(-11.475, -0.17, -9.8)
+rotation_degrees = Vector3(0, 128.81, 0)
+scale = Vector3(2.6383, 2.6383, 2.6383)
+
+[node name="Rock08" parent="Rocks" instance=ExtResource("2")]
+position = Vector3(7.119, -0.17, -12.1)
+rotation_degrees = Vector3(0, 27.589, 0)
+scale = Vector3(2.1625, 2.1625, 2.1625)
+
+[node name="Rock09" parent="Rocks" instance=ExtResource("2")]
+position = Vector3(-9.9122, -0.17, -14.4)
+rotation_degrees = Vector3(0, 69.406, 0)
+scale = Vector3(2.709, 2.709, 2.709)
+
+[node name="Rock10" parent="Rocks" instance=ExtResource("2")]
+position = Vector3(8.5963, -0.17, -16.7)
+rotation_degrees = Vector3(0, 56.451, 0)
+scale = Vector3(2.4266, 2.4266, 2.4266)
+
+[node name="Rock11" parent="Rocks" instance=ExtResource("2")]
+position = Vector3(-9.3398, -0.17, -19)
+rotation_degrees = Vector3(0, 206.09, 0)
+scale = Vector3(2.291, 2.291, 2.291)
+
+[node name="Rock12" parent="Rocks" instance=ExtResource("2")]
+position = Vector3(9.0396, -0.17, -21.3)
+rotation_degrees = Vector3(0, 162.81, 0)
+scale = Vector3(2.461, 2.461, 2.461)
+
+[node name="Rock13" parent="Rocks" instance=ExtResource("2")]
+position = Vector3(-10.293, -0.17, -23.6)
+rotation_degrees = Vector3(0, 1.6698, 0)
+scale = Vector3(2.667, 2.667, 2.667)
+
+[node name="Rock14" parent="Rocks" instance=ExtResource("2")]
+position = Vector3(9.4435, -0.17, -25.9)
+rotation_degrees = Vector3(0, 256.83, 0)
+scale = Vector3(2.6918, 2.6918, 2.6918)
+
+[node name="Rock15" parent="Rocks" instance=ExtResource("2")]
+position = Vector3(-10.614, -0.17, -28.2)
+rotation_degrees = Vector3(0, 318.57, 0)
+scale = Vector3(1.3937, 1.3937, 1.3937)
+
+[node name="Rock16" parent="Rocks" instance=ExtResource("2")]
+position = Vector3(8.1538, -0.17, -30.5)
+rotation_degrees = Vector3(0, 141.36, 0)
+scale = Vector3(1.8899, 1.8899, 1.8899)
+
+[node name="Ridge1" type="MeshInstance3D" parent="Ridges"]
+position = Vector3(-20, 6.8, -42)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(12, 7, 11)
+mesh = SubResource("RidgeShape")
+
+[node name="Ridge2" type="MeshInstance3D" parent="Ridges"]
+position = Vector3(19, 7.8, -45)
+rotation_degrees = Vector3(0, 23, 0)
+scale = Vector3(11, 8, 10)
+mesh = SubResource("RidgeShape")
+
+[node name="Ridge3" type="MeshInstance3D" parent="Ridges"]
+position = Vector3(-26, 9.8, -57)
+rotation_degrees = Vector3(0, 46, 0)
+scale = Vector3(14, 10, 12)
+mesh = SubResource("RidgeShape")
+
+[node name="Ridge4" type="MeshInstance3D" parent="Ridges"]
+position = Vector3(25, 9.8, -60)
+rotation_degrees = Vector3(0, 69, 0)
+scale = Vector3(13, 10, 12)
+mesh = SubResource("RidgeShape")
+
+[node name="Print1" type="MeshInstance3D" parent="SnowTracks"]
+position = Vector3(0.63, 0.004, 3.9)
+rotation_degrees = Vector3(0, 8, 0)
+mesh = SubResource("Print")
+cast_shadow = 0
+
+[node name="Print2" type="MeshInstance3D" parent="SnowTracks"]
+position = Vector3(0.89, 0.004, 3.57)
+rotation_degrees = Vector3(0, -9, 0)
+mesh = SubResource("Print")
+cast_shadow = 0
+
+[node name="Print3" type="MeshInstance3D" parent="SnowTracks"]
+position = Vector3(0.63, 0.004, 3.24)
+rotation_degrees = Vector3(0, 8, 0)
+mesh = SubResource("Print")
+cast_shadow = 0
+
+[node name="Print4" type="MeshInstance3D" parent="SnowTracks"]
+position = Vector3(0.89, 0.004, 2.91)
+rotation_degrees = Vector3(0, -9, 0)
+mesh = SubResource("Print")
+cast_shadow = 0
+
+[node name="Print5" type="MeshInstance3D" parent="SnowTracks"]
+position = Vector3(0.63, 0.004, 2.58)
+rotation_degrees = Vector3(0, 8, 0)
+mesh = SubResource("Print")
+cast_shadow = 0
+
+[node name="Print6" type="MeshInstance3D" parent="SnowTracks"]
+position = Vector3(0.89, 0.004, 2.25)
+rotation_degrees = Vector3(0, -9, 0)
+mesh = SubResource("Print")
+cast_shadow = 0
+
+[node name="Print7" type="MeshInstance3D" parent="SnowTracks"]
+position = Vector3(0.63, 0.004, 1.92)
+rotation_degrees = Vector3(0, 8, 0)
+mesh = SubResource("Print")
+cast_shadow = 0
+
+[node name="Print8" type="MeshInstance3D" parent="SnowTracks"]
+position = Vector3(0.89, 0.004, 1.59)
+rotation_degrees = Vector3(0, -9, 0)
+mesh = SubResource("Print")
+cast_shadow = 0
+
+[node name="Print9" type="MeshInstance3D" parent="SnowTracks"]
+position = Vector3(0.63, 0.004, 1.26)
+rotation_degrees = Vector3(0, 8, 0)
+mesh = SubResource("Print")
+cast_shadow = 0
+
+[node name="BoundaryPines" type="Node3D" parent="."]
+
+[node name="BoundaryRocks" type="Node3D" parent="."]
+
+[node name="EdgePine01" parent="BoundaryPines" instance=ExtResource("1")]
+position = Vector3(-6.55, -0.15, 4.8)
+rotation_degrees = Vector3(0, 47, 0)
+scale = Vector3(1.03, 1.03, 1.03)
+
+[node name="EdgePine02" parent="BoundaryPines" instance=ExtResource("1")]
+position = Vector3(-6.35, -0.15, 1.3)
+rotation_degrees = Vector3(0, 94, 0)
+scale = Vector3(1.12, 1.12, 1.12)
+
+[node name="EdgePine03" parent="BoundaryPines" instance=ExtResource("1")]
+position = Vector3(-6.5, -0.15, -2.5)
+rotation_degrees = Vector3(0, 141, 0)
+scale = Vector3(1.1, 1.1, 1.1)
+
+[node name="EdgePine04" parent="BoundaryPines" instance=ExtResource("1")]
+position = Vector3(-5.0, -0.15, -6.65)
+rotation_degrees = Vector3(0, 188, 0)
+scale = Vector3(1.05, 1.05, 1.05)
+
+[node name="EdgePine05" parent="BoundaryPines" instance=ExtResource("1")]
+position = Vector3(-2.8, -0.15, -6.8)
+rotation_degrees = Vector3(0, 235, 0)
+scale = Vector3(0.95, 0.95, 0.95)
+
+[node name="EdgePine06" parent="BoundaryPines" instance=ExtResource("1")]
+position = Vector3(6.55, -0.15, 4.7)
+rotation_degrees = Vector3(0, 282, 0)
+scale = Vector3(1.12, 1.12, 1.12)
+
+[node name="EdgePine07" parent="BoundaryPines" instance=ExtResource("1")]
+position = Vector3(6.4, -0.15, 1.25)
+rotation_degrees = Vector3(0, 329, 0)
+scale = Vector3(1.02, 1.02, 1.02)
+
+[node name="EdgePine08" parent="BoundaryPines" instance=ExtResource("1")]
+position = Vector3(6.45, -0.15, -2.4)
+rotation_degrees = Vector3(0, 16, 0)
+scale = Vector3(1.2, 1.2, 1.2)
+
+[node name="EdgePine09" parent="BoundaryPines" instance=ExtResource("1")]
+position = Vector3(4.95, -0.15, -6.7)
+rotation_degrees = Vector3(0, 63, 0)
+scale = Vector3(1.14, 1.14, 1.14)
+
+[node name="EdgePine10" parent="BoundaryPines" instance=ExtResource("1")]
+position = Vector3(2.8, -0.15, -6.8)
+rotation_degrees = Vector3(0, 110, 0)
+scale = Vector3(0.98, 0.98, 0.98)
+
+[node name="EdgePine11" parent="BoundaryPines" instance=ExtResource("1")]
+position = Vector3(-4.0, -0.15, 12.6)
+rotation_degrees = Vector3(0, 157, 0)
+scale = Vector3(1.1, 1.1, 1.1)
+
+[node name="EdgePine12" parent="BoundaryPines" instance=ExtResource("1")]
+position = Vector3(-0.8, -0.15, 12.7)
+rotation_degrees = Vector3(0, 204, 0)
+scale = Vector3(1.2, 1.2, 1.2)
+
+[node name="EdgePine13" parent="BoundaryPines" instance=ExtResource("1")]
+position = Vector3(2.4, -0.15, 12.7)
+rotation_degrees = Vector3(0, 251, 0)
+scale = Vector3(1.0, 1.0, 1.0)
+
+[node name="EdgeRock01" parent="BoundaryRocks" instance=ExtResource("2")]
+position = Vector3(-6.1, -0.16, 3.05)
+rotation_degrees = Vector3(0, 61, 0)
+scale = Vector3(1.05, 1.05, 1.05)
+
+[node name="EdgeRock02" parent="BoundaryRocks" instance=ExtResource("2")]
+position = Vector3(-6.15, -0.16, -0.8)
+rotation_degrees = Vector3(0, 122, 0)
+scale = Vector3(1.15, 1.15, 1.15)
+
+[node name="EdgeRock03" parent="BoundaryRocks" instance=ExtResource("2")]
+position = Vector3(-4, -0.16, -6.2)
+rotation_degrees = Vector3(0, 183, 0)
+scale = Vector3(1.1, 1.1, 1.1)
+
+[node name="EdgeRock04" parent="BoundaryRocks" instance=ExtResource("2")]
+position = Vector3(6.1, -0.16, 3.05)
+rotation_degrees = Vector3(0, 244, 0)
+scale = Vector3(1.1, 1.1, 1.1)
+
+[node name="EdgeRock05" parent="BoundaryRocks" instance=ExtResource("2")]
+position = Vector3(6.12, -0.16, -0.8)
+rotation_degrees = Vector3(0, 305, 0)
+scale = Vector3(1.0, 1.0, 1.0)
+
+[node name="EdgeRock06" parent="BoundaryRocks" instance=ExtResource("2")]
+position = Vector3(4, -0.16, -6.2)
+rotation_degrees = Vector3(0, 6, 0)
+scale = Vector3(1.0, 1.0, 1.0)
+
+[node name="EdgeRock07" parent="BoundaryRocks" instance=ExtResource("2")]
+position = Vector3(-2.0, -0.16, 12.15)
+rotation_degrees = Vector3(0, 67, 0)
+scale = Vector3(1.05, 1.05, 1.05)
+
+[node name="EdgeRock08" parent="BoundaryRocks" instance=ExtResource("2")]
+position = Vector3(0.8, -0.16, 12.15)
+rotation_degrees = Vector3(0, 128, 0)
+scale = Vector3(0.95, 0.95, 0.95)
+
+[node name="EdgeRock09" parent="BoundaryRocks" instance=ExtResource("2")]
+position = Vector3(4.4, -0.16, 12.15)
+rotation_degrees = Vector3(0, 189, 0)
+scale = Vector3(1.0, 1.0, 1.0)
+
+[node name="ExtensionPine0" parent="BoundaryPines" instance=ExtResource("1")]
+position = Vector3(-6.8, -0.15, 8.0)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(1.15, 1.15, 1.15)
+
+[node name="ExtensionPine1" parent="BoundaryPines" instance=ExtResource("1")]
+position = Vector3(6.8, -0.15, 8.0)
+rotation_degrees = Vector3(0, 67, 0)
+scale = Vector3(1.15, 1.15, 1.15)
+
+[node name="ExtensionPine2" parent="BoundaryPines" instance=ExtResource("1")]
+position = Vector3(-6.9, -0.15, 11.2)
+rotation_degrees = Vector3(0, 134, 0)
+scale = Vector3(1.15, 1.15, 1.15)
+
+[node name="ExtensionPine3" parent="BoundaryPines" instance=ExtResource("1")]
+position = Vector3(6.9, -0.15, 11.2)
+rotation_degrees = Vector3(0, 201, 0)
+scale = Vector3(1.15, 1.15, 1.15)

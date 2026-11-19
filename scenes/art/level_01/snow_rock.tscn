@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3]
+
+[sub_resource type="StandardMaterial3D" id="Stone"]
+albedo_color = Color(0.28, 0.34, 0.4, 1)
+roughness = 1.0
+
+[sub_resource type="StandardMaterial3D" id="Snow"]
+albedo_color = Color(0.7, 0.8, 0.88, 1)
+roughness = 1.0
+
+[sub_resource type="SphereMesh" id="Rock"]
+material = SubResource("Stone")
+radius = 0.5
+height = 1.0
+radial_segments = 7
+rings = 3
+
+[sub_resource type="SphereMesh" id="Cap"]
+material = SubResource("Snow")
+radius = 0.5
+height = 1.0
+radial_segments = 7
+rings = 3
+
+[node name="SnowRock" type="Node3D"]
+
+[node name="Stone" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.28, 0)
+rotation_degrees = Vector3(0, 20, 0)
+scale = Vector3(1.2, 0.68, 0.85)
+mesh = SubResource("Rock")
+
+[node name="Snow" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.51, 0)
+rotation_degrees = Vector3(0, 20, 0)
+scale = Vector3(1.05, 0.24, 0.77)
+mesh = SubResource("Cap")

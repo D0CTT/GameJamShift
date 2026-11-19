@@ -1,0 +1,277 @@
+[gd_scene load_steps=30 format=3]
+
+[ext_resource type="Script" path="res://scripts/components/clearing_interaction.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/art/level_01/snow_pine.tscn" id="2"]
+[ext_resource type="AudioStream" path="res://assets/audio/ambience/branch_snap_01.wav" id="3"]
+[ext_resource type="AudioStream" path="res://assets/audio/forest_sleigh_bell.wav" id="4"]
+
+[ext_resource type="PackedScene" path="res://scenes/components/snowman_scarf.tscn" id="5"]
+
+[sub_resource type="StandardMaterial3D" id="GiftRed"]
+albedo_color = Color(0.47, 0.045, 0.075, 1)
+metallic = 0
+roughness = 0.72
+
+[sub_resource type="StandardMaterial3D" id="GiftInner"]
+albedo_color = Color(0.29, 0.13, 0.075, 1)
+metallic = 0
+roughness = 0.72
+
+[sub_resource type="StandardMaterial3D" id="Ribbon"]
+albedo_color = Color(0.78, 0.51, 0.115, 1)
+metallic = 0.15
+roughness = 0.72
+
+[sub_resource type="StandardMaterial3D" id="BellGold"]
+albedo_color = Color(0.62, 0.37, 0.08, 1)
+metallic = 0.6
+roughness = 0.72
+
+[sub_resource type="StandardMaterial3D" id="BellDark"]
+albedo_color = Color(0.11, 0.075, 0.04, 1)
+metallic = 0.2
+roughness = 0.72
+
+[sub_resource type="StandardMaterial3D" id="Tissue"]
+albedo_color = Color(0.77, 0.68, 0.55, 1)
+metallic = 0
+roughness = 0.72
+
+[sub_resource type="BoxMesh" id="GiftBase"]
+material = SubResource("GiftRed")
+size = Vector3(0.48, 0.045, 0.38)
+
+[sub_resource type="BoxMesh" id="GiftSideX"]
+material = SubResource("GiftRed")
+size = Vector3(0.035, 0.26, 0.38)
+
+[sub_resource type="BoxMesh" id="GiftSideZ"]
+material = SubResource("GiftRed")
+size = Vector3(0.41, 0.26, 0.035)
+
+[sub_resource type="BoxMesh" id="Inside"]
+material = SubResource("GiftInner")
+size = Vector3(0.4, 0.035, 0.3)
+
+[sub_resource type="BoxMesh" id="Lid"]
+material = SubResource("GiftRed")
+size = Vector3(0.51, 0.06, 0.41)
+
+[sub_resource type="BoxMesh" id="RibbonX"]
+material = SubResource("Ribbon")
+size = Vector3(0.51, 0.006, 0.058)
+
+[sub_resource type="BoxMesh" id="RibbonZ"]
+material = SubResource("Ribbon")
+size = Vector3(0.055, 0.006, 0.41)
+
+[sub_resource type="BoxMesh" id="RibbonWallX"]
+material = SubResource("Ribbon")
+size = Vector3(0.005, 0.25, 0.055)
+
+[sub_resource type="BoxMesh" id="RibbonWallZ"]
+material = SubResource("Ribbon")
+size = Vector3(0.055, 0.25, 0.005)
+
+[sub_resource type="BoxMesh" id="Paper"]
+material = SubResource("Tissue")
+size = Vector3(0.14, 0.025, 0.12)
+
+[sub_resource type="CylinderMesh" id="BellShell"]
+material = SubResource("BellGold")
+top_radius = 0.055
+bottom_radius = 0.1
+height = 0.16
+radial_segments = 9
+
+[sub_resource type="CylinderMesh" id="BellRim"]
+material = SubResource("BellGold")
+top_radius = 0.115
+bottom_radius = 0.115
+height = 0.025
+radial_segments = 9
+
+[sub_resource type="CylinderMesh" id="BellHole"]
+material = SubResource("BellDark")
+top_radius = 0.092
+bottom_radius = 0.092
+height = 0.013
+radial_segments = 9
+
+[sub_resource type="CylinderMesh" id="BellHandle"]
+material = SubResource("BellGold")
+top_radius = 0.019
+bottom_radius = 0.025
+height = 0.05
+radial_segments = 9
+
+[sub_resource type="SphereMesh" id="Clapper"]
+material = SubResource("BellGold")
+radius = 0.031
+height = 0.062
+radial_segments = 7
+rings = 4
+
+[sub_resource type="BoxShape3D" id="GiftShape"]
+size = Vector3(0.52, 0.34, 0.42)
+
+[sub_resource type="BoxShape3D" id="BellShape"]
+size = Vector3(0.28, 0.27, 0.28)
+
+[sub_resource type="BoxShape3D" id="TreeShape"]
+size = Vector3(0.31, 1.25, 0.31)
+
+[node name="OptionalInteractions" type="Node3D"]
+
+[node name="SpilledGift" type="StaticBody3D" parent="."]
+position = Vector3(-2.05, 0, 3.6)
+rotation_degrees = Vector3(0, -18, 0)
+collision_mask = 0
+script = ExtResource("1")
+kind = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SpilledGift"]
+position = Vector3(0, 0.17, 0)
+shape = SubResource("GiftShape")
+
+[node name="Sound" type="AudioStreamPlayer3D" parent="SpilledGift"]
+stream = ExtResource("3")
+volume_db = -15
+max_distance = 6.0
+unit_size = 1.0
+
+[node name="Base" type="MeshInstance3D" parent="SpilledGift"]
+position = Vector3(0, 0.023, 0)
+mesh = SubResource("GiftBase")
+
+[node name="Interior" type="MeshInstance3D" parent="SpilledGift"]
+position = Vector3(0, 0.065, 0)
+mesh = SubResource("Inside")
+
+[node name="Left" type="MeshInstance3D" parent="SpilledGift"]
+position = Vector3(-0.222, 0.166, 0)
+mesh = SubResource("GiftSideX")
+
+[node name="LeftRibbon" type="MeshInstance3D" parent="SpilledGift"]
+position = Vector3(-0.242, 0.166, 0)
+mesh = SubResource("RibbonWallX")
+
+[node name="LeftEnd" type="MeshInstance3D" parent="SpilledGift"]
+position = Vector3(0, 0.166, -0.172)
+mesh = SubResource("GiftSideZ")
+
+[node name="LeftEndRibbon" type="MeshInstance3D" parent="SpilledGift"]
+position = Vector3(0, 0.166, -0.192)
+mesh = SubResource("RibbonWallZ")
+
+[node name="Right" type="MeshInstance3D" parent="SpilledGift"]
+position = Vector3(0.222, 0.166, 0)
+mesh = SubResource("GiftSideX")
+
+[node name="RightRibbon" type="MeshInstance3D" parent="SpilledGift"]
+position = Vector3(0.242, 0.166, 0)
+mesh = SubResource("RibbonWallX")
+
+[node name="RightEnd" type="MeshInstance3D" parent="SpilledGift"]
+position = Vector3(0, 0.166, 0.172)
+mesh = SubResource("GiftSideZ")
+
+[node name="RightEndRibbon" type="MeshInstance3D" parent="SpilledGift"]
+position = Vector3(0, 0.166, 0.192)
+mesh = SubResource("RibbonWallZ")
+
+[node name="Tissue0" type="MeshInstance3D" parent="SpilledGift"]
+position = Vector3(-0.12, 0.1, 0.04)
+mesh = SubResource("Paper")
+rotation_degrees = Vector3(0, 23, 0)
+
+[node name="Tissue1" type="MeshInstance3D" parent="SpilledGift"]
+position = Vector3(0.08, 0.107, -0.08)
+mesh = SubResource("Paper")
+rotation_degrees = Vector3(0, -43, 0)
+
+[node name="Tissue2" type="MeshInstance3D" parent="SpilledGift"]
+position = Vector3(0.06, 0.114, 0.07)
+mesh = SubResource("Paper")
+rotation_degrees = Vector3(0, 15, 0)
+
+[node name="Scarf" parent="SpilledGift" instance=ExtResource("5")]
+position = Vector3(0, 0.16, 0.015)
+
+[node name="Pivot" type="Node3D" parent="SpilledGift"]
+position = Vector3(0, 0.305, -0.19)
+
+[node name="Lid" type="MeshInstance3D" parent="SpilledGift/Pivot"]
+position = Vector3(0, 0, 0.19)
+mesh = SubResource("Lid")
+
+[node name="RibbonX" type="MeshInstance3D" parent="SpilledGift/Pivot"]
+position = Vector3(0, 0.034, 0.19)
+mesh = SubResource("RibbonX")
+
+[node name="RibbonZ" type="MeshInstance3D" parent="SpilledGift/Pivot"]
+position = Vector3(0, 0.034, 0.19)
+mesh = SubResource("RibbonZ")
+
+[node name="LooseBell" type="StaticBody3D" parent="."]
+position = Vector3(2.25, 0, 3)
+rotation_degrees = Vector3(0, 22, 0)
+collision_mask = 0
+script = ExtResource("1")
+kind = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LooseBell"]
+position = Vector3(0, 0.135, 0)
+shape = SubResource("BellShape")
+
+[node name="Sound" type="AudioStreamPlayer3D" parent="LooseBell"]
+stream = ExtResource("4")
+volume_db = -12
+max_distance = 6.0
+unit_size = 1.0
+
+[node name="Pivot" type="Node3D" parent="LooseBell"]
+position = Vector3(0, 0.13, 0)
+
+[node name="Body" type="MeshInstance3D" parent="LooseBell/Pivot"]
+position = Vector3(0, 0.015, 0)
+mesh = SubResource("BellShell")
+
+[node name="Rim" type="MeshInstance3D" parent="LooseBell/Pivot"]
+position = Vector3(0, -0.066, 0)
+mesh = SubResource("BellRim")
+
+[node name="DarkOpening" type="MeshInstance3D" parent="LooseBell/Pivot"]
+position = Vector3(0, -0.08, 0)
+mesh = SubResource("BellHole")
+
+[node name="Clapper" type="MeshInstance3D" parent="LooseBell/Pivot"]
+position = Vector3(0, -0.094, 0)
+mesh = SubResource("Clapper")
+
+[node name="Handle" type="MeshInstance3D" parent="LooseBell/Pivot"]
+position = Vector3(0, 0.12, 0)
+mesh = SubResource("BellHandle")
+
+[node name="SnowySapling" type="StaticBody3D" parent="."]
+position = Vector3(4.35, 0, 1.9)
+rotation_degrees = Vector3(0, -9, 0)
+collision_mask = 0
+script = ExtResource("1")
+kind = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SnowySapling"]
+position = Vector3(0, 0.625, 0)
+shape = SubResource("TreeShape")
+
+[node name="Sound" type="AudioStreamPlayer3D" parent="SnowySapling"]
+stream = ExtResource("3")
+volume_db = -15
+max_distance = 6.0
+unit_size = 1.0
+
+[node name="Pivot" type="Node3D" parent="SnowySapling"]
+
+
+[node name="Pine" parent="SnowySapling/Pivot" instance=ExtResource("2")]
+scale = Vector3(0.52, 0.52, 0.52)

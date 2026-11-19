@@ -2,6 +2,10 @@ extends CharacterBody3D
 
 signal held_item_changed(item: Node3D)
 
+const FIST_ATTACK = preload("res://scripts/player/fist_attack.gd")
+var fist_attack: Node3D
+const CARRY_HANDS = preload("res://scripts/player/carry_hands.gd")
+
 @export var speed: float = 3.0
 @export var sprint_speed: float = 5.0
 @export var jump_velocity: float = 3.5
@@ -17,11 +21,21 @@ var held_item: Node3D = null
 var pickup_parent: Node3D = null
 var pickup_transform: Transform3D = Transform3D.IDENTITY
 var drop_requested: bool = false
+# Assigned only in the level 1 clearing; other levels and combat are unchanged.
+var exploration_snowballs: Node3D
 
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	interaction_ray.add_exception(self)
+	fist_attack = FIST_ATTACK.new()
+	fist_attack.name = "FistAttack"
+	fist_attack.set("player", self)
+	$Head/Camera3D.add_child(fist_attack)
+	var carry_view := CARRY_HANDS.new()
+	carry_view.name = "CarryHands"
+	carry_view.player = self
+	hold_point.add_child(carry_view)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -34,6 +48,13 @@ func _unhandled_input(event: InputEvent) -> void:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
 				Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+				return
+			if is_instance_valid(exploration_snowballs) and bool(exploration_snowballs.call("try_throw")):
+				get_viewport().set_input_as_handled()
+				return
+			if GameState.phase == GameState.Phase.DESCENT:
+				fist_attack.call("request_punch")
+				get_viewport().set_input_as_handled()
 				return
 	if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
 		return
@@ -86,6 +107,8 @@ func try_interact() -> void:
 	elif target.has_method("interact"):
 		# Compatibilidad con el contrato anterior sin argumentos.
 		target.call("interact")
+	elif is_instance_valid(exploration_snowballs):
+		exploration_snowballs.call("try_form_from_ground", target)
 
 
 func try_pickup(item: Node3D) -> bool:

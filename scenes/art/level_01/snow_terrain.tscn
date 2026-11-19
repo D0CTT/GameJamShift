@@ -1,0 +1,160 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="ArrayMesh" path="res://assets/models/level_01/snow_exterior.obj" id="1"]
+[ext_resource type="ArrayMesh" path="res://assets/models/level_01/snow_drift_1.obj" id="2"]
+[ext_resource type="ArrayMesh" path="res://assets/models/level_01/snow_drift_2.obj" id="3"]
+[ext_resource type="ArrayMesh" path="res://assets/models/level_01/snow_drift_3.obj" id="4"]
+
+[sub_resource type="StandardMaterial3D" id="Snow"]
+albedo_color = Color(0.63, 0.73, 0.82, 1)
+roughness = 1.0
+
+[sub_resource type="ConvexPolygonShape3D" id="DriftShape1"]
+points = PackedVector3Array(1.17183, -0.08000, 0.00000, 0.99877, -0.08000, 0.41189, 0.53408, -0.08000, 0.66076, 0.00000, -0.08000, 0.77623, -0.58592, -0.08000, 0.72488, -0.99877, -0.08000, 0.41189, -1.06817, -0.08000, 0.00000, -0.94112, -0.08000, -0.38811, -0.58592, -0.08000, -0.72488, -0.00000, -0.08000, -0.82377, 0.53408, -0.08000, -0.66076, 0.94112, -0.08000, -0.38811, 0.82028, 0.11960, 0.00000, 0.69914, 0.11960, 0.28832, 0.37386, 0.11960, 0.46253, 0.00000, 0.11960, 0.54336, -0.41014, 0.11960, 0.50742, -0.69914, 0.11960, 0.28832, -0.74772, 0.11960, 0.00000, -0.65879, 0.11960, -0.27168, -0.41014, 0.11960, -0.50742, -0.00000, 0.11960, -0.57664, 0.37386, 0.11960, -0.46253, 0.65879, 0.11960, -0.27168, 0.42186, 0.20240, 0.00000, 0.35956, 0.20240, 0.14828, 0.19227, 0.20240, 0.23787, 0.00000, 0.20240, 0.27944, -0.21093, 0.20240, 0.26096, -0.35956, 0.20240, 0.14828, -0.38454, 0.20240, 0.00000, -0.33880, 0.20240, -0.13972, -0.21093, 0.20240, -0.26096, -0.00000, 0.20240, -0.29656, 0.19227, 0.20240, -0.23787, 0.33880, 0.20240, -0.13972, 0.00000, 0.23000, 0.00000)
+
+[sub_resource type="ConvexPolygonShape3D" id="DriftShape2"]
+points = PackedVector3Array(0.86101, -0.08000, 0.00000, 0.69389, -0.08000, 0.63512, 0.38950, -0.08000, 1.06953, 0.00000, -0.08000, 1.32975, -0.43050, -0.08000, 1.18214, -0.69389, -0.08000, 0.63512, -0.77899, -0.08000, 0.00000, -0.72639, -0.08000, -0.66488, -0.43050, -0.08000, -1.18214, -0.00000, -0.08000, -1.27025, 0.38950, -0.08000, -1.06953, 0.72639, -0.08000, -0.66488, 0.60271, 0.15600, 0.00000, 0.48572, 0.15600, 0.44459, 0.27265, 0.15600, 0.74867, 0.00000, 0.15600, 0.93083, -0.30135, 0.15600, 0.82750, -0.48572, 0.15600, 0.44459, -0.54529, 0.15600, 0.00000, -0.50848, 0.15600, -0.46541, -0.30135, 0.15600, -0.82750, -0.00000, 0.15600, -0.88917, 0.27265, 0.15600, -0.74867, 0.50848, 0.15600, -0.46541, 0.30996, 0.26400, 0.00000, 0.24980, 0.26400, 0.22864, 0.14022, 0.26400, 0.38503, 0.00000, 0.26400, 0.47871, -0.15498, 0.26400, 0.42557, -0.24980, 0.26400, 0.22864, -0.28044, 0.26400, 0.00000, -0.26150, 0.26400, -0.23936, -0.15498, 0.26400, -0.42557, -0.00000, 0.26400, -0.45729, 0.14022, 0.26400, -0.38503, 0.26150, 0.26400, -0.23936, 0.00000, 0.30000, 0.00000)
+
+[sub_resource type="ConvexPolygonShape3D" id="DriftShape3"]
+points = PackedVector3Array(1.31009, -0.08000, 0.00000, 1.06453, -0.08000, 0.42550, 0.64495, -0.08000, 0.77337, 0.00000, -0.08000, 0.94900, -0.65505, -0.08000, 0.78547, -1.06453, -0.08000, 0.42550, -1.28991, -0.08000, 0.00000, -1.18713, -0.08000, -0.47450, -0.65505, -0.08000, -0.78547, -0.00000, -0.08000, -0.85100, 0.64495, -0.08000, -0.77337, 1.18713, -0.08000, -0.47450, 0.91706, 0.18200, 0.00000, 0.74517, 0.18200, 0.29785, 0.45147, 0.18200, 0.54136, 0.00000, 0.18200, 0.66430, -0.45853, 0.18200, 0.54983, -0.74517, 0.18200, 0.29785, -0.90294, 0.18200, 0.00000, -0.83099, 0.18200, -0.33215, -0.45853, 0.18200, -0.54983, -0.00000, 0.18200, -0.59570, 0.45147, 0.18200, -0.54136, 0.83099, 0.18200, -0.33215, 0.47163, 0.30800, 0.00000, 0.38323, 0.30800, 0.15318, 0.23218, 0.30800, 0.27841, 0.00000, 0.30800, 0.34164, -0.23582, 0.30800, 0.28277, -0.38323, 0.30800, 0.15318, -0.46437, 0.30800, 0.00000, -0.42737, 0.30800, -0.17082, -0.23582, 0.30800, -0.28277, -0.00000, 0.30800, -0.30636, 0.23218, 0.30800, -0.27841, 0.42737, 0.30800, -0.17082, 0.00000, 0.35000, 0.00000)
+
+[node name="SnowTerrain" type="Node3D"]
+
+[node name="ExteriorTerrain" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1")
+material_override = SubResource("Snow")
+
+[node name="SnowDrifts" type="Node3D" parent="."]
+
+[node name="Drift01" type="StaticBody3D" parent="SnowDrifts"]
+position = Vector3(-5.2, 0, 4.7)
+rotation_degrees = Vector3(0, 35, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SnowDrifts/Drift01"]
+mesh = ExtResource("2")
+material_override = SubResource("Snow")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SnowDrifts/Drift01"]
+shape = SubResource("DriftShape1")
+
+[node name="Drift02" type="StaticBody3D" parent="SnowDrifts"]
+position = Vector3(5.05, 0, 4.9)
+rotation_degrees = Vector3(0, -18, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SnowDrifts/Drift02"]
+mesh = ExtResource("3")
+material_override = SubResource("Snow")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SnowDrifts/Drift02"]
+shape = SubResource("DriftShape2")
+
+[node name="Drift03" type="StaticBody3D" parent="SnowDrifts"]
+position = Vector3(-5.25, 0, -4.25)
+rotation_degrees = Vector3(0, 15, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SnowDrifts/Drift03"]
+mesh = ExtResource("4")
+material_override = SubResource("Snow")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SnowDrifts/Drift03"]
+shape = SubResource("DriftShape3")
+
+[node name="Drift04" type="StaticBody3D" parent="SnowDrifts"]
+position = Vector3(5.05, 0, -4.35)
+rotation_degrees = Vector3(0, 52, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SnowDrifts/Drift04"]
+mesh = ExtResource("2")
+material_override = SubResource("Snow")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SnowDrifts/Drift04"]
+shape = SubResource("DriftShape1")
+
+[node name="Drift05" type="StaticBody3D" parent="SnowDrifts"]
+position = Vector3(-4.85, 0, -9.4)
+rotation_degrees = Vector3(0, 21, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SnowDrifts/Drift05"]
+mesh = ExtResource("3")
+material_override = SubResource("Snow")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SnowDrifts/Drift05"]
+shape = SubResource("DriftShape2")
+
+[node name="Drift06" type="StaticBody3D" parent="SnowDrifts"]
+position = Vector3(4.8, 0, -11.4)
+rotation_degrees = Vector3(0, -25, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SnowDrifts/Drift06"]
+mesh = ExtResource("4")
+material_override = SubResource("Snow")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SnowDrifts/Drift06"]
+shape = SubResource("DriftShape3")
+
+[node name="Drift07" type="StaticBody3D" parent="SnowDrifts"]
+position = Vector3(-4.8, 0, -15.6)
+rotation_degrees = Vector3(0, 47, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SnowDrifts/Drift07"]
+mesh = ExtResource("2")
+material_override = SubResource("Snow")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SnowDrifts/Drift07"]
+shape = SubResource("DriftShape1")
+
+[node name="Drift08" type="StaticBody3D" parent="SnowDrifts"]
+position = Vector3(4.75, 0, -18.7)
+rotation_degrees = Vector3(0, 20, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SnowDrifts/Drift08"]
+mesh = ExtResource("3")
+material_override = SubResource("Snow")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SnowDrifts/Drift08"]
+shape = SubResource("DriftShape2")
+
+[node name="Drift09" type="StaticBody3D" parent="SnowDrifts"]
+position = Vector3(-4.75, 0, -22.4)
+rotation_degrees = Vector3(0, 30, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SnowDrifts/Drift09"]
+mesh = ExtResource("4")
+material_override = SubResource("Snow")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SnowDrifts/Drift09"]
+shape = SubResource("DriftShape3")
+
+[node name="Drift10" type="StaticBody3D" parent="SnowDrifts"]
+position = Vector3(4.8, 0, -24.7)
+rotation_degrees = Vector3(0, 10, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SnowDrifts/Drift10"]
+mesh = ExtResource("2")
+material_override = SubResource("Snow")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SnowDrifts/Drift10"]
+shape = SubResource("DriftShape1")
+
+[node name="Drift11" type="StaticBody3D" parent="SnowDrifts"]
+position = Vector3(-4.75, 0, -29.1)
+rotation_degrees = Vector3(0, -26, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SnowDrifts/Drift11"]
+mesh = ExtResource("3")
+material_override = SubResource("Snow")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SnowDrifts/Drift11"]
+shape = SubResource("DriftShape2")
+
+[node name="Drift12" type="StaticBody3D" parent="SnowDrifts"]
+position = Vector3(4.8, 0, -30.6)
+rotation_degrees = Vector3(0, 10, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SnowDrifts/Drift12"]
+mesh = ExtResource("4")
+material_override = SubResource("Snow")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SnowDrifts/Drift12"]
+shape = SubResource("DriftShape3")
+

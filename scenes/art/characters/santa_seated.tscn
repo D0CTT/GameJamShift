@@ -1,0 +1,586 @@
+[gd_scene load_steps=51 format=3]
+
+[sub_resource type="StandardMaterial3D" id="Coat"]
+albedo_color = Color(0.53, 0.034, 0.048, 1)
+roughness = 0.8
+metallic = 0
+
+[sub_resource type="StandardMaterial3D" id="Shade"]
+albedo_color = Color(0.34, 0.022, 0.035, 1)
+roughness = 0.8
+metallic = 0
+
+[sub_resource type="StandardMaterial3D" id="Fur"]
+albedo_color = Color(0.88, 0.84, 0.75, 1)
+roughness = 0.8
+metallic = 0
+
+[sub_resource type="StandardMaterial3D" id="Skin"]
+albedo_color = Color(0.76, 0.52, 0.36, 1)
+roughness = 0.8
+metallic = 0
+
+[sub_resource type="StandardMaterial3D" id="Leather"]
+albedo_color = Color(0.046, 0.036, 0.032, 1)
+roughness = 0.8
+metallic = 0
+
+[sub_resource type="StandardMaterial3D" id="Gold"]
+albedo_color = Color(0.76, 0.48, 0.11, 1)
+roughness = 0.8
+metallic = 0
+
+[sub_resource type="StandardMaterial3D" id="Eyes"]
+albedo_color = Color(0.075, 0.04, 0.032, 1)
+roughness = 0.8
+metallic = 0
+
+[sub_resource type="SphereMesh" id="M1"]
+material = SubResource("Coat")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M2"]
+material = SubResource("Coat")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M3"]
+material = SubResource("Leather")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="BoxMesh" id="M4"]
+material = SubResource("Gold")
+size = Vector3(0.17000, 0.12000, 0.03500)
+
+[sub_resource type="BoxMesh" id="M5"]
+material = SubResource("Leather")
+size = Vector3(0.09500, 0.06400, 0.02200)
+
+[sub_resource type="BoxMesh" id="M6"]
+material = SubResource("Fur")
+size = Vector3(0.07500, 0.33000, 0.05500)
+
+[sub_resource type="SphereMesh" id="M7"]
+material = SubResource("Shade")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M8"]
+material = SubResource("Coat")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M9"]
+material = SubResource("Shade")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M10"]
+material = SubResource("Leather")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M11"]
+material = SubResource("Fur")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M12"]
+material = SubResource("Coat")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M13"]
+material = SubResource("Shade")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M14"]
+material = SubResource("Coat")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M15"]
+material = SubResource("Fur")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M16"]
+material = SubResource("Leather")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M17"]
+material = SubResource("Shade")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M18"]
+material = SubResource("Coat")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M19"]
+material = SubResource("Shade")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M20"]
+material = SubResource("Leather")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M21"]
+material = SubResource("Fur")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M22"]
+material = SubResource("Coat")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M23"]
+material = SubResource("Shade")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M24"]
+material = SubResource("Coat")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M25"]
+material = SubResource("Fur")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M26"]
+material = SubResource("Leather")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M27"]
+material = SubResource("Fur")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M28"]
+material = SubResource("Skin")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M29"]
+material = SubResource("Fur")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="CylinderMesh" id="M30"]
+material = SubResource("Fur")
+top_radius = 0.0
+bottom_radius = 0.5
+height = 1.0
+radial_segments = 9
+
+[sub_resource type="SphereMesh" id="M31"]
+material = SubResource("Skin")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="BoxMesh" id="M32"]
+material = SubResource("Eyes")
+size = Vector3(0.06800, 0.01200, 0.01400)
+
+[sub_resource type="SphereMesh" id="M33"]
+material = SubResource("Fur")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M34"]
+material = SubResource("Fur")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M35"]
+material = SubResource("Skin")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="BoxMesh" id="M36"]
+material = SubResource("Eyes")
+size = Vector3(0.06800, 0.01200, 0.01400)
+
+[sub_resource type="SphereMesh" id="M37"]
+material = SubResource("Fur")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M38"]
+material = SubResource("Fur")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M39"]
+material = SubResource("Skin")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M40"]
+material = SubResource("Fur")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="CylinderMesh" id="M41"]
+material = SubResource("Coat")
+top_radius = 0.0
+bottom_radius = 0.5
+height = 1.0
+radial_segments = 9
+
+[sub_resource type="SphereMesh" id="M42"]
+material = SubResource("Coat")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="M43"]
+material = SubResource("Fur")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[node name="SeatedSanta" type="Node3D"]
+
+[node name="Pelvis" type="MeshInstance3D" parent="."]
+position = Vector3(0.00000, 0.09000, 0.03000)
+rotation_degrees = Vector3(0.00000, 0.00000, 0.00000)
+scale = Vector3(0.80000, 0.28000, 0.61000)
+mesh = SubResource("M1")
+
+[node name="Torso" type="MeshInstance3D" parent="."]
+position = Vector3(0.00000, 0.43000, -0.02500)
+rotation_degrees = Vector3(9.00000, 0.00000, -6.00000)
+scale = Vector3(0.89000, 0.76000, 0.68000)
+mesh = SubResource("M2")
+
+[node name="Belt" type="MeshInstance3D" parent="."]
+position = Vector3(0.00000, 0.23000, 0.01500)
+rotation_degrees = Vector3(0.00000, 0.00000, 0.00000)
+scale = Vector3(0.85000, 0.13000, 0.66000)
+mesh = SubResource("M3")
+
+[node name="Buckle" type="MeshInstance3D" parent="."]
+position = Vector3(0.00000, 0.23000, 0.34800)
+rotation_degrees = Vector3(0.00000, 0.00000, 0.00000)
+scale = Vector3(1.00000, 1.00000, 1.00000)
+mesh = SubResource("M4")
+
+[node name="BuckleCenter" type="MeshInstance3D" parent="."]
+position = Vector3(0.00000, 0.23000, 0.37000)
+rotation_degrees = Vector3(0.00000, 0.00000, 0.00000)
+scale = Vector3(1.00000, 1.00000, 1.00000)
+mesh = SubResource("M5")
+
+[node name="CoatTrim" type="MeshInstance3D" parent="."]
+position = Vector3(0.00000, 0.47000, 0.30300)
+rotation_degrees = Vector3(7.00000, 0.00000, -4.00000)
+scale = Vector3(1.00000, 1.00000, 1.00000)
+mesh = SubResource("M6")
+
+[node name="Thigh0" type="MeshInstance3D" parent="."]
+position = Vector3(-0.23000, 0.00500, 0.28000)
+rotation_degrees = Vector3(5.00000, -8.00000, 0.00000)
+scale = Vector3(0.33000, 0.28000, 0.57000)
+mesh = SubResource("M7")
+
+[node name="Knee0" type="MeshInstance3D" parent="."]
+position = Vector3(-0.23000, -0.04500, 0.49000)
+rotation_degrees = Vector3(0.00000, 0.00000, 0.00000)
+scale = Vector3(0.29000, 0.27000, 0.29000)
+mesh = SubResource("M8")
+
+[node name="Calf0" type="MeshInstance3D" parent="."]
+position = Vector3(-0.23000, -0.18000, 0.50000)
+rotation_degrees = Vector3(-10.00000, 0.00000, 0.00000)
+scale = Vector3(0.26000, 0.31000, 0.27000)
+mesh = SubResource("M9")
+
+[node name="Boot0" type="MeshInstance3D" parent="."]
+position = Vector3(-0.23000, -0.21000, 0.62000)
+rotation_degrees = Vector3(0.00000, 0.00000, 0.00000)
+scale = Vector3(0.30000, 0.18000, 0.39000)
+mesh = SubResource("M10")
+
+[node name="BootCuff0" type="MeshInstance3D" parent="."]
+position = Vector3(-0.23000, -0.13000, 0.51000)
+rotation_degrees = Vector3(0.00000, 0.00000, 0.00000)
+scale = Vector3(0.28000, 0.07000, 0.28000)
+mesh = SubResource("M11")
+
+[node name="UpperArm0" type="MeshInstance3D" parent="."]
+position = Vector3(-0.43500, 0.44000, 0.03500)
+rotation_degrees = Vector3(8.00000, 0.00000, -12.00000)
+scale = Vector3(0.27000, 0.43000, 0.27000)
+mesh = SubResource("M12")
+
+[node name="Elbow0" type="MeshInstance3D" parent="."]
+position = Vector3(-0.46000, 0.23000, 0.12000)
+rotation_degrees = Vector3(0.00000, 0.00000, 0.00000)
+scale = Vector3(0.25000, 0.26000, 0.25000)
+mesh = SubResource("M13")
+
+[node name="Forearm0" type="MeshInstance3D" parent="."]
+position = Vector3(-0.35000, 0.15000, 0.27000)
+rotation_degrees = Vector3(0.00000, 27.00000, 0.00000)
+scale = Vector3(0.24000, 0.24000, 0.41000)
+mesh = SubResource("M14")
+
+[node name="Cuff0" type="MeshInstance3D" parent="."]
+position = Vector3(-0.26000, 0.12000, 0.42000)
+rotation_degrees = Vector3(0.00000, 0.00000, 0.00000)
+scale = Vector3(0.23000, 0.15000, 0.13000)
+mesh = SubResource("M15")
+
+[node name="Glove0" type="MeshInstance3D" parent="."]
+position = Vector3(-0.21000, 0.10000, 0.49000)
+rotation_degrees = Vector3(0.00000, 20.00000, 0.00000)
+scale = Vector3(0.24000, 0.15000, 0.23000)
+mesh = SubResource("M16")
+
+[node name="Thigh1" type="MeshInstance3D" parent="."]
+position = Vector3(0.23000, 0.00500, 0.28000)
+rotation_degrees = Vector3(5.00000, 8.00000, 0.00000)
+scale = Vector3(0.33000, 0.28000, 0.57000)
+mesh = SubResource("M17")
+
+[node name="Knee1" type="MeshInstance3D" parent="."]
+position = Vector3(0.23000, -0.04500, 0.49000)
+rotation_degrees = Vector3(0.00000, 0.00000, 0.00000)
+scale = Vector3(0.29000, 0.27000, 0.29000)
+mesh = SubResource("M18")
+
+[node name="Calf1" type="MeshInstance3D" parent="."]
+position = Vector3(0.23000, -0.18000, 0.50000)
+rotation_degrees = Vector3(-10.00000, 0.00000, 0.00000)
+scale = Vector3(0.26000, 0.31000, 0.27000)
+mesh = SubResource("M19")
+
+[node name="Boot1" type="MeshInstance3D" parent="."]
+position = Vector3(0.23000, -0.21000, 0.62000)
+rotation_degrees = Vector3(0.00000, 0.00000, 0.00000)
+scale = Vector3(0.30000, 0.18000, 0.39000)
+mesh = SubResource("M20")
+
+[node name="BootCuff1" type="MeshInstance3D" parent="."]
+position = Vector3(0.23000, -0.13000, 0.51000)
+rotation_degrees = Vector3(0.00000, 0.00000, 0.00000)
+scale = Vector3(0.28000, 0.07000, 0.28000)
+mesh = SubResource("M21")
+
+[node name="UpperArm1" type="MeshInstance3D" parent="."]
+position = Vector3(0.43500, 0.44000, 0.03500)
+rotation_degrees = Vector3(8.00000, 0.00000, 12.00000)
+scale = Vector3(0.27000, 0.43000, 0.27000)
+mesh = SubResource("M22")
+
+[node name="Elbow1" type="MeshInstance3D" parent="."]
+position = Vector3(0.46000, 0.23000, 0.12000)
+rotation_degrees = Vector3(0.00000, 0.00000, 0.00000)
+scale = Vector3(0.25000, 0.26000, 0.25000)
+mesh = SubResource("M23")
+
+[node name="Forearm1" type="MeshInstance3D" parent="."]
+position = Vector3(0.35000, 0.15000, 0.27000)
+rotation_degrees = Vector3(0.00000, -27.00000, 0.00000)
+scale = Vector3(0.24000, 0.24000, 0.41000)
+mesh = SubResource("M24")
+
+[node name="Cuff1" type="MeshInstance3D" parent="."]
+position = Vector3(0.26000, 0.12000, 0.42000)
+rotation_degrees = Vector3(0.00000, 0.00000, 0.00000)
+scale = Vector3(0.23000, 0.15000, 0.13000)
+mesh = SubResource("M25")
+
+[node name="Glove1" type="MeshInstance3D" parent="."]
+position = Vector3(0.21000, 0.10000, 0.49000)
+rotation_degrees = Vector3(0.00000, -20.00000, 0.00000)
+scale = Vector3(0.24000, 0.15000, 0.23000)
+mesh = SubResource("M26")
+
+[node name="SlumpedHead" type="Node3D" parent="."]
+position = Vector3(0.03500, 0.87000, 0.08000)
+rotation_degrees = Vector3(24.00000, 18.00000, -13.00000)
+
+[node name="Hair" type="MeshInstance3D" parent="SlumpedHead"]
+position = Vector3(0.00000, 0.09000, -0.06500)
+rotation_degrees = Vector3(0.00000, 0.00000, 0.00000)
+scale = Vector3(0.47000, 0.43000, 0.37000)
+mesh = SubResource("M27")
+
+[node name="Face" type="MeshInstance3D" parent="SlumpedHead"]
+position = Vector3(0.00000, 0.04500, 0.04500)
+rotation_degrees = Vector3(0.00000, 0.00000, 0.00000)
+scale = Vector3(0.43000, 0.43000, 0.40000)
+mesh = SubResource("M28")
+
+[node name="Beard" type="MeshInstance3D" parent="SlumpedHead"]
+position = Vector3(0.00000, -0.12500, 0.14400)
+rotation_degrees = Vector3(7.00000, 0.00000, 0.00000)
+scale = Vector3(0.43000, 0.40000, 0.27000)
+mesh = SubResource("M29")
+
+[node name="BeardTip" type="MeshInstance3D" parent="SlumpedHead"]
+position = Vector3(0.00000, -0.29000, 0.11500)
+rotation_degrees = Vector3(0.00000, 0.00000, 180.00000)
+scale = Vector3(0.28000, 0.20000, 0.23000)
+mesh = SubResource("M30")
+
+[node name="Ear0" type="MeshInstance3D" parent="SlumpedHead"]
+position = Vector3(-0.21500, 0.03500, 0.01600)
+rotation_degrees = Vector3(0.00000, 0.00000, 0.00000)
+scale = Vector3(0.07500, 0.13000, 0.09000)
+mesh = SubResource("M31")
+
+[node name="ClosedEye0" type="MeshInstance3D" parent="SlumpedHead"]
+position = Vector3(-0.09000, 0.07400, 0.23300)
+rotation_degrees = Vector3(0.00000, -10.00000, -4.00000)
+scale = Vector3(1.00000, 1.00000, 1.00000)
+mesh = SubResource("M32")
+
+[node name="Brow0" type="MeshInstance3D" parent="SlumpedHead"]
+position = Vector3(-0.09500, 0.11500, 0.22500)
+rotation_degrees = Vector3(0.00000, 0.00000, 0.00000)
+scale = Vector3(0.10000, 0.03500, 0.03800)
+mesh = SubResource("M33")
+
+[node name="Moustache0" type="MeshInstance3D" parent="SlumpedHead"]
+position = Vector3(-0.06700, -0.04900, 0.23900)
+rotation_degrees = Vector3(0.00000, 0.00000, -13.00000)
+scale = Vector3(0.14500, 0.07000, 0.07000)
+mesh = SubResource("M34")
+
+[node name="Ear1" type="MeshInstance3D" parent="SlumpedHead"]
+position = Vector3(0.21500, 0.03500, 0.01600)
+rotation_degrees = Vector3(0.00000, 0.00000, 0.00000)
+scale = Vector3(0.07500, 0.13000, 0.09000)
+mesh = SubResource("M35")
+
+[node name="ClosedEye1" type="MeshInstance3D" parent="SlumpedHead"]
+position = Vector3(0.09000, 0.07400, 0.23300)
+rotation_degrees = Vector3(0.00000, 10.00000, 4.00000)
+scale = Vector3(1.00000, 1.00000, 1.00000)
+mesh = SubResource("M36")
+
+[node name="Brow1" type="MeshInstance3D" parent="SlumpedHead"]
+position = Vector3(0.09500, 0.11500, 0.22500)
+rotation_degrees = Vector3(0.00000, 0.00000, 0.00000)
+scale = Vector3(0.10000, 0.03500, 0.03800)
+mesh = SubResource("M37")
+
+[node name="Moustache1" type="MeshInstance3D" parent="SlumpedHead"]
+position = Vector3(0.06700, -0.04900, 0.23900)
+rotation_degrees = Vector3(0.00000, 0.00000, 13.00000)
+scale = Vector3(0.14500, 0.07000, 0.07000)
+mesh = SubResource("M38")
+
+[node name="Nose" type="MeshInstance3D" parent="SlumpedHead"]
+position = Vector3(0.00000, 0.01400, 0.25500)
+rotation_degrees = Vector3(0.00000, 0.00000, 0.00000)
+scale = Vector3(0.12500, 0.11700, 0.12600)
+mesh = SubResource("M39")
+
+[node name="HatBand" type="MeshInstance3D" parent="SlumpedHead"]
+position = Vector3(0.00000, 0.22400, 0.00000)
+rotation_degrees = Vector3(0.00000, 0.00000, 0.00000)
+scale = Vector3(0.49000, 0.10000, 0.45000)
+mesh = SubResource("M40")
+
+[node name="Hat" type="MeshInstance3D" parent="SlumpedHead"]
+position = Vector3(0.05000, 0.36000, -0.01500)
+rotation_degrees = Vector3(0.00000, 0.00000, -23.00000)
+scale = Vector3(0.45000, 0.30000, 0.42000)
+mesh = SubResource("M41")
+
+[node name="HatTail" type="MeshInstance3D" parent="SlumpedHead"]
+position = Vector3(0.19000, 0.43000, -0.02500)
+rotation_degrees = Vector3(0.00000, 0.00000, -45.00000)
+scale = Vector3(0.17000, 0.19000, 0.17000)
+mesh = SubResource("M42")
+
+[node name="Pom" type="MeshInstance3D" parent="SlumpedHead"]
+position = Vector3(0.25500, 0.37000, -0.02000)
+rotation_degrees = Vector3(0.00000, 0.00000, 0.00000)
+scale = Vector3(0.13000, 0.13000, 0.13000)
+mesh = SubResource("M43")

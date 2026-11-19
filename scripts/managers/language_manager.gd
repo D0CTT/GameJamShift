@@ -4,6 +4,7 @@ signal language_changed(locale: String)
 
 const SETTINGS_PATH := "user://makeshift_language.cfg"
 const TEXT_ES := {
+	"B - Simulate descent (test only)": "B - Simular descenso (solo pruebas)",
 	"Language": "Idioma",
 	"F2 - Language": "F2 - Idioma",
 	"Back to game": "Volver al juego",

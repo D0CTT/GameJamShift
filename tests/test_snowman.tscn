@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3]
+[gd_scene load_steps=84 format=3]
 
 [ext_resource type="PackedScene" path="res://scenes/player/player.tscn" id="1"]
 [ext_resource type="Script" path="res://scripts/components/pickup.gd" id="2"]
@@ -10,6 +10,19 @@
 
 [ext_resource type="Script" path="res://scripts/components/snowman_power.gd" id="7"]
 [ext_resource type="PackedScene" path="res://scenes/components/powered_lights.tscn" id="8"]
+
+[ext_resource type="PackedScene" path="res://scenes/art/level_01/sleigh_visual.tscn" id="9"]
+[ext_resource type="PackedScene" path="res://scenes/art/characters/santa_seated.tscn" id="10"]
+[ext_resource type="Script" path="res://scripts/components/santa_lights_pickup.gd" id="11"]
+[ext_resource type="PackedScene" path="res://scenes/art/level_01/blood_on_snow.tscn" id="12"]
+
+[ext_resource type="ArrayMesh" path="res://assets/models/level_01/snowball_base.obj" id="13"]
+[ext_resource type="ArrayMesh" path="res://assets/models/level_01/snowball_torso.obj" id="14"]
+[ext_resource type="ArrayMesh" path="res://assets/models/level_01/snowball_head.obj" id="15"]
+[ext_resource type="PackedScene" path="res://scenes/art/level_01/optional_interactions.tscn" id="16"]
+[ext_resource type="Script" path="res://scripts/levels/clearing_generation.gd" id="17"]
+[ext_resource type="PackedScene" path="res://scenes/components/snowman_branch.tscn" id="18"]
+[ext_resource type="PackedScene" path="res://scenes/art/level_01/snow_pine.tscn" id="19"]
 
 [sub_resource type="Environment" id="Environment_test"]
 background_mode = 1
@@ -23,13 +36,14 @@ albedo_color = Color(0.63, 0.73, 0.82, 1)
 
 [sub_resource type="BoxMesh" id="GroundMesh"]
 material = SubResource("GroundMaterial")
-size = Vector3(12, 0.2, 12)
+size = Vector3(12, 0.2, 18)
 
 [sub_resource type="BoxShape3D" id="GroundShape"]
-size = Vector3(12, 0.2, 12)
+size = Vector3(12, 0.2, 18)
 
 [sub_resource type="StandardMaterial3D" id="SnowMaterial"]
-albedo_color = Color(0.94, 0.97, 1, 1)
+albedo_color = Color(0.91, 0.95, 0.99, 1)
+roughness = 1.0
 
 [sub_resource type="SphereMesh" id="LargeMesh"]
 material = SubResource("SnowMaterial")
@@ -137,7 +151,7 @@ albedo_color = Color(0.65, 0.07, 0.09, 1)
 material = SubResource("SantaMat")
 size = Vector3(1.0, 0.35, 1.9)
 [sub_resource type="BoxShape3D" id="SleighShape"]
-size = Vector3(1.0, 0.35, 1.9)
+size = Vector3(1.50, 0.35, 2.60)
 [sub_resource type="CapsuleMesh" id="SantaMesh"]
 material = SubResource("SantaMat")
 radius = 0.28
@@ -210,7 +224,86 @@ height = 0.066
 radial_segments = 8
 rings = 4
 
+[sub_resource type="StandardMaterial3D" id="TwigMat"]
+albedo_color = Color(0.20, 0.106, 0.055, 1)
+roughness = 0.93
+
+[sub_resource type="StandardMaterial3D" id="ScarfMat"]
+albedo_color = Color(0.64, 0.028, 0.065, 1)
+roughness = 0.93
+
+[sub_resource type="StandardMaterial3D" id="ScarfStripeMat"]
+albedo_color = Color(0.87, 0.73, 0.55, 1)
+roughness = 0.93
+
+[sub_resource type="StandardMaterial3D" id="CarrotLineMat"]
+albedo_color = Color(0.58, 0.15, 0.025, 1)
+roughness = 0.93
+
+[sub_resource type="StandardMaterial3D" id="BatteryTopMat"]
+albedo_color = Color(0.20, 0.25, 0.30, 1)
+roughness = 0.93
+
+[sub_resource type="StandardMaterial3D" id="BatteryInkMat"]
+albedo_color = Color(0.075, 0.09, 0.10, 1)
+roughness = 0.93
+
+[sub_resource type="SphereMesh" id="SmallCoal"]
+material = SubResource("CoalMaterial")
+radius = 0.5
+height = 1.0
+radial_segments = 6
+rings = 3
+
+[sub_resource type="CylinderMesh" id="Twig"]
+material = SubResource("TwigMat")
+top_radius = 0.008
+bottom_radius = 0.016
+height = 1.0
+radial_segments = 5
+
+[sub_resource type="TorusMesh" id="ScarfCollar"]
+material = SubResource("ScarfMat")
+inner_radius = 0.104
+outer_radius = 0.156
+rings = 12
+ring_segments = 6
+
+[sub_resource type="BoxMesh" id="ScarfTail"]
+material = SubResource("ScarfMat")
+size = Vector3(0.071, 0.15, 0.018)
+
+[sub_resource type="BoxMesh" id="ScarfStripe"]
+material = SubResource("ScarfStripeMat")
+size = Vector3(0.073, 0.013, 0.021)
+
+[sub_resource type="BoxMesh" id="CarrotMark"]
+material = SubResource("CarrotLineMat")
+size = Vector3(0.027, 0.004, 0.005)
+
+[sub_resource type="BoxMesh" id="BatteryCap"]
+material = SubResource("BatteryTopMat")
+size = Vector3(0.226, 0.025, 0.144)
+
+[sub_resource type="BoxMesh" id="BatteryInk"]
+material = SubResource("BatteryInkMat")
+size = Vector3(0.034, 0.006, 0.003)
+
+[sub_resource type="BoxShape3D" id="BranchSlotShape"]
+size = Vector3(0.65, 0.18, 0.18)
+
+[sub_resource type="BoxMesh" id="BranchSlotPreview"]
+size = Vector3(0.53, 0.047, 0.052)
+
+[sub_resource type="CylinderShape3D" id="SourceTreeShape"]
+radius = 0.2
+height = 1.4
+
+[sub_resource type="BoxShape3D" id="ScarfSlotShape"]
+size = Vector3(0.32, 0.11, 0.17)
+
 [node name="TestSnowman" type="Node3D"]
+script = ExtResource("17")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_test")
@@ -224,7 +317,7 @@ shadow_enabled = true
 position = Vector3(0, 0.05, 3)
 
 [node name="Ground" type="StaticBody3D" parent="."]
-position = Vector3(0, -0.1, 0)
+position = Vector3(0, -0.1, 3)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
 mesh = SubResource("GroundMesh")
@@ -238,7 +331,8 @@ script = ExtResource("2")
 item_id = &"snowball_large"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="LargeSnowball"]
-mesh = SubResource("LargeMesh")
+mesh = ExtResource("13")
+material_override = SubResource("SnowMaterial")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LargeSnowball"]
 shape = SubResource("LargeShape")
@@ -249,7 +343,8 @@ script = ExtResource("2")
 item_id = &"snowball_medium"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MediumSnowball"]
-mesh = SubResource("SmallMesh")
+mesh = ExtResource("14")
+material_override = SubResource("SnowMaterial")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MediumSnowball"]
 shape = SubResource("SmallShape")
@@ -260,7 +355,8 @@ script = ExtResource("2")
 item_id = &"snowman_head"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SnowmanHead"]
-mesh = SubResource("HeadMesh")
+mesh = ExtResource("15")
+material_override = SubResource("SnowMaterial")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SnowmanHead"]
 shape = SubResource("HeadShape")
@@ -353,6 +449,64 @@ shape = SubResource("CarrotShape")
 [node name="PlacementPoint" type="Marker3D" parent="Snowman/CarrotSlot"]
 
 
+
+[node name="LeftBranchSlot" type="StaticBody3D" parent="Snowman"]
+position = Vector3(-0.44, 0.88, 0)
+rotation_degrees = Vector3(0, 180, 0)
+script = ExtResource("3")
+required_item = &"snowman_branch"
+
+[node name="Preview" type="MeshInstance3D" parent="Snowman/LeftBranchSlot"]
+rotation_degrees = Vector3(0, 0, 8)
+mesh = SubResource("BranchSlotPreview")
+material_override = SubResource("PreviewMaterial")
+cast_shadow = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Snowman/LeftBranchSlot"]
+rotation_degrees = Vector3(0, 0, 8)
+shape = SubResource("BranchSlotShape")
+
+[node name="PlacementPoint" type="Marker3D" parent="Snowman/LeftBranchSlot"]
+position = Vector3(-0.27, 0, 0)
+rotation_degrees = Vector3(0, 0, 8)
+
+[node name="RightBranchSlot" type="StaticBody3D" parent="Snowman"]
+position = Vector3(0.44, 0.88, 0)
+rotation_degrees = Vector3(0, 0, 0)
+script = ExtResource("3")
+required_item = &"snowman_branch"
+
+[node name="Preview" type="MeshInstance3D" parent="Snowman/RightBranchSlot"]
+rotation_degrees = Vector3(0, 0, 8)
+mesh = SubResource("BranchSlotPreview")
+material_override = SubResource("PreviewMaterial")
+cast_shadow = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Snowman/RightBranchSlot"]
+rotation_degrees = Vector3(0, 0, 8)
+shape = SubResource("BranchSlotShape")
+
+[node name="PlacementPoint" type="Marker3D" parent="Snowman/RightBranchSlot"]
+position = Vector3(-0.27, 0, 0)
+rotation_degrees = Vector3(0, 0, 8)
+
+[node name="ScarfSlot" type="StaticBody3D" parent="Snowman"]
+position = Vector3(0, 1.006, 0.18)
+script = ExtResource("3")
+required_item = &"snowman_scarf"
+
+[node name="Preview" type="MeshInstance3D" parent="Snowman/ScarfSlot"]
+position = Vector3(0, 0, -0.18)
+mesh = SubResource("ScarfCollar")
+material_override = SubResource("PreviewMaterial")
+cast_shadow = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Snowman/ScarfSlot"]
+shape = SubResource("ScarfSlotShape")
+
+[node name="PlacementPoint" type="Marker3D" parent="Snowman/ScarfSlot"]
+position = Vector3(0, 0, -0.18)
+
 [node name="Battery" type="StaticBody3D" parent="Snowman"]
 visible = false
 position = Vector3(0, 1.155, 0)
@@ -391,16 +545,19 @@ max_distance = 12.0
 position = Vector3(-3.4, 0.175, 0.6)
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Sleigh"]
 mesh = SubResource("SleighMesh")
+visible = false
+
+[node name="SleighVisual" parent="Sleigh" instance=ExtResource("9")]
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Sleigh"]
 shape = SubResource("SleighShape")
-[node name="SantaPlaceholder" type="MeshInstance3D" parent="Sleigh"]
-position = Vector3(0, 0.53, 0)
-rotation_degrees = Vector3(90, 0, 0)
-mesh = SubResource("SantaMesh")
+[node name="SantaIntroModel" parent="Sleigh" instance=ExtResource("10")]
+position = Vector3(0, 0.44, -0.52)
+
+[node name="BloodOnSnow" parent="." instance=ExtResource("12")]
 
 [node name="SantaLights" type="StaticBody3D" parent="."]
-position = Vector3(-3.0, 0.77, 0.6)
-script = ExtResource("2")
+position = Vector3(-2.84, 1.02, 0.12)
+script = ExtResource("11")
 item_id = &"christmas_lights"
 [node name="Cable" type="MeshInstance3D" parent="SantaLights"]
 mesh = SubResource("CableMesh")
@@ -581,3 +738,183 @@ max_distance = 10.0
 [node name="CelebrationSound" type="AudioStreamPlayer3D" parent="Snowman/PowerAssembly"]
 stream = ExtResource("6")
 max_distance = 12.0
+
+[node name="MouthCoal0" type="MeshInstance3D" parent="SnowmanHead"]
+position = Vector3(-0.065, -0.041, 0.13182)
+mesh = SubResource("SmallCoal")
+rotation_degrees = Vector3(0, 0, -26)
+scale = Vector3(0.018, 0.015, 0.014)
+
+[node name="MouthCoal1" type="MeshInstance3D" parent="SnowmanHead"]
+position = Vector3(-0.036, -0.05349, 0.13843)
+mesh = SubResource("SmallCoal")
+rotation_degrees = Vector3(0, 0, -13)
+scale = Vector3(0.018, 0.015, 0.014)
+
+[node name="MouthCoal2" type="MeshInstance3D" parent="SnowmanHead"]
+position = Vector3(0, -0.069, 0.13619)
+mesh = SubResource("SmallCoal")
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(0.018, 0.015, 0.014)
+
+[node name="MouthCoal3" type="MeshInstance3D" parent="SnowmanHead"]
+position = Vector3(0.036, -0.05349, 0.13843)
+mesh = SubResource("SmallCoal")
+rotation_degrees = Vector3(0, 0, 13)
+scale = Vector3(0.018, 0.015, 0.014)
+
+[node name="MouthCoal4" type="MeshInstance3D" parent="SnowmanHead"]
+position = Vector3(0.065, -0.041, 0.13182)
+mesh = SubResource("SmallCoal")
+rotation_degrees = Vector3(0, 0, 26)
+scale = Vector3(0.018, 0.015, 0.014)
+
+[node name="Brow0" type="MeshInstance3D" parent="SnowmanHead"]
+position = Vector3(-0.052, 0.068, 0.126)
+mesh = SubResource("SmallCoal")
+rotation_degrees = Vector3(0, 0, -15)
+scale = Vector3(0.053, 0.012, 0.018)
+
+[node name="Brow1" type="MeshInstance3D" parent="SnowmanHead"]
+position = Vector3(0.052, 0.068, 0.126)
+mesh = SubResource("SmallCoal")
+rotation_degrees = Vector3(0, 0, 15)
+scale = Vector3(0.053, 0.012, 0.018)
+
+[node name="CoalButton0" type="MeshInstance3D" parent="MediumSnowball"]
+position = Vector3(0, -0.116, 0.19879)
+mesh = SubResource("SmallCoal")
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(0.058, 0.052, 0.033)
+
+[node name="CoalButton1" type="MeshInstance3D" parent="MediumSnowball"]
+position = Vector3(0, 0.103, 0.20604)
+mesh = SubResource("SmallCoal")
+rotation_degrees = Vector3(0, 0, 17)
+scale = Vector3(0.058, 0.052, 0.033)
+
+[node name="BaseButton" type="MeshInstance3D" parent="LargeSnowball"]
+position = Vector3(0, 0.14, 0.296)
+mesh = SubResource("SmallCoal")
+rotation_degrees = Vector3(0, 0, -11)
+scale = Vector3(0.055, 0.052, 0.031)
+
+[node name="CarrotGroove0" type="MeshInstance3D" parent="Carrot"]
+position = Vector3(0, 0.04122, -0.06)
+mesh = SubResource("CarrotMark")
+rotation_degrees = Vector3(0, 0, -12)
+scale = Vector3(0.8, 1, 1)
+
+[node name="CarrotGroove1" type="MeshInstance3D" parent="Carrot"]
+position = Vector3(0.006, 0.03152, -0.02)
+mesh = SubResource("CarrotMark")
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(0.68, 1, 1)
+
+[node name="CarrotGroove2" type="MeshInstance3D" parent="Carrot"]
+position = Vector3(-0.004, 0.02182, 0.02)
+mesh = SubResource("CarrotMark")
+rotation_degrees = Vector3(0, 0, 12)
+scale = Vector3(0.56, 1, 1)
+
+[node name="BatteryCap" type="MeshInstance3D" parent="Snowman/Battery"]
+position = Vector3(0, 0.079, 0)
+mesh = SubResource("BatteryCap")
+
+[node name="PlusHorizontal" type="MeshInstance3D" parent="Snowman/Battery"]
+position = Vector3(-0.048, 0.013, 0.075)
+mesh = SubResource("BatteryInk")
+
+[node name="PlusVertical" type="MeshInstance3D" parent="Snowman/Battery"]
+position = Vector3(-0.048, 0.013, 0.075)
+mesh = SubResource("BatteryInk")
+rotation_degrees = Vector3(0, 0, 90)
+
+[node name="Minus" type="MeshInstance3D" parent="Snowman/Battery"]
+position = Vector3(0.047, 0.013, 0.075)
+mesh = SubResource("BatteryInk")
+
+[node name="PowerMark1" type="MeshInstance3D" parent="Snowman/Battery"]
+position = Vector3(0.004, 0.014, 0.075)
+mesh = SubResource("BatteryInk")
+rotation_degrees = Vector3(0, 0, 60)
+scale = Vector3(0.75, 1, 1)
+
+[node name="PowerMark2" type="MeshInstance3D" parent="Snowman/Battery"]
+position = Vector3(0.003, -0.002, 0.075)
+mesh = SubResource("BatteryInk")
+rotation_degrees = Vector3(0, 0, -12)
+scale = Vector3(0.6, 1, 1)
+
+[node name="PowerMark3" type="MeshInstance3D" parent="Snowman/Battery"]
+position = Vector3(-0.003, -0.014, 0.075)
+mesh = SubResource("BatteryInk")
+rotation_degrees = Vector3(0, 0, 60)
+scale = Vector3(0.75, 1, 1)
+
+[node name="OptionalInteractions" parent="." instance=ExtResource("16")]
+
+[node name="BranchTrees" type="Node3D" parent="."]
+
+[node name="Tree0" type="StaticBody3D" parent="BranchTrees"]
+position = Vector3(-4.05, 0, 7.2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BranchTrees/Tree0"]
+position = Vector3(0, 0.7, 0)
+shape = SubResource("SourceTreeShape")
+
+[node name="Pine" parent="BranchTrees/Tree0" instance=ExtResource("19")]
+scale = Vector3(1.2, 1.4, 1.2)
+
+[node name="BranchPoint" type="Marker3D" parent="BranchTrees/Tree0"]
+position = Vector3(0.13, 0.40, 0)
+rotation_degrees = Vector3(0, 0, 0)
+
+[node name="Tree1" type="StaticBody3D" parent="BranchTrees"]
+position = Vector3(4.05, 0, 7.2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BranchTrees/Tree1"]
+position = Vector3(0, 0.7, 0)
+shape = SubResource("SourceTreeShape")
+
+[node name="Pine" parent="BranchTrees/Tree1" instance=ExtResource("19")]
+scale = Vector3(1.2, 1.4, 1.2)
+
+[node name="BranchPoint" type="Marker3D" parent="BranchTrees/Tree1"]
+position = Vector3(-0.13, 0.40, 0)
+rotation_degrees = Vector3(0, 180, 0)
+
+[node name="Tree2" type="StaticBody3D" parent="BranchTrees"]
+position = Vector3(-4.05, 0, 10.2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BranchTrees/Tree2"]
+position = Vector3(0, 0.7, 0)
+shape = SubResource("SourceTreeShape")
+
+[node name="Pine" parent="BranchTrees/Tree2" instance=ExtResource("19")]
+scale = Vector3(1.2, 1.4, 1.2)
+
+[node name="BranchPoint" type="Marker3D" parent="BranchTrees/Tree2"]
+position = Vector3(0.13, 0.40, 0)
+rotation_degrees = Vector3(0, 0, 0)
+
+[node name="Tree3" type="StaticBody3D" parent="BranchTrees"]
+position = Vector3(4.05, 0, 10.2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BranchTrees/Tree3"]
+position = Vector3(0, 0.7, 0)
+shape = SubResource("SourceTreeShape")
+
+[node name="Pine" parent="BranchTrees/Tree3" instance=ExtResource("19")]
+scale = Vector3(1.2, 1.4, 1.2)
+
+[node name="BranchPoint" type="Marker3D" parent="BranchTrees/Tree3"]
+position = Vector3(-0.13, 0.40, 0)
+rotation_degrees = Vector3(0, 180, 0)
+
+[node name="Branch1" parent="." instance=ExtResource("18")]
+position = Vector3(-3.92, 0.40, 7.2)
+
+[node name="Branch2" parent="." instance=ExtResource("18")]
+position = Vector3(3.92, 0.40, 7.2)
+rotation_degrees = Vector3(0, 180, 0)

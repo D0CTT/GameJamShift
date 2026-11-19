@@ -1,0 +1,87 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="Script" path="res://scripts/components/snowman_scarf.gd" id="1"]
+
+[sub_resource type="StandardMaterial3D" id="Red"]
+albedo_color = Color(0.64, 0.028, 0.065, 1)
+roughness = 0.93
+
+[sub_resource type="StandardMaterial3D" id="Cream"]
+albedo_color = Color(0.87, 0.73, 0.55, 1)
+roughness = 0.93
+
+[sub_resource type="BoxMesh" id="Fold"]
+material = SubResource("Red")
+size = Vector3(0.22, 0.035, 0.11)
+
+[sub_resource type="BoxMesh" id="FoldStripe"]
+material = SubResource("Cream")
+size = Vector3(0.018, 0.008, 0.112)
+
+[sub_resource type="TorusMesh" id="Collar"]
+material = SubResource("Red")
+inner_radius = 0.104
+outer_radius = 0.156
+rings = 12
+ring_segments = 6
+
+[sub_resource type="BoxMesh" id="Tail"]
+material = SubResource("Red")
+size = Vector3(0.071, 0.15, 0.018)
+
+[sub_resource type="BoxMesh" id="Stripe"]
+material = SubResource("Cream")
+size = Vector3(0.073, 0.013, 0.021)
+
+[sub_resource type="BoxShape3D" id="Shape"]
+size = Vector3(0.25, 0.09, 0.14)
+
+[node name="SnowmanScarf" type="StaticBody3D"]
+script = ExtResource("1")
+item_id = &"snowman_scarf"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("Shape")
+
+[node name="Folded" type="Node3D" parent="."]
+
+[node name="Layer1" type="MeshInstance3D" parent="Folded"]
+position = Vector3(0, -0.022, 0)
+mesh = SubResource("Fold")
+
+[node name="Layer2" type="MeshInstance3D" parent="Folded"]
+position = Vector3(0.008, 0.014, 0)
+rotation_degrees = Vector3(0, 4, 0)
+mesh = SubResource("Fold")
+
+[node name="Stripe1" type="MeshInstance3D" parent="Folded"]
+position = Vector3(0.057, 0.034, 0)
+rotation_degrees = Vector3(0, 4, 0)
+mesh = SubResource("FoldStripe")
+
+[node name="Stripe2" type="MeshInstance3D" parent="Folded"]
+position = Vector3(0.085, 0.034, 0)
+rotation_degrees = Vector3(0, 4, 0)
+mesh = SubResource("FoldStripe")
+
+[node name="Worn" type="Node3D" parent="."]
+visible = false
+
+[node name="Collar" type="MeshInstance3D" parent="Worn"]
+scale = Vector3(1, 0.75, 1)
+mesh = SubResource("Collar")
+
+[node name="Tail" type="MeshInstance3D" parent="Worn"]
+position = Vector3(0.099, -0.056, 0.151)
+rotation_degrees = Vector3(0, 0, 15)
+mesh = SubResource("Tail")
+
+[node name="Stripe1" type="MeshInstance3D" parent="Worn"]
+position = Vector3(0.118, -0.097, 0.153)
+rotation_degrees = Vector3(0, 0, 15)
+mesh = SubResource("Stripe")
+
+[node name="Stripe2" type="MeshInstance3D" parent="Worn"]
+position = Vector3(0.127, -0.134, 0.153)
+rotation_degrees = Vector3(0, 0, 15)
+mesh = SubResource("Stripe")

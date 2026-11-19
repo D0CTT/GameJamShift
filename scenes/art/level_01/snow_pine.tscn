@@ -1,0 +1,109 @@
+[gd_scene load_steps=12 format=3]
+
+[sub_resource type="StandardMaterial3D" id="Bark"]
+albedo_color = Color(0.19, 0.12, 0.085, 1)
+roughness = 1.0
+
+[sub_resource type="StandardMaterial3D" id="Pine"]
+albedo_color = Color(0.075, 0.185, 0.16, 1)
+roughness = 1.0
+
+[sub_resource type="StandardMaterial3D" id="PineUpper"]
+albedo_color = Color(0.095, 0.235, 0.19, 1)
+roughness = 1.0
+
+[sub_resource type="StandardMaterial3D" id="Snow"]
+albedo_color = Color(0.76, 0.86, 0.92, 1)
+roughness = 1.0
+
+[sub_resource type="CylinderMesh" id="Trunk"]
+material = SubResource("Bark")
+top_radius = 0.085
+bottom_radius = 0.14
+height = 1.55
+radial_segments = 7
+rings = 1
+
+[sub_resource type="CylinderMesh" id="Foliage0"]
+material = SubResource("Pine")
+top_radius = 0.0
+bottom_radius = 0.88
+height = 1.3
+radial_segments = 7
+rings = 1
+
+[sub_resource type="CylinderMesh" id="Cap0"]
+material = SubResource("Snow")
+top_radius = 0.0
+bottom_radius = 0.697
+height = 0.997
+radial_segments = 7
+rings = 1
+
+[sub_resource type="CylinderMesh" id="Foliage1"]
+material = SubResource("PineUpper")
+top_radius = 0.0
+bottom_radius = 0.68
+height = 1.31
+radial_segments = 7
+rings = 1
+
+[sub_resource type="CylinderMesh" id="Cap1"]
+material = SubResource("Snow")
+top_radius = 0.0
+bottom_radius = 0.545
+height = 1.004
+radial_segments = 7
+rings = 1
+
+[sub_resource type="CylinderMesh" id="Foliage2"]
+material = SubResource("Pine")
+top_radius = 0.0
+bottom_radius = 0.48
+height = 1.36
+radial_segments = 7
+rings = 1
+
+[sub_resource type="CylinderMesh" id="Cap2"]
+material = SubResource("Snow")
+top_radius = 0.0
+bottom_radius = 0.393
+height = 1.041
+radial_segments = 7
+rings = 1
+
+[node name="SnowPine" type="Node3D"]
+
+[node name="Trunk" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.775, 0)
+mesh = SubResource("Trunk")
+
+[node name="Foliage1" type="MeshInstance3D" parent="."]
+position = Vector3(0, 1.13, 0)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("Foliage0")
+
+[node name="SnowCap1" type="MeshInstance3D" parent="."]
+position = Vector3(0, 1.3165, 0)
+rotation_degrees = Vector3(0, 0, 0)
+mesh = SubResource("Cap0")
+
+[node name="Foliage2" type="MeshInstance3D" parent="."]
+position = Vector3(0, 1.695, 0)
+rotation_degrees = Vector3(0, 7, 0)
+mesh = SubResource("Foliage1")
+
+[node name="SnowCap2" type="MeshInstance3D" parent="."]
+position = Vector3(0, 1.8828, 0)
+rotation_degrees = Vector3(0, 7, 0)
+mesh = SubResource("Cap1")
+
+[node name="Foliage3" type="MeshInstance3D" parent="."]
+position = Vector3(0, 2.32, 0)
+rotation_degrees = Vector3(0, 14, 0)
+mesh = SubResource("Foliage2")
+
+[node name="SnowCap3" type="MeshInstance3D" parent="."]
+position = Vector3(0, 2.5143, 0)
+rotation_degrees = Vector3(0, 14, 0)
+mesh = SubResource("Cap2")

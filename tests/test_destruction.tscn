@@ -1,0 +1,345 @@
+[gd_scene load_steps=36 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/player/player.tscn" id="1"]
+[ext_resource type="Script" path="res://scripts/levels/destruction_test.gd" id="2"]
+[ext_resource type="Script" path="res://scripts/components/destructible.gd" id="3"]
+
+[sub_resource type="StandardMaterial3D" id="Mat_Snow"]
+albedo_color = Color(0.78, 0.85, 0.91, 1)
+roughness = 1.0
+
+[sub_resource type="StandardMaterial3D" id="Mat_Wall"]
+albedo_color = Color(0.27, 0.39, 0.48, 1)
+roughness = 1.0
+
+[sub_resource type="StandardMaterial3D" id="Mat_Green"]
+albedo_color = Color(0.11, 0.3, 0.17, 1)
+roughness = 1.0
+
+[sub_resource type="StandardMaterial3D" id="Mat_Wood"]
+albedo_color = Color(0.37, 0.21, 0.12, 1)
+roughness = 1.0
+
+[sub_resource type="StandardMaterial3D" id="Mat_Red"]
+albedo_color = Color(0.68, 0.12, 0.15, 1)
+roughness = 1.0
+
+[sub_resource type="StandardMaterial3D" id="Mat_Gold"]
+albedo_color = Color(0.91, 0.64, 0.16, 1)
+roughness = 1.0
+
+[sub_resource type="StandardMaterial3D" id="Mat_Blue"]
+albedo_color = Color(0.11, 0.34, 0.61, 1)
+roughness = 1.0
+
+[sub_resource type="StandardMaterial3D" id="Mat_Coal"]
+albedo_color = Color(0.045, 0.045, 0.05, 1)
+roughness = 1.0
+
+[sub_resource type="StandardMaterial3D" id="Mat_Carrot"]
+albedo_color = Color(0.91, 0.32, 0.045, 1)
+roughness = 1.0
+
+[sub_resource type="Environment" id="Env"]
+background_mode = 1
+background_color = Color(0.10, 0.15, 0.22, 1)
+ambient_light_source = 3
+ambient_light_color = Color(0.62, 0.73, 0.9, 1)
+ambient_light_energy = 0.65
+
+[sub_resource type="BoxMesh" id="GroundMesh"]
+size = Vector3(16, 0.2, 16)
+material = SubResource("Mat_Snow")
+
+[sub_resource type="BoxShape3D" id="GroundShape"]
+size = Vector3(16, 0.2, 16)
+
+[sub_resource type="BoxMesh" id="WallMesh"]
+size = Vector3(4.4, 2.3, 0.35)
+material = SubResource("Mat_Wall")
+
+[sub_resource type="BoxShape3D" id="WallShape"]
+size = Vector3(4.4, 2.3, 0.35)
+
+[sub_resource type="BoxMesh" id="GiftRed"]
+size = Vector3(0.52, 0.48, 0.52)
+material = SubResource("Mat_Red")
+
+[sub_resource type="BoxMesh" id="GiftBlue"]
+size = Vector3(0.52, 0.48, 0.52)
+material = SubResource("Mat_Blue")
+
+[sub_resource type="BoxMesh" id="RibbonA"]
+size = Vector3(0.1, 0.49, 0.53)
+material = SubResource("Mat_Gold")
+
+[sub_resource type="BoxMesh" id="RibbonB"]
+size = Vector3(0.53, 0.49, 0.1)
+material = SubResource("Mat_Gold")
+
+[sub_resource type="BoxShape3D" id="GiftShape"]
+size = Vector3(0.52, 0.48, 0.52)
+
+[sub_resource type="SphereMesh" id="SnowBase"]
+radius = 0.34
+height = 0.68
+radial_segments = 12
+rings = 6
+material = SubResource("Mat_Snow")
+
+[sub_resource type="SphereMesh" id="SnowTorso"]
+radius = 0.24
+height = 0.48
+radial_segments = 12
+rings = 6
+material = SubResource("Mat_Snow")
+
+[sub_resource type="SphereMesh" id="SnowHead"]
+radius = 0.17
+height = 0.34
+radial_segments = 12
+rings = 6
+material = SubResource("Mat_Snow")
+
+[sub_resource type="SphereMesh" id="Eye"]
+radius = 0.021
+height = 0.042
+radial_segments = 12
+rings = 6
+material = SubResource("Mat_Coal")
+
+[sub_resource type="CylinderMesh" id="CarrotMesh"]
+top_radius = 0.0
+bottom_radius = 0.045
+height = 0.18
+radial_segments = 10
+rings = 1
+material = SubResource("Mat_Carrot")
+
+[sub_resource type="BoxShape3D" id="SnowmanShape"]
+size = Vector3(0.65, 1.2, 0.64)
+
+[sub_resource type="CylinderMesh" id="Trunk"]
+top_radius = 0.11
+bottom_radius = 0.13
+height = 0.68
+radial_segments = 10
+rings = 1
+material = SubResource("Mat_Wood")
+
+[sub_resource type="CylinderMesh" id="PineBottom"]
+top_radius = 0
+bottom_radius = 0.71
+height = 0.97
+radial_segments = 10
+rings = 1
+material = SubResource("Mat_Green")
+
+[sub_resource type="CylinderMesh" id="PineMiddle"]
+top_radius = 0
+bottom_radius = 0.54
+height = 0.81
+radial_segments = 10
+rings = 1
+material = SubResource("Mat_Green")
+
+[sub_resource type="CylinderMesh" id="PineTop"]
+top_radius = 0
+bottom_radius = 0.36
+height = 0.73
+radial_segments = 10
+rings = 1
+material = SubResource("Mat_Green")
+
+[sub_resource type="BoxShape3D" id="PineShape"]
+size = Vector3(0.9, 2.25, 0.9)
+
+[sub_resource type="SphereMesh" id="BulbRed"]
+radius = 0.075
+height = 0.15
+radial_segments = 12
+rings = 6
+material = SubResource("Mat_Red")
+
+[sub_resource type="SphereMesh" id="BulbGold"]
+radius = 0.07
+height = 0.14
+radial_segments = 12
+rings = 6
+material = SubResource("Mat_Gold")
+
+[node name="DestructionTest" type="Node3D"]
+script = ExtResource("2")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Env")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+rotation_degrees = Vector3(-55, -35, 0)
+light_energy = 1.05
+shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("1")]
+position = Vector3(0, 0.04, 5.9)
+
+[node name="Ground" type="StaticBody3D" parent="."]
+position = Vector3(0, -0.1, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="Ground"]
+position = Vector3(0, 0, 0)
+mesh = SubResource("GroundMesh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+position = Vector3(0, 0, 0)
+shape = SubResource("GroundShape")
+
+[node name="Wall" type="StaticBody3D" parent="."]
+position = Vector3(0, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="Wall"]
+position = Vector3(0, 1.15, 0)
+mesh = SubResource("WallMesh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall"]
+position = Vector3(0, 1.15, 0)
+shape = SubResource("WallShape")
+
+[node name="Targets" type="Node3D" parent="."]
+
+
+[node name="GiftFront" type="StaticBody3D" parent="Targets"]
+position = Vector3(0, 0, 3.9)
+script = ExtResource("3")
+object_id = &"test09_giftfront"
+style = 0
+duration = 0.45
+
+[node name="Visual" type="Node3D" parent="Targets/GiftFront"]
+
+
+[node name="Package" type="MeshInstance3D" parent="Targets/GiftFront/Visual"]
+position = Vector3(0, 0.24, 0)
+mesh = SubResource("GiftRed")
+
+[node name="RibbonA" type="MeshInstance3D" parent="Targets/GiftFront/Visual"]
+position = Vector3(0, 0.24, 0)
+mesh = SubResource("RibbonA")
+
+[node name="RibbonB" type="MeshInstance3D" parent="Targets/GiftFront/Visual"]
+position = Vector3(0, 0.24, 0)
+mesh = SubResource("RibbonB")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Targets/GiftFront"]
+position = Vector3(0, 0.24, 0)
+shape = SubResource("GiftShape")
+
+[node name="GiftBehind" type="StaticBody3D" parent="Targets"]
+position = Vector3(1.25, 0, -2.8)
+script = ExtResource("3")
+object_id = &"test09_giftbehind"
+style = 0
+duration = 0.45
+
+[node name="Visual" type="Node3D" parent="Targets/GiftBehind"]
+
+
+[node name="Package" type="MeshInstance3D" parent="Targets/GiftBehind/Visual"]
+position = Vector3(0, 0.24, 0)
+mesh = SubResource("GiftBlue")
+
+[node name="RibbonA" type="MeshInstance3D" parent="Targets/GiftBehind/Visual"]
+position = Vector3(0, 0.24, 0)
+mesh = SubResource("RibbonA")
+
+[node name="RibbonB" type="MeshInstance3D" parent="Targets/GiftBehind/Visual"]
+position = Vector3(0, 0.24, 0)
+mesh = SubResource("RibbonB")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Targets/GiftBehind"]
+position = Vector3(0, 0.24, 0)
+shape = SubResource("GiftShape")
+
+[node name="Snowman" type="StaticBody3D" parent="Targets"]
+position = Vector3(-1.5, 0, -2.2)
+script = ExtResource("3")
+object_id = &"test09_snowman"
+style = 0
+duration = 0.45
+
+[node name="Visual" type="Node3D" parent="Targets/Snowman"]
+
+
+[node name="Base" type="MeshInstance3D" parent="Targets/Snowman/Visual"]
+position = Vector3(0, 0.34, 0)
+mesh = SubResource("SnowBase")
+
+[node name="Torso" type="MeshInstance3D" parent="Targets/Snowman/Visual"]
+position = Vector3(0, 0.78, 0)
+mesh = SubResource("SnowTorso")
+
+[node name="Head" type="MeshInstance3D" parent="Targets/Snowman/Visual"]
+position = Vector3(0, 1.1, 0)
+mesh = SubResource("SnowHead")
+
+[node name="EyeLeft" type="MeshInstance3D" parent="Targets/Snowman/Visual"]
+position = Vector3(-0.065, 1.14, 0.153)
+mesh = SubResource("Eye")
+
+[node name="EyeRight" type="MeshInstance3D" parent="Targets/Snowman/Visual"]
+position = Vector3(0.065, 1.14, 0.153)
+mesh = SubResource("Eye")
+
+[node name="Nose" type="MeshInstance3D" parent="Targets/Snowman/Visual"]
+position = Vector3(0, 1.086, 0.22)
+mesh = SubResource("CarrotMesh")
+rotation_degrees = Vector3(90, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Targets/Snowman"]
+position = Vector3(0, 0.64, 0)
+shape = SubResource("SnowmanShape")
+
+[node name="Pine" type="StaticBody3D" parent="Targets"]
+position = Vector3(0, 0, -5.1)
+script = ExtResource("3")
+object_id = &"test09_pine"
+style = 1
+duration = 0.95
+
+[node name="Visual" type="Node3D" parent="Targets/Pine"]
+
+
+[node name="Trunk" type="MeshInstance3D" parent="Targets/Pine/Visual"]
+position = Vector3(0, 0.34, 0)
+mesh = SubResource("Trunk")
+
+[node name="BranchesBottom" type="MeshInstance3D" parent="Targets/Pine/Visual"]
+position = Vector3(0, 0.84, 0)
+mesh = SubResource("PineBottom")
+
+[node name="BranchesMiddle" type="MeshInstance3D" parent="Targets/Pine/Visual"]
+position = Vector3(0, 1.33, 0)
+mesh = SubResource("PineMiddle")
+
+[node name="BranchesTop" type="MeshInstance3D" parent="Targets/Pine/Visual"]
+position = Vector3(0, 1.79, 0)
+mesh = SubResource("PineTop")
+
+[node name="Bulb0" type="MeshInstance3D" parent="Targets/Pine/Visual"]
+position = Vector3(0.43, 0.63, 0.34)
+mesh = SubResource("BulbRed")
+
+[node name="Bulb1" type="MeshInstance3D" parent="Targets/Pine/Visual"]
+position = Vector3(-0.28, 0.85, 0.31)
+mesh = SubResource("BulbGold")
+
+[node name="Bulb2" type="MeshInstance3D" parent="Targets/Pine/Visual"]
+position = Vector3(0.3, 1.17, 0.22)
+mesh = SubResource("BulbGold")
+
+[node name="Bulb3" type="MeshInstance3D" parent="Targets/Pine/Visual"]
+position = Vector3(-0.18, 1.47, 0.15)
+mesh = SubResource("BulbRed")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Targets/Pine"]
+position = Vector3(0, 1.125, 0)
+shape = SubResource("PineShape")

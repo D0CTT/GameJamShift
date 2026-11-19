@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/components/forest_ambience.gd" id="1"]
+[ext_resource type="AudioStream" path="res://assets/audio/ambience/winter_wind.wav" id="2"]
+
+[node name="ForestAmbience" type="Node3D"]
+script = ExtResource("1")
+
+[node name="Wind" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2")
+volume_db = -50.0
+
+[node name="Footsteps" type="AudioStreamPlayer" parent="."]
+max_polyphony = 2
+
+[node name="Breathing" type="AudioStreamPlayer" parent="."]
+
+[node name="BranchSnap" type="AudioStreamPlayer3D" parent="."]
+unit_size = 3.0
+max_distance = 12.0

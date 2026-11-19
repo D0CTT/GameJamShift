@@ -1,27 +1,42 @@
 [gd_scene format=3 uid="uid://b1hajkkot3xg2"]
 
 [ext_resource type="Script" uid="uid://dnan4tff258al" path="res://scripts/levels/intro_sequence.gd" id="1"]
-[ext_resource type="PackedScene" uid="uid://00xdukxyomwe" path="res://tests/test_forest.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://tests/test_forest.tscn" id="2"]
 [ext_resource type="AudioStream" uid="uid://dbyh2s8oxo0d2" path="res://assets/audio/forest_sleigh_bell.wav" id="3"]
+[ext_resource type="PackedScene" path="res://scenes/art/level_01/level_01_art.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://scenes/art/level_01/snowfall.tscn" id="5"]
+[ext_resource type="PackedScene" path="res://scenes/components/forest_ambience.tscn" id="6"]
 
-[node name="Level01Intro" type="Node3D" unique_id=885495890]
+[node name="Level01Intro" type="Node3D" unique_id=1021571687]
 script = ExtResource("1")
 
-[node name="Level" parent="." unique_id=812633536 instance=ExtResource("2")]
+[node name="Level" parent="." unique_id=629317146 instance=ExtResource("2")]
+forest_surface_brightness = 0.1
+moon_radius = 4.9
+clearing_ambient_energy = 0.1
 
-[node name="IntroProps" type="Node3D" parent="." unique_id=447587263]
+[node name="IntroProps" type="Node3D" parent="." unique_id=1522759529]
 
-[node name="EscapeBells" type="AudioStreamPlayer3D" parent="." unique_id=417995512]
+[node name="EscapeBells" type="AudioStreamPlayer3D" parent="." unique_id=938778155]
 stream = ExtResource("3")
 unit_size = 2.0
 max_distance = 14.0
 
-[node name="IntroOverlay" type="CanvasLayer" parent="." unique_id=398586225]
+[node name="IntroOverlay" type="CanvasLayer" parent="." unique_id=1336663575]
 layer = 9
 
-[node name="Fade" type="ColorRect" parent="IntroOverlay" unique_id=289050733]
+[node name="Fade" type="ColorRect" parent="IntroOverlay" unique_id=1395475333]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
+
+[node name="Level01Art" parent="." unique_id=671961397 instance=ExtResource("4")]
+
+[node name="Snowfall" parent="." unique_id=457422501 instance=ExtResource("5")]
+target_path = NodePath("../Level/Clearing/Player")
+
+[node name="ForestAmbience" parent="." unique_id=1820121386 instance=ExtResource("6")]
+target_path = NodePath("../Level/Clearing/Player")
+forest_path = NodePath("../Level")

@@ -1,0 +1,365 @@
+[gd_scene load_steps=22 format=3]
+
+[sub_resource type="StandardMaterial3D" id="Fur"]
+albedo_color = Color(0.32, 0.17, 0.092, 1)
+roughness = 0.86
+
+[sub_resource type="StandardMaterial3D" id="DarkFur"]
+albedo_color = Color(0.19, 0.1, 0.06, 1)
+roughness = 0.86
+
+[sub_resource type="StandardMaterial3D" id="Chest"]
+albedo_color = Color(0.62, 0.43, 0.26, 1)
+roughness = 0.86
+
+[sub_resource type="StandardMaterial3D" id="Hoof"]
+albedo_color = Color(0.045, 0.039, 0.035, 1)
+roughness = 0.86
+
+[sub_resource type="StandardMaterial3D" id="Antler"]
+albedo_color = Color(0.55, 0.42, 0.27, 1)
+roughness = 0.86
+
+[sub_resource type="StandardMaterial3D" id="Harness"]
+albedo_color = Color(0.37, 0.025, 0.04, 1)
+roughness = 0.86
+
+[sub_resource type="StandardMaterial3D" id="Brass"]
+albedo_color = Color(0.75, 0.48, 0.12, 1)
+roughness = 0.86
+
+[sub_resource type="StandardMaterial3D" id="Eye"]
+albedo_color = Color(0.025, 0.018, 0.014, 1)
+roughness = 0.86
+
+[sub_resource type="StandardMaterial3D" id="NoseRed"]
+albedo_color = Color(0.76, 0.02, 0.016, 1)
+roughness = 0.86
+emission_enabled = true
+emission = Color(1, 0.025, 0.01, 1)
+emission_energy_multiplier = 1.3
+resource_local_to_scene = true
+
+[sub_resource type="SphereMesh" id="Mesh0"]
+material = SubResource("Fur")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="Mesh1"]
+material = SubResource("Chest")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="Mesh2"]
+material = SubResource("DarkFur")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="Mesh3"]
+material = SubResource("Hoof")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="Mesh4"]
+material = SubResource("NoseRed")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="CylinderMesh" id="Mesh5"]
+material = SubResource("Harness")
+top_radius = 0.42
+bottom_radius = 0.5
+height = 1.0
+radial_segments = 8
+
+[sub_resource type="SphereMesh" id="Mesh6"]
+material = SubResource("Brass")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="SphereMesh" id="Mesh7"]
+material = SubResource("Eye")
+radius = 0.5
+height = 1.0
+radial_segments = 10
+rings = 5
+
+[sub_resource type="CylinderMesh" id="Mesh8"]
+material = SubResource("Antler")
+top_radius = 0.42
+bottom_radius = 0.5
+height = 1.0
+radial_segments = 8
+
+[sub_resource type="CylinderMesh" id="Mesh9"]
+material = SubResource("Fur")
+top_radius = 0.42
+bottom_radius = 0.5
+height = 1.0
+radial_segments = 8
+
+[sub_resource type="CylinderMesh" id="Mesh10"]
+material = SubResource("DarkFur")
+top_radius = 0.42
+bottom_radius = 0.5
+height = 1.0
+radial_segments = 8
+
+[sub_resource type="BoxMesh" id="Mesh11"]
+material = SubResource("Hoof")
+size = Vector3(1, 1, 1)
+
+[node name="ReindeerModel" type="Node3D"]
+
+[node name="Body" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.79, 0)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(0.45, 0.51, 1.12)
+mesh = SubResource("Mesh0")
+
+[node name="Chest" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.81, -0.37)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(0.39, 0.5, 0.33)
+mesh = SubResource("Mesh1")
+
+[node name="Tail" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.89, 0.58)
+rotation_degrees = Vector3(35, 0, 0)
+scale = Vector3(0.13, 0.2, 0.27)
+mesh = SubResource("Mesh2")
+
+[node name="Neck" type="MeshInstance3D" parent="."]
+position = Vector3(0, 1.02, -0.43)
+rotation_degrees = Vector3(-27, 0, 0)
+scale = Vector3(0.3, 0.57, 0.3)
+mesh = SubResource("Mesh0")
+
+[node name="Head" type="MeshInstance3D" parent="."]
+position = Vector3(0, 1.26, -0.62)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(0.35, 0.32, 0.48)
+mesh = SubResource("Mesh0")
+
+[node name="Muzzle" type="MeshInstance3D" parent="."]
+position = Vector3(0, 1.18, -0.85)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(0.3, 0.24, 0.32)
+mesh = SubResource("Mesh1")
+
+[node name="Nose" type="MeshInstance3D" parent="."]
+position = Vector3(0, 1.21, -1.01)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(0.16, 0.13, 0.12)
+mesh = SubResource("Mesh3")
+
+[node name="RedNose" type="MeshInstance3D" parent="."]
+position = Vector3(0, 1.21, -1.015)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(0.18, 0.16, 0.15)
+mesh = SubResource("Mesh4")
+visible = false
+
+[node name="Collar" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.98, -0.43)
+rotation_degrees = Vector3(-25, 0, 0)
+scale = Vector3(0.33, 0.09, 0.34)
+mesh = SubResource("Mesh5")
+
+[node name="Bell" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.9, -0.6)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(0.12, 0.13, 0.11)
+mesh = SubResource("Mesh6")
+
+[node name="Ear0" type="MeshInstance3D" parent="."]
+position = Vector3(-0.22, 1.36, -0.59)
+rotation_degrees = Vector3(0, 0, -28)
+scale = Vector3(0.27, 0.12, 0.12)
+mesh = SubResource("Mesh0")
+
+[node name="EarInner0" type="MeshInstance3D" parent="."]
+position = Vector3(-0.22, 1.38, -0.632)
+rotation_degrees = Vector3(0, 0, -28)
+scale = Vector3(0.18, 0.07, 0.04)
+mesh = SubResource("Mesh1")
+
+[node name="Eye0" type="MeshInstance3D" parent="."]
+position = Vector3(-0.164, 1.29, -0.72)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(0.053, 0.06, 0.06)
+mesh = SubResource("Mesh7")
+
+[node name="Antler0" type="Node3D" parent="."]
+position = Vector3(-0.11, 1.38, -0.55)
+rotation_degrees = Vector3(0, 0, 21)
+
+[node name="Main" type="MeshInstance3D" parent="Antler0"]
+position = Vector3(0, 0.19, 0)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(0.052, 0.4, 0.052)
+mesh = SubResource("Mesh8")
+
+[node name="Upper" type="MeshInstance3D" parent="Antler0"]
+position = Vector3(-0.065, 0.39, 0.03)
+rotation_degrees = Vector3(0, 0, 35)
+scale = Vector3(0.044, 0.25, 0.044)
+mesh = SubResource("Mesh8")
+
+[node name="Tine1" type="MeshInstance3D" parent="Antler0"]
+position = Vector3(-0.06, 0.2, -0.08)
+rotation_degrees = Vector3(-50, 0, 32)
+scale = Vector3(0.038, 0.21, 0.038)
+mesh = SubResource("Mesh8")
+
+[node name="Tine2" type="MeshInstance3D" parent="Antler0"]
+position = Vector3(-0.04, 0.3, 0.075)
+rotation_degrees = Vector3(55, 0, 20)
+scale = Vector3(0.037, 0.2, 0.037)
+mesh = SubResource("Mesh8")
+
+[node name="Leg00" type="Node3D" parent="."]
+position = Vector3(-0.155, 0.68, -0.34)
+rotation_degrees = Vector3(0, 0, 0)
+
+[node name="Upper" type="MeshInstance3D" parent="Leg00"]
+position = Vector3(0, -0.16, 0)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(0.12, 0.34, 0.13)
+mesh = SubResource("Mesh9")
+
+[node name="Shin" type="MeshInstance3D" parent="Leg00"]
+position = Vector3(0, -0.43, 0.023)
+rotation_degrees = Vector3(-10, 0, 0)
+scale = Vector3(0.066, 0.26, 0.075)
+mesh = SubResource("Mesh10")
+
+[node name="Hoof" type="MeshInstance3D" parent="Leg00"]
+position = Vector3(0, -0.605, 0.03)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(0.11, 0.14, 0.15)
+mesh = SubResource("Mesh11")
+
+[node name="Leg01" type="Node3D" parent="."]
+position = Vector3(-0.155, 0.68, 0.34)
+rotation_degrees = Vector3(0, 0, 0)
+
+[node name="Upper" type="MeshInstance3D" parent="Leg01"]
+position = Vector3(0, -0.16, 0)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(0.12, 0.34, 0.13)
+mesh = SubResource("Mesh9")
+
+[node name="Shin" type="MeshInstance3D" parent="Leg01"]
+position = Vector3(0, -0.43, 0.023)
+rotation_degrees = Vector3(-10, 0, 0)
+scale = Vector3(0.066, 0.26, 0.075)
+mesh = SubResource("Mesh10")
+
+[node name="Hoof" type="MeshInstance3D" parent="Leg01"]
+position = Vector3(0, -0.605, 0.03)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(0.11, 0.14, 0.15)
+mesh = SubResource("Mesh11")
+
+[node name="Ear1" type="MeshInstance3D" parent="."]
+position = Vector3(0.22, 1.36, -0.59)
+rotation_degrees = Vector3(0, 0, 28)
+scale = Vector3(0.27, 0.12, 0.12)
+mesh = SubResource("Mesh0")
+
+[node name="EarInner1" type="MeshInstance3D" parent="."]
+position = Vector3(0.22, 1.38, -0.632)
+rotation_degrees = Vector3(0, 0, 28)
+scale = Vector3(0.18, 0.07, 0.04)
+mesh = SubResource("Mesh1")
+
+[node name="Eye1" type="MeshInstance3D" parent="."]
+position = Vector3(0.164, 1.29, -0.72)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(0.053, 0.06, 0.06)
+mesh = SubResource("Mesh7")
+
+[node name="Antler1" type="Node3D" parent="."]
+position = Vector3(0.11, 1.38, -0.55)
+rotation_degrees = Vector3(0, 0, -21)
+
+[node name="Main" type="MeshInstance3D" parent="Antler1"]
+position = Vector3(0, 0.19, 0)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(0.052, 0.4, 0.052)
+mesh = SubResource("Mesh8")
+
+[node name="Upper" type="MeshInstance3D" parent="Antler1"]
+position = Vector3(0.065, 0.39, 0.03)
+rotation_degrees = Vector3(0, 0, -35)
+scale = Vector3(0.044, 0.25, 0.044)
+mesh = SubResource("Mesh8")
+
+[node name="Tine1" type="MeshInstance3D" parent="Antler1"]
+position = Vector3(0.06, 0.2, -0.08)
+rotation_degrees = Vector3(-50, 0, -32)
+scale = Vector3(0.038, 0.21, 0.038)
+mesh = SubResource("Mesh8")
+
+[node name="Tine2" type="MeshInstance3D" parent="Antler1"]
+position = Vector3(0.04, 0.3, 0.075)
+rotation_degrees = Vector3(55, 0, -20)
+scale = Vector3(0.037, 0.2, 0.037)
+mesh = SubResource("Mesh8")
+
+[node name="Leg10" type="Node3D" parent="."]
+position = Vector3(0.155, 0.68, -0.34)
+rotation_degrees = Vector3(0, 0, 0)
+
+[node name="Upper" type="MeshInstance3D" parent="Leg10"]
+position = Vector3(0, -0.16, 0)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(0.12, 0.34, 0.13)
+mesh = SubResource("Mesh9")
+
+[node name="Shin" type="MeshInstance3D" parent="Leg10"]
+position = Vector3(0, -0.43, 0.023)
+rotation_degrees = Vector3(-10, 0, 0)
+scale = Vector3(0.066, 0.26, 0.075)
+mesh = SubResource("Mesh10")
+
+[node name="Hoof" type="MeshInstance3D" parent="Leg10"]
+position = Vector3(0, -0.605, 0.03)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(0.11, 0.14, 0.15)
+mesh = SubResource("Mesh11")
+
+[node name="Leg11" type="Node3D" parent="."]
+position = Vector3(0.155, 0.68, 0.34)
+rotation_degrees = Vector3(0, 0, 0)
+
+[node name="Upper" type="MeshInstance3D" parent="Leg11"]
+position = Vector3(0, -0.16, 0)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(0.12, 0.34, 0.13)
+mesh = SubResource("Mesh9")
+
+[node name="Shin" type="MeshInstance3D" parent="Leg11"]
+position = Vector3(0, -0.43, 0.023)
+rotation_degrees = Vector3(-10, 0, 0)
+scale = Vector3(0.066, 0.26, 0.075)
+mesh = SubResource("Mesh10")
+
+[node name="Hoof" type="MeshInstance3D" parent="Leg11"]
+position = Vector3(0, -0.605, 0.03)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(0.11, 0.14, 0.15)
+mesh = SubResource("Mesh11")

@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/levels/snowfall.gd" id="1"]
+[ext_resource type="Texture2D" path="res://assets/textures/snow_flake.png" id="2"]
+
+[sub_resource type="StandardMaterial3D" id="SnowflakeMaterial"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.76, 0.84, 0.95, 0.72)
+albedo_texture = ExtResource("2")
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="Snowflake"]
+material = SubResource("SnowflakeMaterial")
+size = Vector2(0.035, 0.035)
+
+[node name="Snowfall" type="CPUParticles3D"]
+cast_shadow = 0
+emitting = false
+amount = 260
+lifetime = 5.0
+preprocess = 3.0
+randomness = 0.26
+fixed_fps = 30
+local_coords = false
+mesh = SubResource("Snowflake")
+emission_shape = 3
+emission_box_extents = Vector3(5.5, 0.7, 5.5)
+direction = Vector3(0.12, -1, 0.03)
+spread = 12.0
+gravity = Vector3(0.06, -0.13, 0.02)
+initial_velocity_min = 0.48
+initial_velocity_max = 0.95
+scale_amount_min = 0.55
+scale_amount_max = 1.4
+script = ExtResource("1")
