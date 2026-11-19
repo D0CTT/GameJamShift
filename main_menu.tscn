@@ -1,0 +1,227 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbcekvos1qdx2"]
+
+[ext_resource type="Script" path="res://scripts/ui/main_menu.gd" id="1_main"]
+[ext_resource type="Script" path="res://scripts/ui/main_menu_background.gd" id="2_bg"]
+
+[sub_resource type="Gradient" id="LeftShade"]
+offsets = PackedFloat32Array(0, 0.32, 0.56, 1)
+colors = PackedColorArray(0.015, 0.025, 0.04, 0.83, 0.015, 0.025, 0.04, 0.65, 0.015, 0.025, 0.04, 0.0, 0.015, 0.025, 0.04, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture"]
+gradient = SubResource("LeftShade")
+width = 512
+height = 2
+fill_to = Vector2(1, 0)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_main")
+
+[node name="Sky" type="Node3D" parent="."]
+script = ExtResource("2_bg")
+
+[node name="OverlayShade" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture")
+expand_mode = 1
+
+[node name="Content" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 56
+theme_override_constants/margin_top = 58
+theme_override_constants/margin_right = 56
+theme_override_constants/margin_bottom = 52
+
+[node name="RootHBox" type="HBoxContainer" parent="Content"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MenuColumn" type="VBoxContainer" parent="Content/RootHBox"]
+custom_minimum_size = Vector2(360, 0)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 18
+
+[node name="Title" type="Label" parent="Content/RootHBox/MenuColumn"]
+layout_mode = 2
+text = "MAKE/SHIFT CHRISTMAS"
+
+[node name="Subtitle" type="Label" parent="Content/RootHBox/MenuColumn"]
+visible = false
+layout_mode = 2
+text = "Improvise Christmas. Then destroy it."
+
+[node name="MenuSpacerTop" type="Control" parent="Content/RootHBox/MenuColumn"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Buttons" type="VBoxContainer" parent="Content/RootHBox/MenuColumn"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="PlayButton" type="Button" parent="Content/RootHBox/MenuColumn/Buttons"]
+layout_mode = 2
+text = "PLAY"
+focus_neighbor_bottom = NodePath("../ContinueButton")
+
+[node name="ContinueButton" type="Button" parent="Content/RootHBox/MenuColumn/Buttons"]
+layout_mode = 2
+text = "CONTINUE"
+focus_neighbor_top = NodePath("../PlayButton")
+focus_neighbor_bottom = NodePath("../SettingsButton")
+
+[node name="SettingsButton" type="Button" parent="Content/RootHBox/MenuColumn/Buttons"]
+layout_mode = 2
+text = "SETTINGS"
+focus_neighbor_top = NodePath("../ContinueButton")
+focus_neighbor_bottom = NodePath("../ExitButton")
+
+[node name="ExitButton" type="Button" parent="Content/RootHBox/MenuColumn/Buttons"]
+layout_mode = 2
+text = "EXIT"
+focus_neighbor_top = NodePath("../SettingsButton")
+
+[node name="MenuSpacerBottom" type="Control" parent="Content/RootHBox/MenuColumn"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Hint" type="Label" parent="Content/RootHBox/MenuColumn"]
+visible = false
+layout_mode = 2
+text = "Use arrow keys / W S to navigate, Enter to confirm."
+
+[node name="Status" type="Label" parent="Content/RootHBox/MenuColumn"]
+layout_mode = 2
+text = "No saved progress found."
+
+[node name="RightSpacer" type="Control" parent="Content/RootHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SettingsLayer" type="CanvasLayer" parent="."]
+layer = 5
+
+[node name="SettingsPanel" type="Control" parent="SettingsLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="SettingsShade" type="ColorRect" parent="SettingsLayer/SettingsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.62)
+
+[node name="SettingsCenter" type="CenterContainer" parent="SettingsLayer/SettingsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SettingsCard" type="PanelContainer" parent="SettingsLayer/SettingsPanel/SettingsCenter"]
+custom_minimum_size = Vector2(470, 0)
+layout_mode = 2
+
+[node name="SettingsMargin" type="MarginContainer" parent="SettingsLayer/SettingsPanel/SettingsCenter/SettingsCard"]
+layout_mode = 2
+theme_override_constants/margin_left = 28
+theme_override_constants/margin_top = 26
+theme_override_constants/margin_right = 28
+theme_override_constants/margin_bottom = 24
+
+[node name="SettingsVBox" type="VBoxContainer" parent="SettingsLayer/SettingsPanel/SettingsCenter/SettingsCard/SettingsMargin"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="SettingsTitle" type="Label" parent="SettingsLayer/SettingsPanel/SettingsCenter/SettingsCard/SettingsMargin/SettingsVBox"]
+layout_mode = 2
+text = "SETTINGS"
+
+[node name="LanguageRow" type="HBoxContainer" parent="SettingsLayer/SettingsPanel/SettingsCenter/SettingsCard/SettingsMargin/SettingsVBox"]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="LanguageLabel" type="Label" parent="SettingsLayer/SettingsPanel/SettingsCenter/SettingsCard/SettingsMargin/SettingsVBox/LanguageRow"]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+text = "Language"
+
+[node name="LanguageOption" type="OptionButton" parent="SettingsLayer/SettingsPanel/SettingsCenter/SettingsCard/SettingsMargin/SettingsVBox/LanguageRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MusicRow" type="HBoxContainer" parent="SettingsLayer/SettingsPanel/SettingsCenter/SettingsCard/SettingsMargin/SettingsVBox"]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="MusicLabel" type="Label" parent="SettingsLayer/SettingsPanel/SettingsCenter/SettingsCard/SettingsMargin/SettingsVBox/MusicRow"]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+text = "Music"
+
+[node name="MusicSlider" type="HSlider" parent="SettingsLayer/SettingsPanel/SettingsCenter/SettingsCard/SettingsMargin/SettingsVBox/MusicRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 0.0
+max_value = 1.0
+step = 0.01
+value = 0.8
+
+[node name="SfxRow" type="HBoxContainer" parent="SettingsLayer/SettingsPanel/SettingsCenter/SettingsCard/SettingsMargin/SettingsVBox"]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="SfxLabel" type="Label" parent="SettingsLayer/SettingsPanel/SettingsCenter/SettingsCard/SettingsMargin/SettingsVBox/SfxRow"]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+text = "SFX"
+
+[node name="SfxSlider" type="HSlider" parent="SettingsLayer/SettingsPanel/SettingsCenter/SettingsCard/SettingsMargin/SettingsVBox/SfxRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 0.0
+max_value = 1.0
+step = 0.01
+value = 0.9
+
+[node name="FullscreenCheck" type="CheckBox" parent="SettingsLayer/SettingsPanel/SettingsCenter/SettingsCard/SettingsMargin/SettingsVBox"]
+layout_mode = 2
+text = "Fullscreen"
+
+[node name="SettingsButtons" type="HBoxContainer" parent="SettingsLayer/SettingsPanel/SettingsCenter/SettingsCard/SettingsMargin/SettingsVBox"]
+layout_mode = 2
+alignment = 2
+theme_override_constants/separation = 12
+
+[node name="BackButton" type="Button" parent="SettingsLayer/SettingsPanel/SettingsCenter/SettingsCard/SettingsMargin/SettingsVBox/SettingsButtons"]
+layout_mode = 2
+text = "BACK"

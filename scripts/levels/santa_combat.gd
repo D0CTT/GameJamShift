@@ -36,6 +36,19 @@ var dodge_recovery: float = 0.0
 var strafe_clock: float = 0.0
 var strafe_sign: float = 1.0
 var stride: float = 0.0
+# Visual-only articulation. The CharacterBody3D and its collider never sway.
+var torso_pivot: Node3D
+var free_arm: Node3D
+var leg_pivots: Array[Node3D] = []
+var gait_weight: float = 0.0
+var gait_direction: Vector3 = Vector3.ZERO
+var idle_time: float = 0.0
+var throw_follow: float = 0.0
+var hit_pose_time: float = 0.0
+var hit_direction: Vector3 = Vector3.ZERO
+const HIP_HEIGHT := 0.55
+const FOLLOW_TIME := 0.38
+const HIT_POSE_TIME := 0.34
 var santa_rng := RandomNumberGenerator.new()
 var rudolph_approach: Vector3 = Vector3.BACK
 @onready var player = embedded_player if is_instance_valid(embedded_player) else $Player
@@ -169,19 +182,20 @@ func _physics_process(delta: float) -> void:
 	target.y = santa.global_position.y
 	if santa.global_position.distance_to(target) > 0.1:
 		santa.look_at(target, Vector3.UP, true)
-	if _move_santa(delta):
-		return
-	attack_clock -= delta
-	if attack_clock <= 0.0:
-		if not winding:
-			winding = true
-			attack_clock = maxf(0.2, santa_windup)
-			santa_ball.show()
-			create_tween().tween_property(arm, "rotation:x", -1.25, minf(0.4, attack_clock))
-		else:
-			winding = false
-			attack_clock = maxf(0.2, santa_throw_interval - santa_windup)
-			_throw_santa(true)
+	var before: Vector3 = santa.global_position
+	var pause_attack := _move_santa(delta)
+	if not pause_attack:
+		attack_clock -= delta
+		if attack_clock <= 0.0:
+			if not winding:
+				winding = true
+				attack_clock = maxf(0.2, santa_windup)
+				santa_ball.show()
+			else:
+				winding = false
+				attack_clock = maxf(0.2, santa_throw_interval - santa_windup)
+				_throw_santa(true)
+	_update_santa_pose(delta, santa.global_position - before)
 
 # Move only with swept body collision; pause the throw clock during a dodge.
 func _move_santa(delta: float) -> bool:
@@ -193,17 +207,15 @@ func _move_santa(delta: float) -> bool:
 		dodge_left = maxf(0.0, dodge_left - delta)
 		if not _santa_step(step):
 			dodge_left = 0.0
-		_santa_walk_pose(delta, true)
 		if dodge_left <= 0.0:
 			dodge_recovery = 0.38
 		return true
 	if dodge_recovery > 0.0:
 		dodge_recovery = maxf(0.0, dodge_recovery - delta)
-		model.position.y = move_toward(model.position.y, 0.0, delta * 0.6)
 		return true
-	# Santa plants his feet for each throw; between throws he circles the elf.
-	if winding or attack_clock < 0.25:
-		model.position.y = move_toward(model.position.y, 0.0, delta * 0.6)
+	# Plant the feet during preparation and the first part of the follow-through.
+	# The normal throw clock continues during the follow-through.
+	if winding or attack_clock < 0.25 or throw_follow > 0.16:
 		return false
 	var toward: Vector3 = player.global_position - santa.global_position
 	toward.y = 0.0
@@ -227,9 +239,7 @@ func _move_santa(delta: float) -> bool:
 		var move_dir: Vector3 = direction
 		var step := move_dir * santa_walk_speed * delta
 		if _santa_step(step):
-			_santa_walk_pose(delta, false)
 			return false
-	model.position.y = move_toward(model.position.y, 0.0, delta * 0.6)
 	return false
 
 func _try_dodge() -> void:
@@ -281,9 +291,115 @@ func _santa_step(motion: Vector3) -> bool:
 		return false
 	return santa.move_and_collide(motion) == null
 
-func _santa_walk_pose(delta: float, dodging: bool) -> void:
-	stride += delta * (18.0 if dodging else 10.0)
-	model.position.y = absf(sin(stride)) * (0.045 if dodging else 0.026)
+func _build_santa_pose_rig() -> void:
+	# Reparent the original rigid meshes at runtime. Preserve their world poses.
+	# The seated Santa in the crash and the reusable art scene are untouched.
+	var parts := model.get_children()
+	torso_pivot = Node3D.new()
+	torso_pivot.name = "AnimatedTorso"
+	model.add_child(torso_pivot)
+	torso_pivot.position.y = HIP_HEIGHT
+	for i in range(2):
+		var leg := Node3D.new()
+		leg.name = "AnimatedLeg%d" % i
+		model.add_child(leg)
+		leg.position = Vector3(-0.19 if i == 0 else 0.19, HIP_HEIGHT, 0)
+		leg_pivots.append(leg)
+	for child in parts:
+		if not child is Node3D:
+			continue
+		var n := child as Node3D
+		var is_leg := false
+		for i in range(2):
+			if String(n.name) in ["Leg%d" % i, "Boot%d" % i, "BootCuff%d" % i]:
+				n.reparent(leg_pivots[i], true)
+				is_leg = true
+				break
+		if not is_leg:
+			n.reparent(torso_pivot, true)
+
+func _update_santa_pose(delta: float, displacement: Vector3) -> void:
+	# Steps follow actual movement; no walking on the spot against cover.
+	idle_time += delta
+	var local_motion: Vector3 = santa.global_transform.basis.inverse() * displacement
+	local_motion.y = 0.0
+	var distance := local_motion.length()
+	var moving := distance > 0.0005
+	var dodging := dodge_left > 0.0 or (dodge_recovery > 0.0 and moving)
+	var blend := 1.0 - exp(-delta * 13.0)
+	var move_weight := clampf(distance / maxf(delta * santa_walk_speed, 0.001), 0.0, 1.0)
+	gait_weight = lerpf(gait_weight, move_weight, blend)
+	if moving:
+		gait_direction = gait_direction.lerp(local_motion.normalized(), blend)
+		stride = fmod(stride + distance * TAU / (0.96 if dodging else 0.72), TAU)
+	var wave := sin(stride) * gait_weight
+	for i in range(leg_pivots.size()):
+		var leg := leg_pivots[i]
+		var phase := stride + float(i) * PI
+		var step := sin(phase) * gait_weight
+		var lift := maxf(cos(phase), 0.0) * gait_weight * (0.10 if dodging else 0.055)
+		var leg_x := -0.19 if i == 0 else 0.19
+		var spread := 0.065 if dodging else 0.0
+		var foot_target := Vector3(leg_x + signf(leg_x) * spread, HIP_HEIGHT + lift, 0.0)
+		foot_target += gait_direction * step * (0.095 if dodging else 0.045)
+		leg.position = leg.position.lerp(foot_target, blend)
+		var leg_rot := Vector3(-gait_direction.z * step * 0.32, 0.0, gait_direction.x * step * 0.27)
+		leg.rotation = leg.rotation.lerp(leg_rot, blend)
+
+	var lean := Vector3(gait_direction.z * gait_weight * 0.09, wave * 0.045, -gait_direction.x * gait_weight * 0.12)
+	var torso_y := HIP_HEIGHT + absf(wave) * 0.019 + sin(idle_time * 2.1) * 0.006
+	var right_pose := Vector3(wave * 0.27, 0, 0.08)
+	var left_pose := Vector3(-wave * 0.27, 0, -0.21)
+	if dodging or dodge_recovery > 0.0:
+		var direction: Vector3 = santa.global_transform.basis.inverse() * dodge_direction
+		var weight := 1.0 if dodging else clampf(dodge_recovery / 0.38, 0.0, 1.0)
+		lean.x += direction.z * weight * 0.20
+		lean.z -= direction.x * weight * 0.27
+		torso_y -= 0.065 * weight
+		left_pose = Vector3(-0.4, 0.0, -0.46 * weight - 0.21)
+		right_pose = Vector3(-0.30, 0.0, 0.44 * weight + 0.08)
+	if winding:
+		# First bring the ball up, then cock the throwing arm and swing forward.
+		var progress := clampf(1.0 - attack_clock / maxf(0.2, santa_windup), 0.0, 1.0)
+		if progress < 0.30:
+			var t := smoothstep(0.0, 0.30, progress)
+			right_pose = Vector3(lerpf(0.0, -0.85, t), 0.0, 0.0)
+			left_pose = Vector3(-0.80 * t, 0.0, 0.12 * t - 0.21)
+			torso_y -= 0.04 * t
+		elif progress < 0.72:
+			var t := smoothstep(0.30, 0.72, progress)
+			right_pose = Vector3(lerpf(-0.85, 0.80, t), 0.0, 0.16 * t)
+			left_pose = Vector3(-0.8 + t * 0.30, 0.0, -0.21 - 0.17 * t)
+			lean.y -= 0.16 * t
+		else:
+			var t := smoothstep(0.72, 1.0, progress)
+			right_pose = Vector3(lerpf(0.80, -1.38, t), 0.0, 0.16 * (1.0 - t))
+			left_pose = Vector3(-0.50 + 0.25 * t, 0.0, -0.38 + t * 0.17)
+			lean.x += 0.13 * t
+			lean.y += lerpf(-0.16, 0.12, t)
+	elif throw_follow > 0.0:
+		var elapsed := FOLLOW_TIME - throw_follow
+		if elapsed < 0.12:
+			right_pose = Vector3(lerpf(-1.38, -1.92, smoothstep(0.0, 0.12, elapsed)), 0.0, 0.0)
+		else:
+			right_pose = Vector3(lerpf(-1.92, 0.0, smoothstep(0.12, FOLLOW_TIME, elapsed)), 0.0, 0.08)
+		lean.x += 0.16 * (throw_follow / FOLLOW_TIME)
+		lean.y += 0.12 * (throw_follow / FOLLOW_TIME)
+	if hit_pose_time > 0.0:
+		var progress := 1.0 - hit_pose_time / HIT_POSE_TIME
+		var pulse := sin(progress * PI) * (1.0 - 0.3 * progress)
+		lean.x += hit_direction.z * pulse * 0.26
+		lean.z -= hit_direction.x * pulse * 0.26
+		left_pose.x -= pulse * 0.30
+		torso_y -= pulse * 0.045
+	torso_pivot.position.y = lerpf(torso_pivot.position.y, torso_y, blend)
+	torso_pivot.rotation = torso_pivot.rotation.lerp(lean, blend)
+	# The throwing arm must reach its release angle even with a short windup.
+	var arm_blend := 1.0 - exp(-delta * (28.0 if winding or throw_follow > 0.0 else 13.0))
+	arm.rotation = arm.rotation.lerp(right_pose, arm_blend)
+	free_arm.rotation = free_arm.rotation.lerp(left_pose, blend)
+	throw_follow = maxf(0.0, throw_follow - delta)
+	hit_pose_time = maxf(0.0, hit_pose_time - delta)
 
 func _form_ball() -> void:
 	if is_instance_valid(player.held_item):
@@ -326,13 +442,20 @@ func _throw_player() -> void:
 	_spawn_shot(camera.global_position + direction * 0.06, direction * player_projectile_speed, player, true)
 
 func _throw_santa(damage: bool) -> void:
+	# Release from the animated hand, not from the body centre.
+	if damage:
+		arm.rotation = Vector3(-1.38, 0.0, 0.0)
+		throw_follow = FOLLOW_TIME
 	var start := santa_ball.global_position
 	var target: Vector3 = player.global_position + Vector3.UP * 0.55
 	var diff := target - start
 	var duration := diff.length() / maxf(1.0, santa_projectile_speed)
 	var initial := diff / maxf(duration, 0.05) + Vector3.UP * (1.2 * duration)
 	santa_ball.hide()
-	create_tween().tween_property(arm, "rotation:x", 0.0, 0.22)
+	if not damage:
+		var follow := create_tween()
+		follow.tween_property(arm, "rotation:x", -1.85, 0.12)
+		follow.tween_property(arm, "rotation:x", 0.0, 0.26)
 	_spawn_shot(start, initial, santa, damage)
 
 func _spawn_shot(start: Vector3, initial: Vector3, shooter: CollisionObject3D, damage: bool) -> void:
@@ -353,9 +476,10 @@ func _on_impact(collider: Object, at: Vector3, damaging: bool, shooter: Collisio
 		if santa_hits >= SANTA_HP:
 			_finish(true)
 		else:
-			var t := create_tween()
-			t.tween_property(model, "rotation:z", 0.09, 0.10)
-			t.tween_property(model, "rotation:z", 0.0, 0.20)
+			var away: Vector3 = santa.global_position - player.global_position
+			away.y = 0.0
+			hit_direction = santa.global_transform.basis.inverse() * away.normalized()
+			hit_pose_time = HIT_POSE_TIME
 	elif collider == player and shooter == santa:
 		player_hits += 1
 		var fx := get_tree().get_first_node_in_group("makeshift_retro_fx")
@@ -378,8 +502,10 @@ func _run_duel() -> void:
 	await _look_at(santa.global_position + Vector3.UP * 1.6, 0.55)
 	var form := create_tween().set_parallel(true)
 	form.tween_property(head, "rotation:x", -0.55, 0.48)
-	form.tween_property(model, "position:y", -0.26, 0.48)
-	form.tween_property(arm, "rotation:x", -0.55, 0.48)
+	form.tween_property(torso_pivot, "position:y", HIP_HEIGHT - 0.07, 0.48)
+	form.tween_property(torso_pivot, "rotation:x", 0.22, 0.48)
+	form.tween_property(arm, "rotation:x", -0.72, 0.48)
+	form.tween_property(free_arm, "rotation:x", -0.72, 0.48)
 	await form.finished
 	var visual := _sphere(player.hold_point, Vector3.ZERO, 0.10, snow)
 	duel_hands.show()
@@ -387,8 +513,10 @@ func _run_duel() -> void:
 	await get_tree().create_timer(0.35, false).timeout
 	var raise := create_tween().set_parallel(true)
 	raise.tween_property(head, "rotation:x", atan2(gaze.y, Vector2(gaze.x, gaze.z).length()), 0.50)
-	raise.tween_property(model, "position:y", 0.0, 0.50)
+	raise.tween_property(torso_pivot, "position:y", HIP_HEIGHT, 0.50)
+	raise.tween_property(torso_pivot, "rotation:x", 0.0, 0.50)
 	raise.tween_property(arm, "rotation:x", -1.25, 0.50)
+	raise.tween_property(free_arm, "rotation:x", 0.0, 0.50)
 	await raise.finished
 	await get_tree().create_timer(0.35, false).timeout
 	visual.queue_free()
@@ -658,6 +786,8 @@ func _build_santa() -> void:
 	model = SANTA_ART.instantiate() as Node3D
 	santa.add_child(model)
 	arm = model.get_node("ThrowArm") as Node3D
+	free_arm = model.get_node("LeftArm") as Node3D
+	_build_santa_pose_rig()
 	santa_ball = _sphere(arm,Vector3(0,-0.48,0.12),0.10,snow)
 	santa_ball.hide()
 
