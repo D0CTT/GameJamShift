@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://00xdukxyomwe"]
+
+[ext_resource type="Script" uid="uid://c3ipmemkcw0ig" path="res://scripts/levels/forest_sequence.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://bedeulbmlnu8k" path="res://tests/test_snowman.tscn" id="2"]
+[ext_resource type="AudioStream" uid="uid://dbyh2s8oxo0d2" path="res://assets/audio/forest_sleigh_bell.wav" id="3"]
+
+[node name="TestForest" type="Node3D" unique_id=1399138636]
+script = ExtResource("1")
+
+[node name="Clearing" parent="." unique_id=1880359463 instance=ExtResource("2")]
+
+[node name="Forest" type="Node3D" parent="." unique_id=355484556]
+
+[node name="ForestBell" type="AudioStreamPlayer3D" parent="." unique_id=365120364]
+stream = ExtResource("3")
+unit_size = 2.0
+max_distance = 12.0
+
+[node name="Overlay" type="CanvasLayer" parent="." unique_id=153437077]
+layer = 8
+
+[node name="Hint" type="Label" parent="Overlay" unique_id=1412776885]
+anchors_preset = -1
+anchor_top = 0.82
+anchor_right = 1.0
+anchor_bottom = 0.82
+offset_left = 18.0
+offset_right = -18.0
+offset_bottom = 50.0
+theme_override_colors/font_color = Color(0.93, 0.95, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 21
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Fade" type="ColorRect" parent="Overlay" unique_id=2028160491]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0)

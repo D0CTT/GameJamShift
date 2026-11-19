@@ -1,0 +1,583 @@
+[gd_scene load_steps=55 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/player/player.tscn" id="1"]
+[ext_resource type="Script" path="res://scripts/components/pickup.gd" id="2"]
+[ext_resource type="Script" path="res://scripts/components/build_slot.gd" id="3"]
+[ext_resource type="Script" path="res://scripts/components/snowman_builder.gd" id="4"]
+
+[ext_resource type="AudioStream" path="res://assets/audio/placement_bell.wav" id="5"]
+[ext_resource type="AudioStream" path="res://assets/audio/christmas_complete.wav" id="6"]
+
+[ext_resource type="Script" path="res://scripts/components/snowman_power.gd" id="7"]
+[ext_resource type="PackedScene" path="res://scenes/components/powered_lights.tscn" id="8"]
+
+[sub_resource type="Environment" id="Environment_test"]
+background_mode = 1
+background_color = Color(0.23, 0.29, 0.35, 1)
+ambient_light_source = 3
+ambient_light_color = Color(0.8, 0.88, 1, 1)
+ambient_light_energy = 0.65
+
+[sub_resource type="StandardMaterial3D" id="GroundMaterial"]
+albedo_color = Color(0.63, 0.73, 0.82, 1)
+
+[sub_resource type="BoxMesh" id="GroundMesh"]
+material = SubResource("GroundMaterial")
+size = Vector3(12, 0.2, 12)
+
+[sub_resource type="BoxShape3D" id="GroundShape"]
+size = Vector3(12, 0.2, 12)
+
+[sub_resource type="StandardMaterial3D" id="SnowMaterial"]
+albedo_color = Color(0.94, 0.97, 1, 1)
+
+[sub_resource type="SphereMesh" id="LargeMesh"]
+material = SubResource("SnowMaterial")
+radius = 0.325
+height = 0.65
+radial_segments = 12
+rings = 6
+
+[sub_resource type="SphereShape3D" id="LargeShape"]
+radius = 0.325
+
+[sub_resource type="SphereMesh" id="SmallMesh"]
+material = SubResource("SnowMaterial")
+radius = 0.225
+height = 0.45
+radial_segments = 12
+rings = 6
+
+[sub_resource type="SphereShape3D" id="SmallShape"]
+radius = 0.225
+
+[sub_resource type="StandardMaterial3D" id="SocketMaterial"]
+albedo_color = Color(0.13, 0.43, 0.28, 1)
+
+[sub_resource type="CylinderMesh" id="SocketMesh"]
+material = SubResource("SocketMaterial")
+top_radius = 0.46
+bottom_radius = 0.46
+height = 0.12
+radial_segments = 16
+
+[sub_resource type="CylinderShape3D" id="SocketShape"]
+radius = 0.46
+height = 0.12
+
+[sub_resource type="SphereMesh" id="HeadMesh"]
+material = SubResource("SnowMaterial")
+radius = 0.15
+height = 0.3
+radial_segments = 12
+rings = 6
+
+[sub_resource type="SphereShape3D" id="HeadShape"]
+radius = 0.15
+
+[sub_resource type="StandardMaterial3D" id="CarrotMaterial"]
+albedo_color = Color(0.95, 0.36, 0.08, 1)
+
+[sub_resource type="CylinderMesh" id="CarrotMesh"]
+material = SubResource("CarrotMaterial")
+top_radius = 0.0
+bottom_radius = 0.055
+height = 0.22
+radial_segments = 8
+
+[sub_resource type="BoxShape3D" id="CarrotShape"]
+size = Vector3(0.12, 0.23, 0.12)
+
+[sub_resource type="StandardMaterial3D" id="PreviewMaterial"]
+transparency = 1
+albedo_color = Color(0.2, 0.85, 0.43, 0.42)
+shading_mode = 0
+
+[sub_resource type="StandardMaterial3D" id="CoalMaterial"]
+albedo_color = Color(0.07, 0.09, 0.12, 1)
+
+[sub_resource type="SphereMesh" id="EyeMesh"]
+material = SubResource("CoalMaterial")
+radius = 0.021
+height = 0.042
+radial_segments = 8
+rings = 4
+
+[sub_resource type="StandardMaterial3D" id="BatteryMaterial"]
+albedo_color = Color(0.055, 0.085, 0.11, 1)
+
+[sub_resource type="BoxMesh" id="BatteryMesh"]
+material = SubResource("BatteryMaterial")
+size = Vector3(0.22, 0.18, 0.14)
+
+[sub_resource type="BoxShape3D" id="BatteryShape"]
+size = Vector3(0.22, 0.20, 0.14)
+
+[sub_resource type="StandardMaterial3D" id="TerminalMaterial"]
+albedo_color = Color(0.74, 0.57, 0.20, 1)
+metallic = 0.5
+
+[sub_resource type="CylinderMesh" id="TerminalMesh"]
+material = SubResource("TerminalMaterial")
+top_radius = 0.027
+bottom_radius = 0.027
+height = 0.035
+radial_segments = 8
+
+[sub_resource type="StandardMaterial3D" id="BatteryLabelMaterial"]
+albedo_color = Color(0.86, 0.70, 0.18, 1)
+
+[sub_resource type="BoxMesh" id="BatteryLabelMesh"]
+material = SubResource("BatteryLabelMaterial")
+size = Vector3(0.16, 0.085, 0.004)
+
+[sub_resource type="StandardMaterial3D" id="SantaMat"]
+albedo_color = Color(0.65, 0.07, 0.09, 1)
+[sub_resource type="BoxMesh" id="SleighMesh"]
+material = SubResource("SantaMat")
+size = Vector3(1.0, 0.35, 1.9)
+[sub_resource type="BoxShape3D" id="SleighShape"]
+size = Vector3(1.0, 0.35, 1.9)
+[sub_resource type="CapsuleMesh" id="SantaMesh"]
+material = SubResource("SantaMat")
+radius = 0.28
+height = 1.65
+[sub_resource type="StandardMaterial3D" id="CableMat"]
+albedo_color = Color(0.04, 0.18, 0.07, 1)
+[sub_resource type="TorusMesh" id="CableMesh"]
+material = SubResource("CableMat")
+inner_radius = 0.085
+outer_radius = 0.13
+rings = 12
+ring_segments = 8
+[sub_resource type="BoxShape3D" id="CableShape"]
+size = Vector3(0.35, 0.12, 0.35)
+[sub_resource type="StandardMaterial3D" id="OffMat0"]
+albedo_color = Color(0.550, 0.066, 0.050, 1)
+[sub_resource type="SphereMesh" id="OffBulb0"]
+material = SubResource("OffMat0")
+radius = 0.03
+height = 0.06
+radial_segments = 8
+rings = 4
+[sub_resource type="StandardMaterial3D" id="OnMat0"]
+albedo_color = Color(1, 0.12, 0.09, 1)
+emission_enabled = true
+emission = Color(1, 0.12, 0.09, 1)
+emission_energy_multiplier = 2.0
+[sub_resource type="SphereMesh" id="OnBulb0"]
+material = SubResource("OnMat0")
+radius = 0.033
+height = 0.066
+radial_segments = 8
+rings = 4
+[sub_resource type="StandardMaterial3D" id="OffMat1"]
+albedo_color = Color(0.055, 0.550, 0.176, 1)
+[sub_resource type="SphereMesh" id="OffBulb1"]
+material = SubResource("OffMat1")
+radius = 0.03
+height = 0.06
+radial_segments = 8
+rings = 4
+[sub_resource type="StandardMaterial3D" id="OnMat1"]
+albedo_color = Color(0.1, 1, 0.32, 1)
+emission_enabled = true
+emission = Color(0.1, 1, 0.32, 1)
+emission_energy_multiplier = 2.0
+[sub_resource type="SphereMesh" id="OnBulb1"]
+material = SubResource("OnMat1")
+radius = 0.033
+height = 0.066
+radial_segments = 8
+rings = 4
+[sub_resource type="StandardMaterial3D" id="OffMat2"]
+albedo_color = Color(0.550, 0.396, 0.055, 1)
+[sub_resource type="SphereMesh" id="OffBulb2"]
+material = SubResource("OffMat2")
+radius = 0.03
+height = 0.06
+radial_segments = 8
+rings = 4
+[sub_resource type="StandardMaterial3D" id="OnMat2"]
+albedo_color = Color(1, 0.72, 0.1, 1)
+emission_enabled = true
+emission = Color(1, 0.72, 0.1, 1)
+emission_energy_multiplier = 2.0
+[sub_resource type="SphereMesh" id="OnBulb2"]
+material = SubResource("OnMat2")
+radius = 0.033
+height = 0.066
+radial_segments = 8
+rings = 4
+
+[node name="TestSnowman" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_test")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+rotation_degrees = Vector3(-55, -25, 0)
+light_energy = 1.0
+shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("1")]
+position = Vector3(0, 0.05, 3)
+
+[node name="Ground" type="StaticBody3D" parent="."]
+position = Vector3(0, -0.1, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("GroundMesh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("GroundShape")
+
+[node name="LargeSnowball" type="StaticBody3D" parent="."]
+position = Vector3(-1, 0.325, 0.7)
+script = ExtResource("2")
+item_id = &"snowball_large"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LargeSnowball"]
+mesh = SubResource("LargeMesh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LargeSnowball"]
+shape = SubResource("LargeShape")
+
+[node name="MediumSnowball" type="StaticBody3D" parent="."]
+position = Vector3(1.5, 0.225, 0.65)
+script = ExtResource("2")
+item_id = &"snowball_medium"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MediumSnowball"]
+mesh = SubResource("SmallMesh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MediumSnowball"]
+shape = SubResource("SmallShape")
+
+[node name="SnowmanHead" type="StaticBody3D" parent="."]
+position = Vector3(-2, 0.15, -1.4)
+script = ExtResource("2")
+item_id = &"snowman_head"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SnowmanHead"]
+mesh = SubResource("HeadMesh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SnowmanHead"]
+shape = SubResource("HeadShape")
+
+[node name="EyeLeft" type="MeshInstance3D" parent="SnowmanHead"]
+position = Vector3(-0.052, 0.035, 0.137)
+mesh = SubResource("EyeMesh")
+
+[node name="EyeRight" type="MeshInstance3D" parent="SnowmanHead"]
+position = Vector3(0.052, 0.035, 0.137)
+mesh = SubResource("EyeMesh")
+
+[node name="Carrot" type="StaticBody3D" parent="."]
+position = Vector3(2, 0.065, -1.4)
+script = ExtResource("2")
+item_id = &"carrot"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Carrot"]
+rotation_degrees = Vector3(90, 0, 0)
+mesh = SubResource("CarrotMesh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Carrot"]
+rotation_degrees = Vector3(90, 0, 0)
+shape = SubResource("CarrotShape")
+
+[node name="Snowman" type="Node3D" parent="."]
+position = Vector3(0, 0, -0.55)
+script = ExtResource("4")
+
+[node name="BaseSlot" type="StaticBody3D" parent="Snowman"]
+position = Vector3(0, 0.325, 0)
+script = ExtResource("3")
+required_item = &"snowball_large"
+
+[node name="Preview" type="MeshInstance3D" parent="Snowman/BaseSlot"]
+mesh = SubResource("LargeMesh")
+material_override = SubResource("PreviewMaterial")
+cast_shadow = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Snowman/BaseSlot"]
+shape = SubResource("LargeShape")
+
+[node name="PlacementPoint" type="Marker3D" parent="Snowman/BaseSlot"]
+
+[node name="TorsoSlot" type="StaticBody3D" parent="Snowman"]
+position = Vector3(0, 0.825, 0)
+script = ExtResource("3")
+required_item = &"snowball_medium"
+
+[node name="Preview" type="MeshInstance3D" parent="Snowman/TorsoSlot"]
+mesh = SubResource("SmallMesh")
+material_override = SubResource("PreviewMaterial")
+cast_shadow = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Snowman/TorsoSlot"]
+shape = SubResource("SmallShape")
+
+[node name="PlacementPoint" type="Marker3D" parent="Snowman/TorsoSlot"]
+
+[node name="HeadSlot" type="StaticBody3D" parent="Snowman"]
+position = Vector3(0, 1.155, 0)
+script = ExtResource("3")
+required_item = &"snowman_head"
+
+[node name="Preview" type="MeshInstance3D" parent="Snowman/HeadSlot"]
+mesh = SubResource("HeadMesh")
+material_override = SubResource("PreviewMaterial")
+cast_shadow = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Snowman/HeadSlot"]
+shape = SubResource("HeadShape")
+
+[node name="PlacementPoint" type="Marker3D" parent="Snowman/HeadSlot"]
+
+[node name="CarrotSlot" type="StaticBody3D" parent="Snowman"]
+position = Vector3(0, 1.14, 0.235)
+script = ExtResource("3")
+required_item = &"carrot"
+
+[node name="Preview" type="MeshInstance3D" parent="Snowman/CarrotSlot"]
+rotation_degrees = Vector3(90, 0, 0)
+mesh = SubResource("CarrotMesh")
+material_override = SubResource("PreviewMaterial")
+cast_shadow = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Snowman/CarrotSlot"]
+rotation_degrees = Vector3(90, 0, 0)
+shape = SubResource("CarrotShape")
+
+[node name="PlacementPoint" type="Marker3D" parent="Snowman/CarrotSlot"]
+
+
+[node name="Battery" type="StaticBody3D" parent="Snowman"]
+visible = false
+position = Vector3(0, 1.155, 0)
+script = ExtResource("2")
+item_id = &"battery"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Snowman/Battery"]
+mesh = SubResource("BatteryMesh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Snowman/Battery"]
+shape = SubResource("BatteryShape")
+
+[node name="Positive" type="MeshInstance3D" parent="Snowman/Battery"]
+position = Vector3(-0.06, 0.099, 0)
+mesh = SubResource("TerminalMesh")
+
+[node name="Negative" type="MeshInstance3D" parent="Snowman/Battery"]
+position = Vector3(0.06, 0.099, 0)
+mesh = SubResource("TerminalMesh")
+
+[node name="Label" type="MeshInstance3D" parent="Snowman/Battery"]
+position = Vector3(0, 0, 0.071)
+mesh = SubResource("BatteryLabelMesh")
+
+[node name="PlacementSound" type="AudioStreamPlayer3D" parent="Snowman"]
+position = Vector3(0, 0.75, 0)
+stream = ExtResource("5")
+max_distance = 10.0
+
+[node name="CelebrationSound" type="AudioStreamPlayer3D" parent="Snowman"]
+position = Vector3(0, 0.75, 0)
+stream = ExtResource("6")
+max_distance = 12.0
+
+[node name="Sleigh" type="StaticBody3D" parent="."]
+position = Vector3(-3.4, 0.175, 0.6)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Sleigh"]
+mesh = SubResource("SleighMesh")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sleigh"]
+shape = SubResource("SleighShape")
+[node name="SantaPlaceholder" type="MeshInstance3D" parent="Sleigh"]
+position = Vector3(0, 0.53, 0)
+rotation_degrees = Vector3(90, 0, 0)
+mesh = SubResource("SantaMesh")
+
+[node name="SantaLights" type="StaticBody3D" parent="."]
+position = Vector3(-3.0, 0.77, 0.6)
+script = ExtResource("2")
+item_id = &"christmas_lights"
+[node name="Cable" type="MeshInstance3D" parent="SantaLights"]
+mesh = SubResource("CableMesh")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SantaLights"]
+shape = SubResource("CableShape")
+
+[node name="Bulb0" type="MeshInstance3D" parent="SantaLights"]
+position = Vector3(0.1300, 0.025, 0.0000)
+mesh = SubResource("OffBulb0")
+
+[node name="Bulb1" type="MeshInstance3D" parent="SantaLights"]
+position = Vector3(0.0919, 0.025, 0.0919)
+mesh = SubResource("OffBulb1")
+
+[node name="Bulb2" type="MeshInstance3D" parent="SantaLights"]
+position = Vector3(0.0000, 0.025, 0.1300)
+mesh = SubResource("OffBulb2")
+
+[node name="Bulb3" type="MeshInstance3D" parent="SantaLights"]
+position = Vector3(-0.0919, 0.025, 0.0919)
+mesh = SubResource("OffBulb0")
+
+[node name="Bulb4" type="MeshInstance3D" parent="SantaLights"]
+position = Vector3(-0.1300, 0.025, 0.0000)
+mesh = SubResource("OffBulb1")
+
+[node name="Bulb5" type="MeshInstance3D" parent="SantaLights"]
+position = Vector3(-0.0919, 0.025, -0.0919)
+mesh = SubResource("OffBulb2")
+
+[node name="Bulb6" type="MeshInstance3D" parent="SantaLights"]
+position = Vector3(-0.0000, 0.025, -0.1300)
+mesh = SubResource("OffBulb0")
+
+[node name="Bulb7" type="MeshInstance3D" parent="SantaLights"]
+position = Vector3(0.0919, 0.025, -0.0919)
+mesh = SubResource("OffBulb1")
+
+[node name="PowerAssembly" type="Node3D" parent="Snowman"]
+script = ExtResource("7")
+
+[node name="BatterySlot" type="StaticBody3D" parent="Snowman/PowerAssembly"]
+position = Vector3(-0.43, 0.2, 0.35)
+script = ExtResource("3")
+required_item = &"battery"
+[node name="Preview" type="MeshInstance3D" parent="Snowman/PowerAssembly/BatterySlot"]
+mesh = SubResource("BatteryMesh")
+material_override = SubResource("PreviewMaterial")
+cast_shadow = 0
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Snowman/PowerAssembly/BatterySlot"]
+shape = SubResource("BatteryShape")
+[node name="PlacementPoint" type="Marker3D" parent="Snowman/PowerAssembly/BatterySlot"]
+
+[node name="LightsSlot" type="StaticBody3D" parent="Snowman/PowerAssembly"]
+position = Vector3(-0.43, 0.39, 0.35)
+script = ExtResource("3")
+required_item = &"christmas_lights"
+[node name="Preview" type="MeshInstance3D" parent="Snowman/PowerAssembly/LightsSlot"]
+mesh = SubResource("CableMesh")
+material_override = SubResource("PreviewMaterial")
+cast_shadow = 0
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Snowman/PowerAssembly/LightsSlot"]
+shape = SubResource("CableShape")
+[node name="PlacementPoint" type="Marker3D" parent="Snowman/PowerAssembly/LightsSlot"]
+
+[node name="PoweredLights" parent="Snowman/PowerAssembly" instance=ExtResource("8")]
+position = Vector3(-0.43, 0.2, 0.35)
+
+[node name="WrappedLights" type="Node3D" parent="Snowman/PowerAssembly"]
+
+[node name="Bulb0" type="MeshInstance3D" parent="Snowman/PowerAssembly/WrappedLights"]
+position = Vector3(0.3350, 0.3400, 0.0000)
+mesh = SubResource("OnBulb0")
+
+[node name="Bulb1" type="MeshInstance3D" parent="Snowman/PowerAssembly/WrappedLights"]
+position = Vector3(0.2966, 0.3609, 0.1557)
+mesh = SubResource("OnBulb1")
+
+[node name="Bulb2" type="MeshInstance3D" parent="Snowman/PowerAssembly/WrappedLights"]
+position = Vector3(0.1903, 0.3770, 0.2757)
+mesh = SubResource("OnBulb2")
+
+[node name="Bulb3" type="MeshInstance3D" parent="Snowman/PowerAssembly/WrappedLights"]
+position = Vector3(0.0404, 0.3847, 0.3326)
+mesh = SubResource("OnBulb0")
+
+[node name="Bulb4" type="MeshInstance3D" parent="Snowman/PowerAssembly/WrappedLights"]
+position = Vector3(-0.1188, 0.3821, 0.3132)
+mesh = SubResource("OnBulb1")
+
+[node name="Bulb5" type="MeshInstance3D" parent="Snowman/PowerAssembly/WrappedLights"]
+position = Vector3(-0.2508, 0.3698, 0.2221)
+mesh = SubResource("OnBulb2")
+
+[node name="Bulb6" type="MeshInstance3D" parent="Snowman/PowerAssembly/WrappedLights"]
+position = Vector3(-0.3253, 0.3508, 0.0802)
+mesh = SubResource("OnBulb0")
+
+[node name="Bulb7" type="MeshInstance3D" parent="Snowman/PowerAssembly/WrappedLights"]
+position = Vector3(-0.3253, 0.3292, -0.0802)
+mesh = SubResource("OnBulb1")
+
+[node name="Bulb8" type="MeshInstance3D" parent="Snowman/PowerAssembly/WrappedLights"]
+position = Vector3(-0.2508, 0.3102, -0.2221)
+mesh = SubResource("OnBulb2")
+
+[node name="Bulb9" type="MeshInstance3D" parent="Snowman/PowerAssembly/WrappedLights"]
+position = Vector3(-0.1188, 0.2979, -0.3132)
+mesh = SubResource("OnBulb0")
+
+[node name="Bulb10" type="MeshInstance3D" parent="Snowman/PowerAssembly/WrappedLights"]
+position = Vector3(0.0404, 0.2953, -0.3326)
+mesh = SubResource("OnBulb1")
+
+[node name="Bulb11" type="MeshInstance3D" parent="Snowman/PowerAssembly/WrappedLights"]
+position = Vector3(0.1903, 0.3030, -0.2757)
+mesh = SubResource("OnBulb2")
+
+[node name="Bulb12" type="MeshInstance3D" parent="Snowman/PowerAssembly/WrappedLights"]
+position = Vector3(0.2966, 0.3191, -0.1557)
+mesh = SubResource("OnBulb0")
+
+[node name="Bulb13" type="MeshInstance3D" parent="Snowman/PowerAssembly/WrappedLights"]
+position = Vector3(0.2350, 0.8300, 0.0000)
+mesh = SubResource("OnBulb1")
+
+[node name="Bulb14" type="MeshInstance3D" parent="Snowman/PowerAssembly/WrappedLights"]
+position = Vector3(0.2081, 0.8509, 0.1092)
+mesh = SubResource("OnBulb2")
+
+[node name="Bulb15" type="MeshInstance3D" parent="Snowman/PowerAssembly/WrappedLights"]
+position = Vector3(0.1335, 0.8670, 0.1934)
+mesh = SubResource("OnBulb0")
+
+[node name="Bulb16" type="MeshInstance3D" parent="Snowman/PowerAssembly/WrappedLights"]
+position = Vector3(0.0283, 0.8747, 0.2333)
+mesh = SubResource("OnBulb1")
+
+[node name="Bulb17" type="MeshInstance3D" parent="Snowman/PowerAssembly/WrappedLights"]
+position = Vector3(-0.0833, 0.8721, 0.2197)
+mesh = SubResource("OnBulb2")
+
+[node name="Bulb18" type="MeshInstance3D" parent="Snowman/PowerAssembly/WrappedLights"]
+position = Vector3(-0.1759, 0.8598, 0.1558)
+mesh = SubResource("OnBulb0")
+
+[node name="Bulb19" type="MeshInstance3D" parent="Snowman/PowerAssembly/WrappedLights"]
+position = Vector3(-0.2282, 0.8408, 0.0562)
+mesh = SubResource("OnBulb1")
+
+[node name="Bulb20" type="MeshInstance3D" parent="Snowman/PowerAssembly/WrappedLights"]
+position = Vector3(-0.2282, 0.8192, -0.0562)
+mesh = SubResource("OnBulb2")
+
+[node name="Bulb21" type="MeshInstance3D" parent="Snowman/PowerAssembly/WrappedLights"]
+position = Vector3(-0.1759, 0.8002, -0.1558)
+mesh = SubResource("OnBulb0")
+
+[node name="Bulb22" type="MeshInstance3D" parent="Snowman/PowerAssembly/WrappedLights"]
+position = Vector3(-0.0833, 0.7879, -0.2197)
+mesh = SubResource("OnBulb1")
+
+[node name="Bulb23" type="MeshInstance3D" parent="Snowman/PowerAssembly/WrappedLights"]
+position = Vector3(0.0283, 0.7853, -0.2333)
+mesh = SubResource("OnBulb2")
+
+[node name="Bulb24" type="MeshInstance3D" parent="Snowman/PowerAssembly/WrappedLights"]
+position = Vector3(0.1335, 0.7930, -0.1934)
+mesh = SubResource("OnBulb0")
+
+[node name="Bulb25" type="MeshInstance3D" parent="Snowman/PowerAssembly/WrappedLights"]
+position = Vector3(0.2081, 0.8091, -0.1092)
+mesh = SubResource("OnBulb1")
+
+[node name="PlacementSound" type="AudioStreamPlayer3D" parent="Snowman/PowerAssembly"]
+stream = ExtResource("5")
+max_distance = 10.0
+[node name="CelebrationSound" type="AudioStreamPlayer3D" parent="Snowman/PowerAssembly"]
+stream = ExtResource("6")
+max_distance = 12.0

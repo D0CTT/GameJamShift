@@ -2,11 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://o4i8647lr7b0" path="res://scenes/player/player.tscn" id="1_1fpmp"]
 [ext_resource type="Script" uid="uid://bbovoff5wq7ui" path="res://scripts/test_level.gd" id="1_df0lk"]
-[ext_resource type="Script" uid="uid://bvsfwdfrfudeo" path="res://scripts/shapeshifters/suspicious_object.gd" id="2_df0lk"]
-[ext_resource type="Script" uid="uid://hik13gpskjrl" path="res://scripts/shapeshifters/shapeshifter_mover.gd" id="4_i6x8u"]
-[ext_resource type="Script" uid="uid://coqovxa5ugtdi" path="res://scripts/objects/chair_natural_motion.gd" id="5_5n3yh"]
-[ext_resource type="Script" uid="uid://d4couidxfdiwl" path="res://scripts/button/president_button.gd" id="5_8xg12"]
-[ext_resource type="Script" uid="uid://djtwk0ljadjb6" path="res://scripts/objects/natural_pencil.gd" id="6_0n17k"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_kvip8"]
 size = Vector3(14, 0.5, 14)
@@ -110,7 +105,7 @@ agent_max_climb = 0.2
 
 [node name="Node3D" type="Node3D" unique_id=1718374034]
 script = ExtResource("1_df0lk")
-mission_duration = 1000.0
+mission_duration = 15.0
 
 [node name="Player" parent="." unique_id=2083410379 instance=ExtResource("1_1fpmp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
@@ -198,7 +193,6 @@ transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70
 
 [node name="Desk" type="StaticBody3D" parent="." unique_id=1932327819 groups=["navigation_static"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -2)
-script = ExtResource("2_df0lk")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Desk" unique_id=1542275966]
 mesh = SubResource("BoxMesh_mvtj7")
@@ -208,7 +202,6 @@ shape = SubResource("BoxShape3D_xlsm3")
 
 [node name="Cabinet" type="StaticBody3D" parent="." unique_id=54030945 groups=["disguise_candidate", "navigation_static"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, -4)
-script = ExtResource("2_df0lk")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Cabinet" unique_id=279355506]
 mesh = SubResource("BoxMesh_xlsm3")
@@ -216,14 +209,8 @@ mesh = SubResource("BoxMesh_xlsm3")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cabinet" unique_id=1293080714]
 shape = SubResource("BoxShape3D_4nl3v")
 
-[node name="ArchiveBox" type="StaticBody3D" parent="." unique_id=783100778 node_paths=PackedStringArray("visual_node", "clue_sound") groups=["disguise_candidate", "navigation_static"]]
+[node name="ArchiveBox" type="StaticBody3D" parent="." unique_id=783100778 groups=["disguise_candidate", "navigation_static"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.35, -3)
-script = ExtResource("2_df0lk")
-visual_node = NodePath("MeshInstance3D")
-clue_sound = NodePath("ClueSound")
-false_clue_probability = 0.0
-min_clue_interval = 2.0
-max_clue_interval = 4.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="ArchiveBox" unique_id=952649908]
 mesh = SubResource("BoxMesh_4nl3v")
@@ -233,14 +220,8 @@ shape = SubResource("BoxShape3D_waekl")
 
 [node name="ClueSound" type="AudioStreamPlayer3D" parent="ArchiveBox" unique_id=1759881860]
 
-[node name="ArchiveBox2" type="AnimatableBody3D" parent="." unique_id=479412726 node_paths=PackedStringArray("visual_node") groups=["disguise_candidate"]]
+[node name="ArchiveBox2" type="AnimatableBody3D" parent="." unique_id=479412726 groups=["disguise_candidate"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.33250165, 0.35, 2.7318716)
-script = ExtResource("2_df0lk")
-is_shapeshifter = true
-visual_node = NodePath("MeshInstance3D")
-false_clue_probability = 0.0
-min_clue_interval = 2.0
-max_clue_interval = 4.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="ArchiveBox2" unique_id=1491260663]
 mesh = SubResource("BoxMesh_4nl3v")
@@ -248,22 +229,12 @@ mesh = SubResource("BoxMesh_4nl3v")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ArchiveBox2" unique_id=1510573277]
 shape = SubResource("BoxShape3D_waekl")
 
-[node name="SneakMover" type="Node" parent="ArchiveBox2" unique_id=887799418 node_paths=PackedStringArray("call_point")]
-script = ExtResource("4_i6x8u")
-call_point = NodePath("../../PresidentButton/PressPoint")
-min_wait = 1.0
-max_wait = 3.0
+[node name="SneakMover" type="Node" parent="ArchiveBox2" unique_id=887799418]
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="ArchiveBox2" unique_id=1437692459]
 
-[node name="ArchiveBox4" type="AnimatableBody3D" parent="." unique_id=1363185380 node_paths=PackedStringArray("visual_node") groups=["disguise_candidate"]]
+[node name="ArchiveBox4" type="AnimatableBody3D" parent="." unique_id=1363185380 groups=["disguise_candidate"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9579952, 0.35, 2.7318716)
-script = ExtResource("2_df0lk")
-is_shapeshifter = true
-visual_node = NodePath("MeshInstance3D")
-false_clue_probability = 0.0
-min_clue_interval = 2.0
-max_clue_interval = 4.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="ArchiveBox4" unique_id=1338473832]
 mesh = SubResource("BoxMesh_4nl3v")
@@ -271,13 +242,7 @@ mesh = SubResource("BoxMesh_4nl3v")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ArchiveBox4" unique_id=1444484328]
 shape = SubResource("BoxShape3D_waekl")
 
-[node name="SneakMover" type="Node" parent="ArchiveBox4" unique_id=492087171 node_paths=PackedStringArray("call_point", "roam_points") groups=["disguise_candidate"]]
-script = ExtResource("4_i6x8u")
-behavior = 1
-call_point = NodePath("../../PresidentButton/PressPoint")
-roam_points = [NodePath("../../RoamPoints/Office_A"), NodePath("../../RoamPoints/Office_B"), NodePath("../../RoamPoints/Hallway_A"), NodePath("../../RoamPoints/Hallway_B")]
-min_wait = 1.0
-max_wait = 3.0
+[node name="SneakMover" type="Node" parent="ArchiveBox4" unique_id=492087171 groups=["disguise_candidate"]]
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="ArchiveBox4" unique_id=1528054248]
 
@@ -295,10 +260,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9194264, 0, 0)
 [node name="Hallway_B" type="Marker3D" parent="RoamPoints" unique_id=958217376]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5369415, 0, -5.8345375)
 
-[node name="OfficeChair" type="AnimatableBody3D" parent="." unique_id=1868835802 node_paths=PackedStringArray("visual_node") groups=["disguise_candidate"]]
+[node name="OfficeChair" type="AnimatableBody3D" parent="." unique_id=1868835802 groups=["disguise_candidate"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.46222186, 0.8580859, 4.833054)
-script = ExtResource("2_df0lk")
-visual_node = NodePath("MeshInstance3D")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="OfficeChair" unique_id=1091279213]
 mesh = SubResource("BoxMesh_8xg12")
@@ -311,14 +274,10 @@ shape = SubResource("BoxShape3D_5n3yh")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="OfficeChair/ProximityArea" unique_id=1089273877]
 shape = SubResource("SphereShape3D_0n17k")
 
-[node name="NaturalMotion" type="Node" parent="OfficeChair" unique_id=19789602 node_paths=PackedStringArray("detection_area")]
-script = ExtResource("5_5n3yh")
-detection_area = NodePath("../ProximityArea")
-movement_chance = 1.0
+[node name="NaturalMotion" type="Node" parent="OfficeChair" unique_id=19789602]
 
 [node name="Pencil" type="RigidBody3D" parent="." unique_id=1135431559]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9536588, 1.0202088, -1.8175703)
-script = ExtResource("6_0n17k")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Pencil" unique_id=567588391]
 mesh = SubResource("BoxMesh_5n3yh")
@@ -326,13 +285,8 @@ mesh = SubResource("BoxMesh_5n3yh")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Pencil" unique_id=945142246]
 shape = SubResource("BoxShape3D_0n17k")
 
-[node name="ArchiveBox3" type="StaticBody3D" parent="." unique_id=1448813383 node_paths=PackedStringArray("visual_node") groups=["disguise_candidate", "navigation_static"]]
+[node name="ArchiveBox3" type="StaticBody3D" parent="." unique_id=1448813383 groups=["disguise_candidate", "navigation_static"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.35, 2)
-script = ExtResource("2_df0lk")
-visual_node = NodePath("MeshInstance3D")
-false_clue_probability = 1.0
-min_clue_interval = 2.0
-max_clue_interval = 4.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="ArchiveBox3" unique_id=1295420563]
 mesh = SubResource("BoxMesh_4nl3v")
@@ -354,7 +308,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.939, 0, -1.035)
 
 [node name="PresidentButton" type="StaticBody3D" parent="." unique_id=1694977631 groups=["navigation_static"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.6)
-script = ExtResource("5_8xg12")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="PresidentButton" unique_id=348843193]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0)

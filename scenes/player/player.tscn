@@ -3,128 +3,58 @@
 [ext_resource type="Script" uid="uid://ba6inrj7jfsyb" path="res://scripts/player/player.gd" id="1_8afob"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x7p2l"]
-radius = 0.35
-height = 1.8
+radius = 0.25
+height = 1.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8afob"]
-albedo_color = Color(0.19215687, 0.25882354, 0.28627452, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_kvip8"]
-material = SubResource("StandardMaterial3D_8afob")
-size = Vector3(0.2, 0.18, 0.38)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dovo2"]
-albedo_color = Color(0.44313726, 0.53333336, 0.54901963, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_6j2nl"]
-material = SubResource("StandardMaterial3D_dovo2")
-size = Vector3(0.12, 0.12, 0.28)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gmlin"]
-albedo_color = Color(0.8901961, 0.6039216, 0.2509804, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_wbpxr"]
-material = SubResource("StandardMaterial3D_gmlin")
-size = Vector3(0.22, 0.2, 0.08)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lvxji"]
-albedo_color = Color(0.13333334, 0.16862746, 0.19607843, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_3wxni"]
-material = SubResource("StandardMaterial3D_lvxji")
-size = Vector3(0.1, 0.22, 0.12)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7yg8y"]
-bg_color = Color(0.15686275, 0.24313726, 0.22352941, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fvpmk"]
-bg_color = Color(0.47058824, 0.85882354, 0.627451, 1)
-
-[node name="Player" type="CharacterBody3D" unique_id=218560856]
+[node name="Player" type="CharacterBody3D" unique_id=842195585]
 script = ExtResource("1_8afob")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=370767153]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=842313008]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("CapsuleShape3D_x7p2l")
 
-[node name="Head" type="Node3D" parent="." unique_id=1896019436]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+[node name="Head" type="Node3D" parent="." unique_id=1240042557]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0)
 
-[node name="Camera3D" type="Camera3D" parent="Head" unique_id=1202098196]
+[node name="Camera3D" type="Camera3D" parent="Head" unique_id=631523849]
 current = true
 
-[node name="InteractionRay" type="RayCast3D" parent="Head/Camera3D" unique_id=674360430]
-target_position = Vector3(0, 0, -3)
+[node name="InteractionRay" type="RayCast3D" parent="Head/Camera3D" unique_id=73953647]
+target_position = Vector3(0, 0, -1.5)
 
-[node name="Node3D" type="Node3D" parent="Head/Camera3D" unique_id=392218394]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, -0.34, -0.7)
+[node name="Hands" type="Node3D" parent="Head/Camera3D" unique_id=851118519]
 
-[node name="Body" type="MeshInstance3D" parent="Head/Camera3D/Node3D" unique_id=1911655372]
-mesh = SubResource("BoxMesh_kvip8")
+[node name="HoldPoint" type="Marker3D" parent="Head/Camera3D" unique_id=240011709]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, -0.25, -0.7)
 
-[node name="Tube" type="MeshInstance3D" parent="Head/Camera3D/Node3D" unique_id=694103857]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.3)
-mesh = SubResource("BoxMesh_6j2nl")
+[node name="HUD" type="CanvasLayer" parent="." unique_id=848729252]
 
-[node name="Nozzle" type="MeshInstance3D" parent="Head/Camera3D/Node3D" unique_id=503261532]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.46)
-mesh = SubResource("BoxMesh_wbpxr")
+[node name="Objective" type="Label" parent="HUD" unique_id=867055490]
+offset_left = 24.0
+offset_top = 20.0
+offset_right = 550.0
+offset_bottom = 54.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 24
+text = "MAKE/SHIFT CHRISTMAS"
 
-[node name="Handle" type="MeshInstance3D" parent="Head/Camera3D/Node3D" unique_id=1565920656]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.16, 0.1)
-mesh = SubResource("BoxMesh_3wxni")
-
-[node name="VacuumHUD" type="CanvasLayer" parent="." unique_id=413597567]
-
-[node name="StatusLabel" type="Label" parent="VacuumHUD" unique_id=1947267158]
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -100.0
-offset_top = -125.0
-offset_right = 200.0
-offset_bottom = -95.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_colors/font_color = Color(0.5294118, 0.8980392, 0.64705884, 1)
-theme_override_font_sizes/font_size = 22
-metadata/_edit_use_anchors_ = true
-
-[node name="CrossHair" type="Label" parent="VacuumHUD" unique_id=397240071]
-anchors_preset = -1
+[node name="CrossHair" type="Label" parent="HUD" unique_id=23353681]
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -15.0
-offset_top = -15.0
-offset_right = 15.0
-offset_bottom = 15.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.64705884, 0.9137255, 0.7294118, 1)
-theme_override_font_sizes/font_size = 28
-text = "
-+"
+offset_left = -12.0
+offset_top = -12.0
+offset_right = 12.0
+offset_bottom = 12.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 20
+text = "+"
 horizontal_alignment = 1
 vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="SuctionBar" type="ProgressBar" parent="VacuumHUD" unique_id=647868611]
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -110.0
-offset_top = -85.0
-offset_right = 110.0
-offset_bottom = -71.0
-grow_horizontal = 2
-grow_vertical = 0
-mouse_filter = 2
-theme_override_styles/background = SubResource("StyleBoxFlat_7yg8y")
-theme_override_styles/fill = SubResource("StyleBoxFlat_fvpmk")
-show_percentage = false

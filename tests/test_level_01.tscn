@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://b1hajkkot3xg2"]
+
+[ext_resource type="Script" uid="uid://dnan4tff258al" path="res://scripts/levels/intro_sequence.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://00xdukxyomwe" path="res://tests/test_forest.tscn" id="2"]
+[ext_resource type="AudioStream" uid="uid://dbyh2s8oxo0d2" path="res://assets/audio/forest_sleigh_bell.wav" id="3"]
+
+[node name="Level01Intro" type="Node3D" unique_id=885495890]
+script = ExtResource("1")
+
+[node name="Level" parent="." unique_id=812633536 instance=ExtResource("2")]
+
+[node name="IntroProps" type="Node3D" parent="." unique_id=447587263]
+
+[node name="EscapeBells" type="AudioStreamPlayer3D" parent="." unique_id=417995512]
+stream = ExtResource("3")
+unit_size = 2.0
+max_distance = 14.0
+
+[node name="IntroOverlay" type="CanvasLayer" parent="." unique_id=398586225]
+layer = 9
+
+[node name="Fade" type="ColorRect" parent="IntroOverlay" unique_id=289050733]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
