@@ -3,6 +3,8 @@ extends Control
 const SETTINGS_PATH := "user://makeshift_menu.cfg"
 const SAVE_PATH := "user://makeshift_save.cfg"
 const START_SCENE := "res://tests/test_level_01.tscn"
+const MENU_TRACK = preload("res://assets/audio/music/Noche_de_nieve.mp3")
+var menu_music: AudioStreamPlayer
 
 const COPY := {
 	"en": {
@@ -73,6 +75,7 @@ func _ready() -> void:
 	_setup_styles()
 	_build_language_option()
 	_load_settings()
+	_start_menu_music()
 	_refresh_continue_state()
 	_apply_texts()
 	play_button.pressed.connect(_on_play_pressed)
@@ -231,6 +234,7 @@ func _on_language_selected(index: int) -> void:
 
 func _on_music_changed(value: float) -> void:
 	_apply_audio_bus("Music", value)
+	_update_menu_music_volume()
 	_save_settings()
 
 func _on_sfx_changed(value: float) -> void:
@@ -240,6 +244,29 @@ func _on_sfx_changed(value: float) -> void:
 func _on_fullscreen_toggled(enabled: bool) -> void:
 	_apply_window_mode(enabled)
 	_save_settings()
+
+func _start_menu_music() -> void:
+	menu_music = AudioStreamPlayer.new()
+	menu_music.name = "MenuMusic"
+	var track: AudioStreamMP3 = MENU_TRACK.duplicate() as AudioStreamMP3
+	track.loop = true
+	track.loop_offset = 0.0
+	menu_music.stream = track
+	add_child(menu_music)
+	_update_menu_music_volume()
+	menu_music.play()
+
+func _update_menu_music_volume() -> void:
+	if not is_instance_valid(menu_music):
+		return
+	# Avoid applying the volume twice when a Music bus already exists.
+	if AudioServer.get_bus_index("Music") >= 0:
+		menu_music.bus = &"Music"
+		menu_music.volume_db = 0.0
+	else:
+		menu_music.bus = &"Master"
+		menu_music.volume_db = linear_to_db(maxf(music_slider.value, 0.0001))
+	menu_music.volume_db = -80.0 if music_slider.value <= 0.0 else menu_music.volume_db
 
 func _apply_audio_bus(bus_name: String, normalized_value: float) -> void:
 	var bus := AudioServer.get_bus_index(bus_name)

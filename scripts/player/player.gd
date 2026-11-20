@@ -17,6 +17,8 @@ const CARRY_HANDS = preload("res://scripts/player/carry_hands.gd")
 
 var gravity: float = float(ProjectSettings.get_setting("physics/3d/default_gravity"))
 var controls_enabled: bool = true
+# Combat sets this only while collecting snow for the rifle.
+var combat_reload_active: bool = false
 var held_item: Node3D = null
 var pickup_parent: Node3D = null
 var pickup_transform: Transform3D = Transform3D.IDENTITY
@@ -83,7 +85,7 @@ func _physics_process(delta: float) -> void:
 	var current_speed: float = speed
 	if can_move:
 		input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
-		if InputMap.has_action("sprint") and Input.is_action_pressed("sprint"):
+		if not combat_reload_active and InputMap.has_action("sprint") and Input.is_action_pressed("sprint"):
 			current_speed = sprint_speed
 	var direction := (transform.basis * Vector3(input_dir.x, 0.0, input_dir.y)).normalized()
 	velocity.x = direction.x * current_speed

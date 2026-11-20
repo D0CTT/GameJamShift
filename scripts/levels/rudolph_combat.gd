@@ -1,13 +1,15 @@
 extends CharacterBody3D
 ## Rudolph: embestidas telegrafiadas, con colisión barrida y muerte por contacto.
 signal player_touched
+signal cover_hit(body: Object)
 const ART = preload("res://scenes/art/characters/reindeer.tscn")
 const BELL = preload("res://assets/audio/forest_sleigh_bell.wav")
 enum State { REST, AIM, CHARGE }
 @export var charge_speed: float = 7.0
-@export var warning_time: float = 1.0
-@export var recovery_time: float = 2.0
+@export var warning_time: float = 1.25
+@export var recovery_time: float = 2.6
 @export var charge_duration: float = 1.15
+const AIM_LOCK_TIME: float = 0.35
 var player: CharacterBody3D
 var visual: Node3D
 var hit_shape: CollisionShape3D
@@ -17,6 +19,8 @@ var state: State = State.REST
 var clock: float = 0.0
 var running: bool = false
 var cinematic_running: bool = false
+# 0 ground run, 1 suspended flight, 2 dive, 3 landed recovery.
+var flight_pose: float = 0.0
 var stride: float = 0.0
 var direction: Vector3 = Vector3.FORWARD
 var touched: bool = false
@@ -65,6 +69,7 @@ func start_fight() -> void:
 	touched = false
 
 func stop_fight() -> void:
+	flight_pose = 0.0
 	running = false
 	cinematic_running = false
 	warning.stop()
@@ -72,7 +77,10 @@ func stop_fight() -> void:
 
 func _physics_process(delta: float) -> void:
 	if cinematic_running:
-		_gallop(delta)
+		if flight_pose > 0.0:
+			_fly_pose(delta)
+		else:
+			_gallop(delta)
 		return
 	if not running or not is_instance_valid(player):
 		return
@@ -97,11 +105,13 @@ func _physics_process(delta: float) -> void:
 				_reset_pose()
 			if clock <= 0.0 and not touched:
 				state = State.AIM
+				face(player.global_position)
 				clock = maxf(0.25, warning_time)
 				warning.play()
 		State.AIM:
-			# Lock the direction on the last frame, then no homing during charge.
-			face(player.global_position)
+			# Stop tracking before launching: a last-moment sidestep can work.
+			if clock > AIM_LOCK_TIME:
+				face(player.global_position)
 			visual.rotation.x = -0.12
 			nose.emission_energy_multiplier = 1.8 + 1.5 * (1.0 - clampf(clock / maxf(0.25, warning_time), 0.0, 1.0))
 			if clock <= 0.0:
@@ -133,6 +143,8 @@ func _move(motion: Vector3) -> bool:
 		return false
 	if hit.get_collider() == player:
 		_hit_player()
+	elif state == State.CHARGE and hit.get_collider() is StaticBody3D:
+		cover_hit.emit(hit.get_collider())
 	return true
 
 func _touching_player() -> bool:
@@ -171,3 +183,22 @@ func _reset_pose() -> void:
 		for leg in range(2):
 			var pivot := visual.get_node("Leg%d%d" % [side, leg]) as Node3D
 			pivot.rotation.x = 0.0
+
+func _fly_pose(delta: float) -> void:
+	stride += delta * 6.0
+	var pitch: float = -0.08 + sin(stride * 0.8) * 0.07
+	if flight_pose == 2.0:
+		pitch = -0.63
+	elif flight_pose == 3.0:
+		pitch = 0.10
+	visual.position.y = lerpf(visual.position.y, 0.03 * sin(stride) if flight_pose == 1.0 else 0.0, minf(1.0, delta * 9.0))
+	visual.rotation.x = lerpf(visual.rotation.x, pitch, minf(1.0, delta * 12.0))
+	for side in range(2):
+		for leg in range(2):
+			var pivot := visual.get_node("Leg%d%d" % [side, leg]) as Node3D
+			var bend: float = (0.50 if leg == 0 else -0.45) + 0.12 * sin(stride + float(side) * PI)
+			if flight_pose == 2.0:
+				bend = 0.15 if leg == 0 else -0.7
+			elif flight_pose == 3.0:
+				bend = 0.0
+			pivot.rotation.x = lerpf(pivot.rotation.x, bend, minf(1.0, delta * 10.0))

@@ -134,7 +134,7 @@ func _retry_final_combat() -> void:
 	if not is_instance_valid(final_combat):
 		return
 	var held := player.get("held_item") as Node3D
-	if is_instance_valid(held) and held.get("item_id") == &"combat_snowball":
+	if is_instance_valid(held) and held.get("item_id") in [&"combat_snowball", &"combat_snow_rifle"]:
 		player.set("held_item", null)
 		player.set("pickup_parent", null)
 		player.set("drop_requested", false)
